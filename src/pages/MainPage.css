@@ -1,0 +1,93 @@
+/* Carousel Styles */
+.carousel {
+    position: relative;
+    width: 100%; /* Ekran kengligi bo'ylab to'liq kenglik */
+    max-width: 1400px; /* Maksimal kenglik 1400px */
+    height: 400px; /* Balandlikni o'rnating */
+    margin: 0 auto; /* Markazlashtirish */
+    overflow: hidden; /* Scrollni yashirish */
+  }
+  
+  .carousel-inner {
+    display: flex;
+    transition: transform 0.5s ease;
+    height: 100%; /* Ota balandlikni to'liq olish */
+  }
+  
+  .carousel-item {
+    min-width: 100%; /* To'liq kenglik */
+    height: 100%; /* Balandlikni to'liq olish */
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .carousel-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Tasvirni butunlay qoplaydi */
+    display: block; /* Scrollni oldini olish uchun */
+  }
+  
+  /* Indicators Styles */
+  .carousel-indicators {
+    position: absolute;
+    bottom: 10px; /* Pastki qismida joylashgan */
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 5px;
+  }
+  
+  .carousel-indicator {
+    width: 10px;
+    height: 10px;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .carousel-indicator.active {
+    background-color: #fff; /* Faol tugma rangi */
+  }
+  
+  /* Tugmalarni olib tashlang */
+  button {
+    display: none;
+  }
+  
+  @media (max-width: 768px) {
+    button {
+      padding: 5px;
+    }
+  }
+  
+  /* Main Content Styles */
+  .main-page {
+    padding: 20px;
+    box-sizing: border-box; /* Padding va borderni umumiy o'lchamlarga qo'shish */
+    overflow-x: hidden; /* Yonma-yon scrollni yashirish */
+  }
+  
+  .about-us, .features {
+    margin: 20px 0;
+  }
+  
+  .features {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .feature {
+    margin: 10px 0;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .features {
+      flex-direction: column;
+    }
+  }
+  
