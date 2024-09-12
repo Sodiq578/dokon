@@ -7,7 +7,9 @@ const MainPage = () => {
   const [visibleCards, setVisibleCards] = useState(10);
   const [carouselImages, setCarouselImages] = useState([]);
   const [index, setIndex] = useState(0);
-  const carouselInnerRef = useRef(null);
+  const [showMore, setShowMore] = useState(false); // Added state for toggling
+  const carouselInnerRef1 = useRef(null);
+  const carouselInnerRef2 = useRef(null);
   const touchStartX = useRef(0);
   const touchEndX = useRef(0);
 
@@ -33,22 +35,23 @@ const MainPage = () => {
     fetchData();
   }, []);
 
-  const showMoreCards = () => {
-    setVisibleCards(visibleCards + 10);
-  };
-
-  const showSlide = (n) => {
+  const showSlide = (n, carouselRef) => {
     if (n >= carouselImages.length) setIndex(0);
     else if (n < 0) setIndex(carouselImages.length - 1);
     else setIndex(n);
 
-    if (carouselInnerRef.current) {
-      carouselInnerRef.current.style.transform = `translateX(${-index * 100}%)`;
+    if (carouselRef.current) {
+      carouselRef.current.style.transform = `translateX(${-index * 100}%)`;
     }
   };
 
   useEffect(() => {
-    const interval = setInterval(() => showSlide(index + 1), 3000);
+    const interval = setInterval(() => showSlide(index + 1, carouselInnerRef1), 3000);
+    return () => clearInterval(interval);
+  }, [index]);
+
+  useEffect(() => {
+    const interval = setInterval(() => showSlide(index + 1, carouselInnerRef2), 3000);
     return () => clearInterval(interval);
   }, [index]);
 
@@ -61,9 +64,11 @@ const MainPage = () => {
     const deltaX = touchStartX.current - touchEndX.current;
 
     if (deltaX > 50) {
-      showSlide(index + 1);
+      showSlide(index + 1, carouselInnerRef1);
+      showSlide(index + 1, carouselInnerRef2);
     } else if (deltaX < -50) {
-      showSlide(index - 1);
+      showSlide(index - 1, carouselInnerRef1);
+      showSlide(index - 1, carouselInnerRef2);
     }
   };
 
@@ -73,11 +78,17 @@ const MainPage = () => {
     return `${words.slice(0, limit).join(' ')}...`;
   };
 
+  const toggleShowMore = () => {
+    setShowMore(!showMore);
+    setVisibleCards(showMore ? 10 : cards.length); // Toggle between 10 and total number of cards
+  };
+
   return (
     <div className="main-page">
       <div className="container">
+        {/* First Carousel */}
         <div className="carousel">
-          <div className="carousel-inner" ref={carouselInnerRef} onTouchStart={handleTouchStart} onTouchEnd={handleTouchEnd}>
+          <div className="carousel-inner" ref={carouselInnerRef1} onTouchStart={handleTouchStart} onTouchEnd={handleTouchEnd}>
             {carouselImages.map((image, i) => (
               <div className="carousel-item" key={i}>
                 <img src={image} alt={`Carousel ${i + 1}`} />
@@ -86,10 +97,12 @@ const MainPage = () => {
           </div>
           <div className="carousel-indicators">
             {carouselImages.map((_, i) => (
-              <span key={i} className={`carousel-indicator ${i === index ? 'active' : ''}`} onClick={() => showSlide(i)}></span>
+              <span key={i} className={`carousel-indicator ${i === index ? 'active' : ''}`} onClick={() => showSlide(i, carouselInnerRef1)}></span>
             ))}
           </div>
         </div>
+
+        {/* Cards Section */}
         <div className="cards-container">
           {cards.slice(0, visibleCards).map((card) => (
             <div className="card" key={card.id}>
@@ -108,18 +121,65 @@ const MainPage = () => {
                     ))}
                     {/* Note: fakestoreapi.com does not have reviews, so this part is omitted */}
                   </div>
+                  
                 </div>
+                
               </Link>
+              
             </div>
+            
           ))}
         </div>
-        {visibleCards < cards.length && (
-          <button className="load-more" onClick={showMoreCards}>Yana ko'proq ko'rsatish</button>
+        <button className="load-more" onClick={toggleShowMore}>
+          {showMore ? 'Yopish' : 'Yana ko\'proq ko\'rsatish'}
+        </button>
+        {/* Second Carousel */}
+        <div className="carousel">
+          <div className="carousel-inner" ref={carouselInnerRef2} onTouchStart={handleTouchStart} onTouchEnd={handleTouchEnd}>
+            {carouselImages.map((image, i) => (
+              <div className="carousel-item" key={i}>
+                <img src={image} alt={`Carousel ${i + 1}`} />
+              </div>
+            ))}
+          </div>
+          <div className="carousel-indicators">
+            {carouselImages.map((_, i) => (
+              <span key={i} className={`carousel-indicator ${i === index ? 'active' : ''}`} onClick={() => showSlide(i, carouselInnerRef2)}></span>
+            ))}
+          </div>
+        </div>
+
+        {/* Additional Cards Section */}
+        {showMore && (
+          <div className="cards-container">
+            {cards.slice(visibleCards, visibleCards + 10).map((card) => (
+              <div className="card" key={card.id}>
+                <Link to={`/product/${card.id}`}> {/* Link to ProductInfoPage */}
+                  <img src={card.image} alt={card.title} className="card-img" />
+                  <div className="card-content">
+                    <h3 className="card-title">{card.title}</h3>
+                    <p className='card-text'>{truncateText(card.description, 7)}</p>
+                    <div className="card-price">
+                      <span className="sale-price">${card.price}</span>
+                      {/* Note: fakestoreapi.com does not have salePrice, so only price is shown */}
+                    </div>
+                    <div className="card-rating">
+                      {[...Array(5)].map((_, i) => (
+                        <span key={i} className={`star ${i < card.rating ? 'filled' : ''}`}>★</span>
+                      ))}
+                      {/* Note: fakestoreapi.com does not have reviews, so this part is omitted */}
+                    </div>
+                  </div>
+                </Link>
+              </div>
+            ))}
+          </div>
+          
         )}
         
-      </div>
 
-      
+        
+      </div>
     </div>
   );
 };
