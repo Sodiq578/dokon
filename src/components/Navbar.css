@@ -1,3 +1,9 @@
+body {
+    margin: 0; /* Bosh sahifadagi orqa fon qismi uchun marginni olib tashlash */
+    padding: 0; /* Bosh sahifadagi orqa fon qismi uchun paddingni olib tashlash */
+    box-sizing: border-box; /* Padding va borderni kenglikka kiritish */
+  }
+
 /* General Navbar Styles */
 .navbar {
     position: relative;
@@ -102,6 +108,8 @@
       display: flex; /* Show menu items when active */
       transform: translateX(0); /* Slide in to visible area */
       opacity: 1; /* Fade in */
+      padding: 50px 0px;
+      height: auto;
     }
   
     .nav-elements ul {
@@ -131,12 +139,14 @@
   
     .close-icon {
       display: block; /* Show close icon on small screens */
-      font-size: 24px;
+      font-size: 40px;
       cursor: pointer;
       color: #333; /* Dark color for close icon */
       margin: 20px;
       align-self: flex-end;
       transition: color 0.3s; /* Smooth transition for close icon color */
+      margin-top: -40px;
+      margin-right:20px;
     }
   
     .close-icon:hover {
@@ -165,5 +175,13 @@
     .close-icon {
       display: none; /* Hide close icon on large screens */
     }
+
+    body {
+        margin: 0; /* Bosh sahifadagi orqa fon qismi uchun marginni olib tashlash */
+        padding: 0; /* Bosh sahifadagi orqa fon qismi uchun paddingni olib tashlash */
+        box-sizing: border-box; /* Padding va borderni kenglikka kiritish */
+      }
+
+  
   }
   
