@@ -1,0 +1,232 @@
+/* Asosiy konteyner uchun stil */
+.product-info-container {
+  padding: 20px;
+  max-width: 1200px; /* Kattaroq ekranlarda cheklangan kenglik */
+  margin: 0 auto; /* O'rtaga joylash */
+}
+
+.product-info-header {
+  margin-bottom: 20px;
+}
+
+.product-name {
+  font-size: 1.5rem; /* Katta font o'lchami */
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.produx-box {
+  display: flex;
+  flex-wrap: wrap; /* Kichik ekranlarda elementlarni yuqoriga o'tkazadi */
+}
+
+.product-info-body {
+  display: flex;
+  flex-direction: column;
+}
+
+.image-gallery {
+  display: flex;
+  flex-direction: row;
+}
+
+.prudct-box2 {
+  width: 100%; /* Kichik ekranlarda kenglikni 100% qilib o'zgartiradi */
+  background-color: #f8f9fa; /* Yumshoq rang */
+  padding: 20px;
+  border-radius: 8px; /* Burchaklarni yumshatish */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Yengil soya */
+}
+
+.main-image {
+  flex: 2;
+  padding-right: 20px;
+}
+
+.main-image img {
+  width: 100%;
+  max-height: 500px;
+  object-fit: cover;
+  border-radius: 8px; /* Rasm burchaklarini yumshatish */
+}
+
+.thumbnail-images {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 10px; /* Rasmlar orasidagi bo'shliq */
+}
+
+.thumbnail {
+  width: 100%;
+  max-height: 100px;
+  object-fit: cover;
+  border-radius: 4px; /* Rasm burchaklarini yumshatish */
+  cursor: pointer;
+  transition: transform 0.3s ease; /* O'tish animatsiyasi */
+}
+
+.thumbnail:hover {
+  transform: scale(1.05); /* Hoverda rasmni kattalashtirish */
+}
+
+.product-description {
+  margin: 20px 0;
+  font-size: 1.1rem;
+}
+
+.product-price {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.product-options {
+  margin-bottom: 20px;
+}
+
+.option-group {
+  margin-bottom: 10px;
+}
+
+.option-group label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold; /* Yozuvlar qalin bo'ladi */
+}
+
+.option-group select, .option-group input {
+  width: 100%;
+  padding: 10px;
+  font-size: 1rem;
+  border: 1px solid #ced4da; /* Input chegarasining rangi */
+  border-radius: 4px; /* Input chegarasini yumshatish */
+  transition: border-color 0.3s ease; /* O'tish animatsiyasi */
+}
+
+.option-group select:focus, .option-group input:focus {
+  border-color: #007bff; /* Focus holatida chegarani o'zgartirish */
+  outline: none; /* Outline'ni olib tashlash */
+}
+
+.product-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.btn {
+  padding: 10px 20px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease; /* O'tish animatsiyasi */
+}
+
+.btn-primary {
+  background-color: #007bff;
+  color: white;
+}
+
+.btn-primary:hover {
+  background-color: #0056b3; /* Hover holatidagi rang */
+}
+
+.btn-success {
+  background-color: #28a745;
+  color: white;
+}
+
+.btn-success:hover {
+  background-color: #218838; /* Hover holatidagi rang */
+}
+
+/* Responsivlik uchun media query */
+@media (max-width: 768px) {
+  .produx-box {
+    flex-direction: column;
+  }
+
+  .prudct-box2 {
+    width: 100%;
+    padding: 10px; /* Kichik ekranlarda padding kamayadi */
+  }
+
+  .main-image {
+    padding-right: 0;
+    margin-bottom: 20px;
+  }
+
+  .thumbnail-images {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .thumbnail {
+    width: 24%; /* Kichik ekranlarda rasmlar joylashishi uchun */
+  }
+
+  .product-info-body {
+    flex-direction: column;
+  }
+
+  .product-info-body > div {
+    margin-bottom: 20px;
+  }
+}
+
+@media (max-width: 576px) {
+  .product-name {
+    font-size: 1.25rem;
+  }
+
+  .product-description {
+    font-size: 1rem;
+  }
+
+  .product-price {
+    font-size: 1.25rem;
+  }
+}
+
+
+.product-options {
+  display: flex; /* Flexbox qo'llaniladi */
+  gap: 10px; /* Elementlar orasidagi bo'shliq */
+  margin-bottom: 20px;
+  flex-wrap: wrap; /* Kichik ekranlarda elementlar pastga tushishi uchun */
+}
+
+.option-group {
+  flex: 1; /* Elementlarni teng kenglikda tarqatish uchun */
+  min-width: 150px; /* Kichik ekranlar uchun minimal kenglik */
+}
+
+.option-group label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold; /* Yozuvlar qalin bo'ladi */
+}
+
+.option-group select, .option-group input {
+  width: 100%; /* To'liq kenglikda bo'ladi */
+  padding: 10px;
+  font-size: 1rem;
+  border: 1px solid #ced4da; /* Input chegarasining rangi */
+  border-radius: 4px; /* Input chegarasini yumshatish */
+  transition: border-color 0.3s ease; /* O'tish animatsiyasi */
+}
+
+.option-group select:focus, .option-group input:focus {
+  border-color: #007bff; /* Focus holatida chegarani o'zgartirish */
+  outline: none; /* Outline'ni olib tashlash */
+}
+
+
+.disabled-select {
+  opacity: 0.5;
+  pointer-events: none;
+  text-decoration: line-through;
+}
+

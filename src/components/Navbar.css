@@ -1,96 +1,97 @@
+/* Asosiy reset */
 body {
-    margin: 0; /* Bosh sahifadagi orqa fon qismi uchun marginni olib tashlash */
-    padding: 0; /* Bosh sahifadagi orqa fon qismi uchun paddingni olib tashlash */
-    box-sizing: border-box; /* Padding va borderni kenglikka kiritish */
-  }
+  margin: 0; /* Bosh sahifadagi orqa fon qismi uchun marginni olib tashlash */
+  padding: 0; /* Bosh sahifadagi orqa fon qismi uchun paddingni olib tashlash */
+  box-sizing: border-box; /* Padding va borderni kenglikka kiritish */
+}
 
 /* General Navbar Styles */
 .navbar {
-    position: relative;
-    background-color: #e2e2e2; /* Yengil va ko'zga yoqadigan rang */
-    color: #333; /* Matn rangini qora yoki qora rangga yaqin qilib qo'ying */
-    padding: 10px 20px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Faqat pastki qismida engil box-shadow */
-    width: 100%; /* Kenglikni 100% qilib belgilash */
-    box-sizing: border-box; /* Padding va borderni kenglikka kiritish */
-  }
-  
-  .container {
-    max-width: 1400px; /* Maksimal kenglikni belgilash */
-    margin: 0 auto; /* Markazlashtirish uchun avtomatik margin */
-    padding: 0 20px; /* Qoshimcha xususiyatlar */
-    width: 100%;
-  }
-  
-  .nav-wrapper {
-    display: flex;
-    align-items: center;
-    justify-content: space-between; /* Elementlarni bo'shliq bilan tarqatish */
-    width: 100%; /* Kenglikni 100% qilib belgilash */
-  }
-  
-  /* Logo */
-  .logo img {
-    height: 40px; /* Logo balandligini sozlash */
-  }
-  
-  /* Menu Icon */
+  position: relative;
+  background-color: #e2e2e2; /* Yengil va ko'zga yoqadigan rang */
+  color: #333; /* Matn rangini qora yoki qora rangga yaqin qilib qo'ying */
+  padding: 10px 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Faqat pastki qismida engil box-shadow */
+  width: 100%; /* Kenglikni 100% qilib belgilash */
+  box-sizing: border-box; /* Padding va borderni kenglikka kiritish */
+}
+
+.container {
+  max-width: 1200px; /* Maksimal kenglikni belgilash */
+  margin: 0 auto; /* Markazlashtirish uchun avtomatik margin */
+  padding: 0 20px; /* Qoshimcha xususiyatlar */
+  width: 100%;
+}
+
+.nav-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* Elementlarni bo'shliq bilan tarqatish */
+  width: 100%; /* Kenglikni 100% qilib belgilash */
+}
+
+/* Logo */
+.logo img {
+  height: 40px; /* Logo balandligini sozlash */
+}
+
+/* Menu Icon */
+.menu-icon {
+  display: none; /* Hide by default */
+  cursor: pointer;
+}
+
+.hamburger-icon {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 30px;
+  height: 21px;
+}
+
+.line {
+  height: 3px;
+  width: 100%;
+  background-color: white;
+  border-radius: 5px;
+}
+
+/* Navigation Elements */
+.nav-elements {
+  display: flex;
+  align-items: center;
+}
+
+.nav-elements ul {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-elements li {
+  margin: 0 15px;
+}
+
+.nav-elements a {
+  color: #333;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
   .menu-icon {
-    display: none; /* Hide by default */
-    cursor: pointer;
-  }
-  
-  .hamburger-icon {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    width: 30px;
-    height: 21px;
-  }
-  
-  .line {
-    height: 3px;
-    width: 100%;
-    background-color: white;
-    border-radius: 5px;
-  }
-  
-  /* Navigation Elements */
-  .nav-elements {
-    display: flex;
-    align-items: center;
-  }
-  
-  .nav-elements ul {
-    display: flex;
-    list-style: none;
-    margin: 0;
-    padding: 0;
-  }
-  
-  .nav-elements li {
-    margin: 0 15px;
-  }
-  
-  .nav-elements a {
-    color: #333;
-    text-decoration: none;
-    font-weight: 500;
-  }
-  
-  /* Responsive Styles */
-  @media (max-width: 768px) {
-    .menu-icon {
       display: block; /* Show menu icon on small screens */
-    }
-  
-    .nav-elements {
+  }
+
+  .nav-elements {
       display: none; /* Hide menu items on small screens by default */
       position: fixed; /* Fixed position for better control */
       top: 0;
       right: 0;
       background-color: #ffffff; /* Light background for menu */
-      width: 40%; /* Menu takes up 40% of the screen width */
+      width: 60%; /* Menu takes up 60% of the screen width */
       height: 100%; /* Full height */
       transform: translateX(100%); /* Hide off-screen initially */
       opacity: 0; /* Hide menu initially */
@@ -102,42 +103,40 @@ body {
       border-radius: 10px 0 0 10px; /* Rounded corners on the left side */
       z-index: 1000;
       box-sizing: border-box; /* Include padding and border in width calculation */
-    }
-  
-    .nav-elements.active {
+  }
+
+  .nav-elements.active {
       display: flex; /* Show menu items when active */
       transform: translateX(0); /* Slide in to visible area */
       opacity: 1; /* Fade in */
-      padding: 50px 0px;
-      height: auto;
-    }
-  
-    .nav-elements ul {
+  }
+
+  .nav-elements ul {
       flex-direction: column;
       padding: 0; /* Remove default padding */
       width: 100%; /* Ensure full width for menu items */
-    }
-  
-    .nav-elements li {
+  }
+
+  .nav-elements li {
       margin: 15px 0; /* Add margin for better spacing */
       width: 100%; /* Ensure full width for menu items */
-    }
-  
-    .nav-elements a {
+  }
+
+  .nav-elements a {
       display: block; /* Ensure links fill the menu item */
       padding: 15px; /* Add padding for better click area */
       color: #333; /* Dark text color for contrast */
       text-align: center; /* Center text */
       font-size: 18px; /* Slightly larger text for better readability */
       transition: background-color 0.3s, color 0.3s; /* Smooth transition for hover effects */
-    }
-  
-    .nav-elements a:hover {
+  }
+
+  .nav-elements a:hover {
       background-color: #f4f4f4; /* Light background on hover */
       color: #333; /* Dark text color on hover */
-    }
-  
-    .close-icon {
+  }
+
+  .close-icon {
       display: block; /* Show close icon on small screens */
       font-size: 40px;
       cursor: pointer;
@@ -145,19 +144,17 @@ body {
       margin: 20px;
       align-self: flex-end;
       transition: color 0.3s; /* Smooth transition for close icon color */
-      margin-top: -40px;
-      margin-right:20px;
-    }
-  
-    .close-icon:hover {
+  }
+
+  .close-icon:hover {
       color: #ff6f61; /* Color change on hover */
-    }
-  
-    .overlay {
+  }
+
+  .overlay {
       display: none; /* Hide overlay by default */
-    }
-  
-    .overlay.active {
+  }
+
+  .overlay.active {
       display: block; /* Show overlay when menu is active */
       position: fixed; /* Fixed position to cover the whole screen */
       top: 0;
@@ -167,24 +164,12 @@ body {
       background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black background */
       z-index: 999; /* Behind the menu but in front of the content */
       transition: opacity 0.3s; /* Smooth transition for fade-in effect */
-    }
   }
-  
-  /* Desktop Styles */
-  @media (min-width: 769px) {
-    .close-icon {
+}
+
+/* Desktop Styles */
+@media (min-width: 769px) {
+  .close-icon {
       display: none; /* Hide close icon on large screens */
-    }
-
-    body {
-        margin: 0; /* Bosh sahifadagi orqa fon qismi uchun marginni olib tashlash */
-        padding: 0; /* Bosh sahifadagi orqa fon qismi uchun paddingni olib tashlash */
-        box-sizing: border-box; /* Padding va borderni kenglikka kiritish */
-      }
-
-  
   }
-  
-
-
-  
+}
