@@ -1,0 +1,123 @@
+/* General Navbar Styles */
+.navbar {
+    position: relative;
+    background-color: #333; /* Navbar background color */
+    color: white;
+    padding: 10px 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add box shadow for depth */
+  }
+  
+  .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .logo img {
+    height: 40px; /* Adjust as needed */
+  }
+  
+  .menu-icon {
+    display: none; /* Hide by default */
+    cursor: pointer;
+  }
+  
+  .hamburger-icon {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 30px;
+    height: 21px;
+  }
+  
+  .line {
+    height: 3px;
+    width: 100%;
+    background-color: white;
+    border-radius: 5px;
+  }
+  
+  .nav-elements {
+    display: flex;
+    align-items: center;
+  }
+  
+  .nav-elements ul {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .nav-elements li {
+    margin: 0 15px;
+  }
+  
+  .nav-elements a {
+    color: white;
+    text-decoration: none;
+  }
+  
+  /* Responsive Styles */
+  @media (max-width: 768px) {
+    .menu-icon {
+      display: block; /* Show menu icon on small screens */
+    }
+  
+    .nav-elements {
+      display: none; /* Hide menu items on small screens by default */
+      position: fixed; /* Fixed position for better control */
+      top: 0;
+      right: 0;
+      background-color: #d1cece; /* Background color for dropdown menu */
+      width: 40%; /* Menu takes up 40% of the screen width */
+      height: 100%; /* Full height */
+      transform: translateX(100%); /* Hide off-screen initially */
+      transition: transform 2s ease; /* Smooth transition for sliding effect over 2 seconds */
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 20px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add box shadow for depth */
+      border-radius: 8px; /* Rounded corners */
+      z-index: 1000;
+    }
+  
+    .nav-elements.active {
+      display: flex; /* Show menu items when active */
+      transform: translateX(0); /* Slide in to visible area */
+    }
+  
+    .nav-elements ul {
+      flex-direction: column;
+      padding: 0; /* Remove default padding */
+      width: 100%; /* Ensure full width for menu items */
+    }
+  
+    .nav-elements li {
+      margin: 10px 0; /* Adjust margin for better spacing */
+      width: 100%; /* Ensure full width for menu items */
+    }
+  
+    .nav-elements a {
+      display: block; /* Ensure links fill the menu item */
+      padding: 10px; /* Add padding for better click area */
+      color: #333; /* Change text color to match background */
+      text-align: center; /* Center text */
+    }
+  
+    .close-icon {
+      font-size: 24px;
+      cursor: pointer;
+      color: #333; /* Change color to match the menu background */
+      margin: 10px;
+      align-self: flex-end;
+    }
+  }
+  
+  /* Hide close-icon on desktop screens */
+  @media (min-width: 769px) {
+    .close-icon {
+      display: none;
+    }
+  }
+  
