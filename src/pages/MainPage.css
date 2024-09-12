@@ -209,3 +209,30 @@
 .show-button:hover {
   background-color: #c82333;
 }
+
+
+/* Kattaroq ekranlarda ikki ta card bir qatorda bo'lishi uchun */
+.cards-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px; /* Cardlar orasidagi bo'shliq */
+}
+
+
+/* Telefonlar uchun media query */
+@media (max-width: 600px) {
+  .card {
+    flex: 1 1 calc(50% - 16px); /* Telefonlarda bir qatorda ikki ta card */
+    max-width: calc(50% - 16px); /* Cardning maksimal kengligi */
+  }
+}
+
+
+.card {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; /* Padding va borderni hisobga olish */
+}
+
+
+

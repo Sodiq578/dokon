@@ -83,6 +83,12 @@ const MainPage = () => {
       showSlide(index - 1); // Chapga siljitish
     }
   };
+  const truncateText = (text, limit) => {
+    const words = text.split(' ');
+    if (words.length <= limit) return text;
+    return `${words.slice(0, limit).join(' ')}...`;
+  };
+  
 
   return (
 
@@ -104,25 +110,27 @@ const MainPage = () => {
           </div>
         </div>
         <div className="cards-container">
-          {cards.slice(0, visibleCards).map((card, index) => (
-            <div className="card" key={index}>
-              <img src={card.img} alt={card.title} className="card-img" />
-              <div className="card-content">
-                <h3 className="card-title">{card.title}</h3>
-                <div className="card-price">
-                  <span className="sale-price">{card.salePrice}</span>
-                  <span className="original-price">{card.price}</span>
-                </div>
-                <div className="card-rating">
-                  {[...Array(5)].map((_, i) => (
-                    <span key={i} className={`star ${i < card.rating ? 'filled' : ''}`}>★</span>
-                  ))}
-                  <span className="reviews">({card.reviews} ta sharh)</span>
-                </div>
-              </div>
-            </div>
-          ))}
+  {cards.slice(0, visibleCards).map((card, index) => (
+    <div className="card" key={index}>
+      <img src={card.img} alt={card.title} className="card-img" />
+      <div className="card-content">
+        <h3 className="card-title">{card.title}</h3>
+        <p className='card-text'>{truncateText(card.text, 7)}</p>
+        <div className="card-price">
+          <span className="sale-price">{card.salePrice}</span>
+          <span className="original-price">{card.price}</span>
         </div>
+        <div className="card-rating">
+          {[...Array(5)].map((_, i) => (
+            <span key={i} className={`star ${i < card.rating ? 'filled' : ''}`}>★</span>
+          ))}
+          <span className="reviews">({card.reviews} ta sharh)</span>
+        </div>
+      </div>
+    </div>
+  ))}
+</div>
+
         {visibleCards < cards.length && (
           <button className="load-more" onClick={showMoreCards}>Yana ko'proq ko'rsatish</button>
         )}
@@ -130,7 +138,6 @@ const MainPage = () => {
           <div className="carousel-inner" ref={carouselInnerRef} onTouchStart={handleTouchStart} onTouchEnd={handleTouchEnd}>
             {carouselImages.map((image, i) => (
               <div className="carousel-item" key={i}>
-                
                 <img src={image} alt={`Carousel ${i + 1}`} />
               </div>
             ))}
