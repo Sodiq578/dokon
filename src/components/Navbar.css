@@ -10,7 +10,7 @@
   }
   
   .container {
-    max-width: 1200px; /* Maksimal kenglikni belgilash */
+    max-width: 1400px; /* Maksimal kenglikni belgilash */
     margin: 0 auto; /* Markazlashtirish uchun avtomatik margin */
     padding: 0 20px; /* Qoshimcha xususiyatlar */
     width: 100%;
