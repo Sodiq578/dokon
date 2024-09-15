@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import ImageCarousel from './ImageCarousel'; // Import the ImageCarousel component
+import ImageCarousel from './ImageCarousel';
 import './MainPage.css';
 
 // Import local images
@@ -52,7 +52,7 @@ const MainPage = () => {
       {/* Parallax Section with local image */}
       <section id="parallax" className="parallax-section" style={{ backgroundImage: `url(${backgroundImage})` }}>
         <div className="parallax-inner">
-          <h1 >Beaches</h1>
+          <h1>Beaches</h1>
         </div>
       </section>
 
@@ -61,7 +61,7 @@ const MainPage = () => {
         <div className="cards-container">
           {cards.slice(0, visibleCards).map((card) => (
             <div className="card" key={card.id}>
-              <Link to={`/product/${card.id}`}> {/* Link to ProductInfoPage */}
+              <Link to={`/product/${card.id}`}>
                 <img src={card.image} alt={card.title} className="card-img" />
                 <div className="card-content">
                   <h3 className="card-title">{card.title}</h3>
@@ -69,19 +69,17 @@ const MainPage = () => {
                   <div className="card-price">
                     <span className="sale-price">${card.price}</span>
                   </div>
-                  <div className="card-rating">
-                    {[...Array(5)].map((_, i) => (
-                      <span key={i} className={`star ${i < Math.round(card.rating.rate) ? 'filled' : ''}`}>★</span>
-                    ))}
-                  </div>
+                 
                 </div>
               </Link>
             </div>
           ))}
         </div>
-        <button className="load-more" onClick={toggleShowMore}>
-          {showMore ? 'Yopish' : 'Yana ko\'proq ko\'rsatish'}
-        </button>
+        <div className="load-more-container">
+          <button className="load-more" onClick={toggleShowMore}>
+            {showMore ? 'Yopish' : 'Yana ko\'proq ko\'rsatish'}
+          </button>
+        </div>
       </section>
 
       {/* Parallax sections */}
@@ -98,7 +96,9 @@ const MainPage = () => {
       </section>
 
       {/* Image Carousel Section */}
-      <ImageCarousel images={carouselImages} />
+      <section className="image-carousel">
+        <ImageCarousel images={carouselImages} />
+      </section>
     </div>
   );
 };
