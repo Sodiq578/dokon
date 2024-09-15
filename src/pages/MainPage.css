@@ -1,245 +1,158 @@
+* {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  box-sizing: border-box;
+  font-family: 'Open Sans', sans-serif;
+}
+.parallax-section, .parallax-beach, .parallax-mountain {
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center;
+  color: aliceblue;
+  height: 700px; /* Sizning ehtiyojlaringizga qarab sozlash */
+}
 
+.parallax-beach {
+  background-image: url('https://images.pexels.com/photos/417173/pexels-photo-417173.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940');
+}
 
-/* Carousel Styles */
-.carousel {
-    position: relative;
-    width: 100%; /* Ekran kengligi bo'ylab to'liq kenglik */
-    max-width: 1400px; /* Maksimal kenglik 1400px */
-    height: 400px; /* Balandlikni o'rnating */
-    margin: 0 auto; /* Markazlashtirish */
-    overflow: hidden; /* Scrollni yashirish */
-    margin: 40px 0;
-  }
-  
-  .carousel-inner {
-    display: flex;
-    transition: transform 0.5s ease;
-    height: 100%; /* Ota balandlikni to'liq olish */
-    margin-top: 50px;
-    border-radius: 10px;
-  }
-  
-  .carousel-item {
-    min-width: 100%; /* To'liq kenglik */
-    height: 100%; /* Balandlikni to'liq olish */
-    box-sizing: border-box;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  .carousel-item img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover; /* Tasvirni butunlay qoplaydi */
-    display: block; /* Scrollni oldini olish uchun */
-    border-radius: 10px;
-  }
-  
-  /* Indicators Styles */
-  .carousel-indicators {
-    position: absolute;
-    bottom: 10px; /* Pastki qismida joylashgan */
-    left: 50%;
-    transform: translateX(-50%);
-    display: flex;
-    gap: 5px;
-  }
-  
-  .carousel-indicator {
-    width: 10px;
-    height: 10px;
-    background-color: rgba(0, 0, 0, 0.5);
-    border-radius: 50%;
-    cursor: pointer;
-    transition: background-color 0.3s;
-  }
-  
-  .carousel-indicator.active {
-    background-color: #fff;
-  }
-  
-  /* Card Styles */
-  .cards-container {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    justify-content: center;
-  }
-  
-  .card {
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    overflow: hidden;
-    width: 250px; /* Kartochkaning kengligi */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease;
-  }
-  
-  .card:hover {
-    transform: translateY(-5px); /* Hover effekti */
-  }
-  
-  .card-img {
-    width: 100%;
-    height: 150px;
-    object-fit: cover;
-  }
-  
-  .card-content {
-    padding: 15px;
-  }
-  
-  .card-title {
-    font-size: 1.25em;
-    margin: 0;
-    color: #333;
-  }
-  
-  .card-price {
-    font-size: 1em;
-    color: #666;
-  }
-  
-  .sale-price {
-    color: #e53935;
-    font-weight: bold;
-  }
-  
-  .original-price {
-    text-decoration: line-through;
-    margin-left: 10px;
-    color: #999;
-  }
-  
-  .card-rating {
-    margin-top: 10px;
-  }
-  
-  .star {
-    color: #fbc02d;
-  }
-  
-  .star.filled {
-    color: #fbc02d;
-  }
-  
+.parallax-mountain {
+  background-image: url('https://images.pexels.com/photos/3369569/pexels-photo-3369569.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940');
+}
 
-
-  /* Updated styles for card display */
+.parallax-inner {
+  padding: 20% 0;
+  text-align: center;
+}
 .cards-container {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    justify-content: space-between; /* Or center, depending on your alignment preference */
-  }
-  
-  .card {
-    flex: 1 1 calc(20% - 20px); /* Ensures 5 cards per row */
-    max-width: calc(20% - 20px); /* Adjusts the width to ensure 5 per row */
-    box-sizing: border-box; /* Ensures padding and border are included in width */
-    margin-bottom: 20px; /* Adds spacing between rows */
-  }
-  
-  /* Ensure the card doesn't shrink below its minimum width */
-  @media (max-width: 1200px) {
-    .card {
-      flex: 1 1 calc(25% - 20px); /* 4 cards per row on medium screens */
-    }
-  }
-  
-  @media (max-width: 900px) {
-    .card {
-      flex: 1 1 calc(33.33% - 20px); /* 3 cards per row on small screens */
-    }
-  }
-  
-  @media (max-width: 600px) {
-    .card {
-      flex: 1 1 calc(50% - 20px); /* 2 cards per row on very small screens */
-    }
-  }
-  
-  @media (max-width: 400px) {
-    .card {
-      flex: 1 1 100%; /* 1 card per row on extra small screens */
-    }
-  }
-  
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  padding: 20px;
+}
 
-  /* MainPage.css */
+.card {
+  width: calc(33.333% - 20px); /* 3 kartochka per row */
+  box-sizing: border-box;
+  border: 1px solid #ddd;
+  border-radius: 15px;
+  background-color: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s, box-shadow 0.3s;
+  position: relative;
+}
 
-/* ... avvalgi uslublar ... */
+.card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
 
-/* Load More button uchun uslublar */
+.card-img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.card-content {
+  padding: 15px;
+}
+
+.card-title {
+  font-size: 18px;
+  margin: 0 0 10px;
+  font-weight: bold;
+}
+
+.card-text {
+  font-size: 14px;
+  color: #555;
+  margin-bottom: 10px;
+}
+
+.card-price {
+  font-size: 16px;
+  color: #000;
+  font-weight: bold;
+}
+
+.card-rating {
+  color: #f5c518;
+}
+
+.star {
+  font-size: 20px;
+}
+
+.star.filled {
+  color: #f5c518;
+}
+
 .load-more {
   display: block;
-  width: 200px;
   margin: 20px auto;
-  padding: 10px;
-  text-align: center;
+  padding: 10px 20px;
   font-size: 16px;
+  cursor: pointer;
+  border: none;
   background-color: #007bff;
   color: #fff;
-  border: none;
   border-radius: 5px;
-  cursor: pointer;
+  transition: background-color 0.3s;
 }
 
 .load-more:hover {
   background-color: #0056b3;
 }
 
-/* Show More button tugamasidan keyin ko'rinishi uchun uslublar */
-.hide-button {
-  display: none;
-}
-
-.show-button {
-  display: block;
-  width: 200px;
-  margin: 20px auto;
-  padding: 10px;
-  text-align: center;
-  font-size: 16px;
-  background-color: #dc3545;
-  color: #fff;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-.show-button:hover {
-  background-color: #c82333;
-}
-
-
-/* Kattaroq ekranlarda ikki ta card bir qatorda bo'lishi uchun */
-.cards-container {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 16px; /* Cardlar orasidagi bo'shliq */
-}
-
-
-/* Telefonlar uchun media query */
-@media (max-width: 600px) {
+/* Responsive Design */
+@media (max-width: 768px) {
   .card {
-    flex: 1 1 calc(50% - 16px); /* Telefonlarda bir qatorda ikki ta card */
-    max-width: calc(50% - 16px); /* Cardning maksimal kengligi */
+    width: calc(50% - 20px); /* 2 kartochka per row */
+  }
+
+  .card-img {
+    height: 150px;
   }
 }
 
+@media (max-width: 480px) {
+  .card {
+    width: calc(100% - 20px); /* 1 kartochka per row */
+  }
 
-.card {
-  margin: 0;
-  padding: 10px;
-  border: 1px solid rgb(228, 227, 227);
-  box-sizing: border-box; /* Padding va borderni hisobga olish */
+  .card-img {
+    height: 120px;
+  }
+}
+.carousel-wrapper {
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  margin: 50px 0;
 }
 
+.carousel {
+  display: flex;
+  white-space: nowrap;
+  transition: transform 0.5s ease-in-out;
+}
 
+.carousel-item {
+  display: inline-block;
+  margin-right: 10px;
+}
 
-a{
-  text-decoration: none;
+.carousel-img {
+  width: 300px;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+@media (max-width: 768px) {
+  .carousel-img {
+    width: 100%;
+  }
 }

@@ -3,6 +3,7 @@ body {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  overflow-x: hidden; /* Horizontal scrollni oldini olish */
 }
 
 /* General Navbar Styles */
@@ -11,18 +12,27 @@ body {
   top: 0; /* Yuqoridan joylashgan */
   left: 0; /* Chapdan joylashgan */
   right: 0; /* O'ngdan joylashgan */
-  background-color: #c50a0a;
-  color: #333;
+  background-color: #ffffff; /* Asosiy holatda fon oq bo'ladi */
+  color: #333; /* Asosiy holatda matn qora bo'ladi */
   padding: 10px 20px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   width: 100%;
   box-sizing: border-box;
   z-index: 1000; /* Menyuni boshqa elementlar ustida saqlaydi */
+  transition: background-color 0.3s, color 0.3s, box-shadow 0.3s; /* Ranglarni o'zgarish animatsiyasi */
+  
+}
+
+/* Skroll Holatidagi Navbar */
+.navbar.scrolled {
+  background-color: #000000; /* Skroll qilinganida fon qora bo'ladi */
+  color: #ffffff; /* Skroll qilinganida matn oq bo'ladi */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4); /* Qattiqroq soya */
 }
 
 /* Container */
 .container {
-  max-width: 1200px;
+  max-width: 1400px;
   margin: 0 auto;
   padding: 0 20px;
   width: 100%;
@@ -97,7 +107,7 @@ body {
     top: 0;
     right: 0;
     background-color: #ffffff;
-    width: 60%;
+    width: 100%; /* Kenglikni 100% qilib berish */
     height: 100%;
     transform: translateX(100%);
     opacity: 0;
@@ -106,11 +116,10 @@ body {
     align-items: flex-start;
     padding: 20px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-    border-radius: 10px 0 0 10px;
+    border-radius: 0; /* Radius yo'q qilindi */
     z-index: 1000;
     box-sizing: border-box;
   }
-  
 
   .nav-elements.active {
     display: flex;
@@ -172,8 +181,8 @@ body {
     z-index: 999;
     transition: opacity 0.3s;
   }
-  .nav-wrapper{
-    width: 93%;
+  .nav-wrapper {
+    width: 100%;
   }
 }
 
@@ -183,19 +192,6 @@ body {
     display: none;
   }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 /* Footer Styles */
 .footer {
