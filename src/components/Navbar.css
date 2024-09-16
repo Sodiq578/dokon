@@ -1,76 +1,33 @@
-/* Asosiy reset */
-body {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  overflow-x: hidden; /* Horizontal scrollni oldini olish */
-}
-
 /* General Navbar Styles */
 .navbar {
-  position: fixed; /* Menyuni doimo yuqorida saqlaydi */
-  top: 0; /* Yuqoridan joylashgan */
-  left: 0; /* Chapdan joylashgan */
-  right: 0; /* O'ngdan joylashgan */
-  background-color: #ffffff; /* Asosiy holatda fon oq bo'ladi */
-  color: #333; /* Asosiy holatda matn qora bo'ladi */
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: #ffffff;
+  color: #333;
   padding: 10px 20px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   width: 100%;
   box-sizing: border-box;
-  z-index: 1000; /* Menyuni boshqa elementlar ustida saqlaydi */
-  transition: background-color 0.3s, color 0.3s, box-shadow 0.3s; /* Ranglarni o'zgarish animatsiyasi */
+  z-index: 1000;
+  transition: background-color 0.3s, color 0.3s, box-shadow 0.3s;
 }
 
-/* Skroll Holatidagi Navbar */
-.navbar.scrolled {
-  background-color: #000000; /* Skroll qilinganida fon qora bo'ladi */
-  color: #ffffff; /* Skroll qilinganida matn oq bo'ladi */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4); /* Qattiqroq soya */
-}
-
-/* Container */
-.container {
-  margin: 0 auto;
-  padding: 0 20px;
-  width: 100%;
-}
-
-/* Navbar wrapper */
 .nav-wrapper {
   display: flex;
-  align-items: center;
   justify-content: space-between;
-  width: 100%;
+  align-items: center;
 }
 
-/* Logo */
 .logo img {
-  height: 40px;
+  height: 40px; /* Adjust logo size as needed */
 }
 
-/* Menu Icon */
 .menu-icon {
-  display: none;
-  cursor: pointer;
+  display: none; /* Hidden by default */
 }
 
-.hamburger-icon {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  width: 30px;
-  height: 21px;
-}
-
-.line {
-  height: 3px;
-  width: 100%;
-  background-color: white;
-  border-radius: 5px;
-}
-
-/* Navigation Elements */
 .nav-elements {
   display: flex;
   align-items: center;
@@ -78,33 +35,59 @@ body {
 
 .nav-elements ul {
   display: flex;
-  list-style: none;
-  margin: 0;
+  list-style-type: none;
   padding: 0;
+  margin: 0;
 }
 
 .nav-elements li {
-  margin: 0 15px;
+  margin: 0 20px; /* Increase spacing between links on desktop */
+  display: flex;
+  align-items: center;
 }
 
 .nav-elements a {
   color: #333;
   text-decoration: none;
   font-weight: 500;
+  display: flex;
+  align-items: center;
+}
+
+.nav-elements a span {
+  display: inline; /* Always show text */
+  margin-left: 8px; /* Spacing between icon and text */
+}
+
+.nav-elements a:hover {
+  color: #ff6f61;
 }
 
 /* Mobile Styles for Navbar */
 @media (max-width: 768px) {
   .navbar {
-    position: static; /* Navbar pastki qismida bo'lishi uchun */
+    position: static;
+    background-color: #ffffff; /* Ensures background color remains consistent */
   }
 
   .menu-icon {
-    display: none;
+    display: block;
+    cursor: pointer;
   }
 
   .nav-elements {
     display: none;
+    flex-direction: column;
+    width: 100%;
+    background-color: #ffffff; /* Ensures background color for dropdown */
+    position: absolute;
+    top: 60px; /* Adjust based on navbar height */
+    left: 0;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+
+  .nav-elements.active {
+    display: flex;
   }
 
   .bottom-navbar {
@@ -127,6 +110,17 @@ body {
     text-decoration: none;
     font-weight: 500;
     text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .bottom-navbar a span {
+    display: none; /* Hide text by default */
+  }
+
+  .bottom-navbar a.active span {
+    display: block; /* Show text when active */
   }
 
   .bottom-navbar a:hover {
@@ -134,83 +128,27 @@ body {
   }
 }
 
+/* Desktop Styles for Navbar */
 @media (min-width: 769px) {
   .bottom-navbar {
-    display: none;
+    display: none; /* Hide bottom navbar on desktop */
   }
-}
 
-/* Footer Styles */
-.footer {
-  background-color: #333;
-  color: #fff;
-  padding: 20px 0;
-  text-align: center;
-}
+  .nav-elements {
+    display: flex; /* Show navbar elements on desktop */
+  }
 
-.footer-container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 20px;
-}
+  .nav-elements ul {
+    display: flex;
+  }
 
-.footer-logo h1 {
-  margin: 0;
-  font-size: 2rem;
-}
+  .nav-elements li {
+    margin: 0 20px; /* Increase spacing between links on desktop */
+  }
 
-.footer-links {
-  margin: 20px 0;
-}
-
-.footer-links ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-}
-
-.footer-links li {
-  margin: 0;
-}
-
-.footer-links a {
-  color: #fff;
-  text-decoration: none;
-  font-size: 1rem;
-  transition: color 0.3s;
-}
-
-.footer-links a:hover {
-  color: #ff6f61;
-}
-
-.footer-social {
-  margin: 20px 0;
-}
-
-.footer-social .social-icon {
-  color: #fff;
-  text-decoration: none;
-  font-size: 1.5rem;
-  margin: 0 10px;
-  transition: color 0.3s;
-}
-
-.footer-social .social-icon:hover {
-  color: #ff6f61;
-}
-
-.footer-bottom {
-  padding-top: 10px;
-  border-top: 1px solid #444;
-}
-
-.footer-bottom p {
-  margin: 0;
-  font-size: 0.875rem;
+  .menu-icon {
+    display: none; /* Hide menu icon on desktop */
+  }
 }
 
 /* Responsive Styles */
@@ -221,36 +159,6 @@ body {
   }
 }
 
-@media (max-width: 700px) {
-  .footer-links ul {
-    gap: 8px;
-  }
-}
-
-@media (max-width: 600px) {
-  .footer-links ul {
-    gap: 6px;
-  }
-}
-
-@media (max-width: 500px) {
-  .footer-links ul {
-    gap: 4px;
-  }
-}
-
-@media (max-width: 400px) {
-  .footer-links ul {
-    gap: 2px;
-  }
-}
-
-@media (max-width: 300px) {
-  .footer-links ul {
-    gap: 1px;
-    font-size: 0.875rem;
-  }
-}
 
 
 
