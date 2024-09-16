@@ -12,11 +12,13 @@ import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
 import Loader from './components/Loader'; // Import the Loader component
 
-function App() {
+const App = () => {
+  const [cartItems, setCartItems] = useState([]);
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const [loading, setLoading] = useState(true);
 
+  // Simulate data fetching or initialization
   useEffect(() => {
-    // Simulate data fetching or initialization
     const timer = setTimeout(() => {
       setLoading(false);
     }, 2000); // Adjust the timeout duration as needed
@@ -24,12 +26,29 @@ function App() {
     return () => clearTimeout(timer);
   }, []);
 
+  const addToCart = (item) => {
+    setCartItems([...cartItems, item]);
+  };
+
+  const openModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
+
   return (
     <Router>
       {loading && <Loader />} {/* Show loader while loading */}
-      <Navbar />
+      <Navbar 
+        cartItems={cartItems} 
+        isModalOpen={isModalOpen} 
+        openModal={openModal} 
+        closeModal={closeModal} 
+      />
       <Routes>
-        <Route path="/" element={<MainPage />} />
+        <Route path="/" element={<MainPage addToCart={addToCart} />} />
         <Route path="/categories" element={<CategoriesPage />} />
         <Route path="/product/:id" element={<ProductInfoPage />} />
         <Route path="/about" element={<AboutUsPage />} />
@@ -41,6 +60,6 @@ function App() {
       <Footer />
     </Router>
   );
-}
+};
 
 export default App;

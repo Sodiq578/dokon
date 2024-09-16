@@ -1,17 +1,14 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom'; // Navigate uchun import
-import ImageCarousel from './ImageCarousel';
-import Modal from './Modal';
+import { useNavigate } from 'react-router-dom'; // Sahifalararo navigatsiya uchun
+import { FaCartPlus } from 'react-icons/fa'; // Add to Cart icon uchun import
 import './MainPage.css';
 import backgroundImage from '../img/asal1.png'; // Lokal rasm importi
 
-const MainPage = () => {
+const MainPage = ({ addToCart }) => {
   const [cards, setCards] = useState([]);
   const [visibleCards, setVisibleCards] = useState(3);
   const [showMore, setShowMore] = useState(false);
   const [carouselImages, setCarouselImages] = useState([]);
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [selectedContent, setSelectedContent] = useState(null);
   const navigate = useNavigate(); // Sahifalararo navigatsiya uchun
 
   useEffect(() => {
@@ -41,15 +38,6 @@ const MainPage = () => {
     navigate(`/product/${card.id}`); // `product/:id` sahifasiga o'tish
   };
 
-  const openModal = (content) => {
-    setSelectedContent(content);
-    setIsModalOpen(true);
-  };
-
-  const closeModal = () => {
-    setIsModalOpen(false);
-  };
-
   return (
     <div className="main-page">
       <section id="parallax" className="parallax-section" style={{ backgroundImage: `url(${backgroundImage})` }}>
@@ -61,7 +49,7 @@ const MainPage = () => {
       <section className="cards-section">
         <div className="cards-container">
           {cards.slice(0, visibleCards).map((card) => (
-            <div className="card" key={card.id} onClick={() => handleCardClick(card)}> {/* Karta bosilganda mahsulot sahifasiga yo'naltirish */}
+            <div className="card" key={card.id} onClick={() => handleCardClick(card)}>
               <img src={card.image} alt={card.title} className="card-img" />
               <div className="card-content">
                 <h3 className="card-title">{card.title}</h3>
@@ -69,6 +57,12 @@ const MainPage = () => {
                 <div className="card-price">
                   <span className="sale-price">${card.price}</span>
                 </div>
+                <button className="add-to-cart-btn" onClick={(e) => {
+                  e.stopPropagation();
+                  addToCart(card); // Mahsulotni savatchaga qo'shish
+                }}>
+                  <FaCartPlus /> Add to Cart
+                </button>
               </div>
             </div>
           ))}
@@ -79,21 +73,6 @@ const MainPage = () => {
           </button>
         </div>
       </section>
-
-      {/* Image Carousel */}
-      <section className="image-carousel">
-        <ImageCarousel images={carouselImages} /> {/* Carouselga API'dan olingan rasmlar */}
-      </section>
-
-      {/* Modal */}
-      <Modal isOpen={isModalOpen} onClose={closeModal} content={selectedContent && (
-        <div>
-          <h2>{selectedContent.title}</h2>
-          <img src={selectedContent.image} alt={selectedContent.title} style={{ width: '100%' }} />
-          <p>{selectedContent.description}</p>
-          <p><strong>Price:</strong> ${selectedContent.price}</p>
-        </div>
-      )} />
     </div>
   );
 };

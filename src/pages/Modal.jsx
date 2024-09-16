@@ -1,16 +1,14 @@
 import React from 'react';
-import './Modal.css';
+import './Modal.css'; // If you have custom styles
 
 const Modal = ({ isOpen, onClose, content }) => {
   if (!isOpen) return null;
 
   return (
-    <div className="modal-overlay" onClick={onClose}>
-      <div className="modal-content" onClick={(e) => e.stopPropagation()}>
-        <button className="close-button" onClick={onClose}>X</button>
-        <div className="modal-body">
-          {content}
-        </div>
+    <div className="modal-overlay">
+      <div className="modal-content">
+        <button className="modal-close" onClick={onClose}>Close</button>
+        {content}
       </div>
     </div>
   );
