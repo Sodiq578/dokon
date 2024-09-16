@@ -1,42 +1,78 @@
 .carousel-wrapper {
-    overflow: hidden; /* Hide overflow to keep only visible items */
-    position: relative;
-    width: 100%;
-    padding: 10px 0;
-  }
-  
-  .carousel {
-    display: flex;
-    overflow-x: auto; /* Allow horizontal scrolling */
-    scroll-behavior: smooth; /* Smooth scrolling */
-    padding: 10px;
-  }
-  
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+.carousel {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+  /* Karusel elementlarini to‘liq qamrab olish */
+  width: fit-content;
+}
+
+.carousel-item {
+  width: 300px; /* Default o'lcham */
+  height: 400px;
+  margin-right: 20px;
+  /* Karusel elementlarini mustahkamlash */
+  flex-shrink: 0;
+}
+
+.carousel-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.carousel-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.carousel-btn-prev {
+  left: 10px;
+}
+
+.carousel-btn-next {
+  right: 10px;
+}
+
+/* Kichik ekranlar uchun */
+@media screen and (max-width: 768px) {
   .carousel-item {
-    flex: 0 0 auto; /* Prevent items from shrinking */
-    margin-right: 40px; /* Space between items */
+    width: 200px; /* Kichikroq ekranda kenglikni moslashtirish */
+    height: 300px;
   }
-  
-  .carousel-img {
-    width: 300px; /* Fixed width for images */
-    height: 200px; /* Fixed height for images */
-    object-fit: cover; /* Ensure the image covers the area without distortion */
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+  .carousel-btn {
+    padding: 8px;
   }
-  
-  /* Responsive Design */
-  @media (max-width: 768px) {
-    .carousel-img {
-      width: 200px; /* Smaller width for medium screens */
-      height: 150px; /* Smaller height for medium screens */
-    }
+}
+
+/* Juda kichik ekranlar uchun (mobil qurilmalar) */
+@media screen and (max-width: 480px) {
+  .carousel-item {
+    width: 150px; /* Juda kichik ekranlar uchun kenglik */
+    height: 200px;
   }
-  
-  @media (max-width: 480px) {
-    .carousel-img {
-      width: 150px; /* Smaller width for small screens */
-      height: 120px; /* Smaller height for small screens */
-    }
+
+  .carousel-btn {
+    padding: 5px;
   }
-  
+
+  .carousel-btn-prev {
+    left: 5px;
+  }
+
+  .carousel-btn-next {
+    right: 5px;
+  }
+}

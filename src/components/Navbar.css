@@ -20,7 +20,6 @@ body {
   box-sizing: border-box;
   z-index: 1000; /* Menyuni boshqa elementlar ustida saqlaydi */
   transition: background-color 0.3s, color 0.3s, box-shadow 0.3s; /* Ranglarni o'zgarish animatsiyasi */
-  
 }
 
 /* Skroll Holatidagi Navbar */
@@ -32,7 +31,6 @@ body {
 
 /* Container */
 .container {
-  max-width: 1400px;
   margin: 0 auto;
   padding: 0 20px;
   width: 100%;
@@ -95,103 +93,176 @@ body {
   font-weight: 500;
 }
 
-/* Responsive Styles */
+/* Mobile Styles for Navbar */
 @media (max-width: 768px) {
+  .navbar {
+    position: static; /* Navbar pastki qismida bo'lishi uchun */
+  }
+
   .menu-icon {
-    display: block;
+    display: none;
   }
 
   .nav-elements {
     display: none;
+  }
+
+  .bottom-navbar {
     position: fixed;
-    top: 0;
+    bottom: 0;
+    left: 0;
     right: 0;
     background-color: #ffffff;
-    width: 100%; /* Kenglikni 100% qilib berish */
-    height: 100%;
-    transform: translateX(100%);
-    opacity: 0;
-    transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 20px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-    border-radius: 0; /* Radius yo'q qilindi */
+    color: #333;
+    padding: 10px;
+    box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.2);
     z-index: 1000;
-    box-sizing: border-box;
-  }
-
-  .nav-elements.active {
     display: flex;
-    transform: translateX(0);
-    opacity: 1;
+    justify-content: space-around;
+    align-items: center;
   }
 
-  .nav-elements ul {
-    flex-direction: column;
-    padding: 0;
-    width: 100%;
-  }
-
-  .nav-elements li {
-    margin: 15px 0;
-    width: 100%;
-  }
-
-  .nav-elements a {
-    display: block;
-    padding: 15px;
+  .bottom-navbar a {
     color: #333;
+    text-decoration: none;
+    font-weight: 500;
     text-align: center;
-    font-size: 18px;
-    transition: background-color 0.3s, color 0.3s;
   }
 
-  .nav-elements a:hover {
-    background-color: #f4f4f4;
-    color: #333;
-  }
-
-  .close-icon {
-    display: block;
-    font-size: 40px;
-    cursor: pointer;
-    color: #333;
-    margin: 20px;
-    align-self: flex-end;
-    transition: color 0.3s;
-  }
-
-  .close-icon:hover {
+  .bottom-navbar a:hover {
     color: #ff6f61;
   }
-
-  .overlay {
-    display: none;
-  }
-
-  .overlay.active {
-    display: block;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    z-index: 999;
-    transition: opacity 0.3s;
-  }
-  .nav-wrapper {
-    width: 100%;
-  }
 }
 
-/* Desktop Styles */
 @media (min-width: 769px) {
-  .close-icon {
+  .bottom-navbar {
     display: none;
   }
 }
+
+/* Footer Styles */
+.footer {
+  background-color: #333;
+  color: #fff;
+  padding: 20px 0;
+  text-align: center;
+}
+
+.footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.footer-logo h1 {
+  margin: 0;
+  font-size: 2rem;
+}
+
+.footer-links {
+  margin: 20px 0;
+}
+
+.footer-links ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.footer-links li {
+  margin: 0;
+}
+
+.footer-links a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 1rem;
+  transition: color 0.3s;
+}
+
+.footer-links a:hover {
+  color: #ff6f61;
+}
+
+.footer-social {
+  margin: 20px 0;
+}
+
+.footer-social .social-icon {
+  color: #fff;
+  text-decoration: none;
+  font-size: 1.5rem;
+  margin: 0 10px;
+  transition: color 0.3s;
+}
+
+.footer-social .social-icon:hover {
+  color: #ff6f61;
+}
+
+.footer-bottom {
+  padding-top: 10px;
+  border-top: 1px solid #444;
+}
+
+.footer-bottom p {
+  margin: 0;
+  font-size: 0.875rem;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .footer-links ul {
+    flex-direction: column;
+    gap: 10px;
+  }
+}
+
+@media (max-width: 700px) {
+  .footer-links ul {
+    gap: 8px;
+  }
+}
+
+@media (max-width: 600px) {
+  .footer-links ul {
+    gap: 6px;
+  }
+}
+
+@media (max-width: 500px) {
+  .footer-links ul {
+    gap: 4px;
+  }
+}
+
+@media (max-width: 400px) {
+  .footer-links ul {
+    gap: 2px;
+  }
+}
+
+@media (max-width: 300px) {
+  .footer-links ul {
+    gap: 1px;
+    font-size: 0.875rem;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
 
 /* Footer Styles */
 .footer {
