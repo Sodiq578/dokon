@@ -51,10 +51,7 @@ const Navbar = ({ cartItems, isModalOpen, openModal, closeModal, addToCart }) =>
               <li><Link to="/consultation"><FaComments className="nav-icon" /><span>Консультация</span></Link></li>
               <li><Link to="/contacts"><FaPhone className="nav-icon" /><span>Контакты</span></Link></li>
               <li>
-                <button onClick={() => setIsCardModalOpen(true)}>
-                  <FaRegCreditCard className="nav-icon" />
-                  <span>Add Card</span>
-                </button>
+               
               </li>
             </ul>
             <div className="cart-icon-container" onClick={openModal}>
@@ -78,7 +75,14 @@ const Navbar = ({ cartItems, isModalOpen, openModal, closeModal, addToCart }) =>
         <Link to="/company"><FaBuilding className="nav-icon" /><span>Компания</span></Link>
         <Link to="/consultation"><FaComments className="nav-icon" /><span>Консультация</span></Link>
         <Link to="/contacts"><FaPhone className="nav-icon" /><span>Контакты</span></Link>
-        <button onClick={() => setIsCardModalOpen(true)}><FaRegCreditCard className="nav-icon" /><span>Add Card</span></button>
+        <div className="cart-icon-container" onClick={openModal}>
+              <FaShoppingCart className="cart-icon" />
+              {totalItemCount > 0 && (
+                <div className="cart-badge">
+                  {totalItemCount}
+                </div>
+              )}
+            </div>
       </div>
 
       <Modal 
