@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
+import Loader from '../components/Loader'; // Loader importi
 import './ProductInfoPage.css';
 
 const ProductInfoPage = () => {
@@ -10,6 +11,7 @@ const ProductInfoPage = () => {
   const [selectedColor, setSelectedColor] = useState('');
   const [selectedSize, setSelectedSize] = useState('');
   const [mainImage, setMainImage] = useState('');
+  const [loading, setLoading] = useState(true); // Yuklanish holati
 
   useEffect(() => {
     const fetchProduct = async () => {
@@ -17,15 +19,21 @@ const ProductInfoPage = () => {
         const response = await axios.get(`https://fakestoreapi.com/products/${id}`);
         setProduct(response.data);
         setMainImage(response.data.image);
+        setLoading(false); // Yuklanish tugadi
       } catch (error) {
         console.error('Mahsulot ma\'lumotlarini olishda xato:', error);
+        setLoading(false); // Yuklanishni tugatish
       }
     };
     fetchProduct();
   }, [id]);
 
+  if (loading) {
+    return <div className="loading"><Loader /></div>; // Loader ishlatilishi
+  }
+
   if (!product) {
-    return <div className="loading">Yuklanmoqda...</div>;
+    return <div className="loading">Mahsulot topilmadi.</div>;
   }
 
   const handleQuantityChange = (event) => {
@@ -40,29 +48,52 @@ const ProductInfoPage = () => {
     console.log(`Buy Now - Mahsulot: ${product.title}, Son: ${quantity}, Rang: ${selectedColor}, O'lcham: ${selectedSize}`);
   };
 
+  const handleThumbnailClick = (image) => {
+    setMainImage(image);
+  };
+
   const totalPrice = (product.price * quantity).toFixed(2);
 
   return (
     <div className="product-info-container">
       <div className="container">
-        <div className="row produx-box">
-          <div className="col-md-12">
+        <div className="row product-box">
+          <div className="col-md-6">
             <div className="image-gallery">
               <div className="main-image">
                 <img src={mainImage} alt={product.title} className="img-fluid" />
               </div>
               <div className="thumbnail-images">
+                {/* Kichik rasmlar API orqali olingan rasmlar */}
                 <img
                   src={product.image}
-                  alt={product.title}
+                  alt="Thumbnail 1"
                   className="thumbnail"
-                  onClick={() => setMainImage(product.image)}
+                  onClick={() => handleThumbnailClick(product.image)}
                 />
-                {/* Qo'shimcha rasmlar uchun kod */}
+                <img
+                src={product.image}
+                  alt="Thumbnail 2"
+                  className="thumbnail"
+                  onClick={() => handleThumbnailClick("https://fakestoreapi.com/img/1.jpg")}
+                />
+                <img
+                  src={product.image}
+                  alt="Thumbnail 3"
+                  className="thumbnail"
+                  onClick={() => handleThumbnailClick("https://fakestoreapi.com/img/2.jpg")}
+                />
+               
+                <img
+                  src={product.image}
+                  alt="Thumbnail 5"
+                  className="thumbnail"
+                  onClick={() => handleThumbnailClick("https://fakestoreapi.com/img/4.jpg")}
+                />
               </div>
             </div>
           </div>
-          <div className="col-md-3 prudct-box2">
+          <div className="col-md-6 product-box2">
             <h1 className="product-name">{product.title}</h1>
             <p className="product-description">{product.description}</p>
             <div className="product-price">

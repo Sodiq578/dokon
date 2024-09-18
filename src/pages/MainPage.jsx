@@ -1,15 +1,18 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom'; // Sahifalararo navigatsiya uchun
-import { FaCartPlus } from 'react-icons/fa'; // Add to Cart icon uchun import
+import { useNavigate } from 'react-router-dom';
+import { FaCartPlus } from 'react-icons/fa';
 import './MainPage.css';
-import backgroundImage from '../img/asal1.png'; // Lokal rasm importi
+import backgroundImage from '../img/asal1.png'; // Tekshirib ko'ring
+import Loader from '../components/Loader';
+import ImageCarousel from '../pages/ImageCarousel'; // Fayl yo'lini to'g'rilang
 
 const MainPage = ({ addToCart }) => {
   const [cards, setCards] = useState([]);
   const [visibleCards, setVisibleCards] = useState(3);
   const [showMore, setShowMore] = useState(false);
   const [carouselImages, setCarouselImages] = useState([]);
-  const navigate = useNavigate(); // Sahifalararo navigatsiya uchun
+  const [loading, setLoading] = useState(true); // Yuklanish holati
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -17,11 +20,11 @@ const MainPage = ({ addToCart }) => {
         const response = await fetch('https://fakestoreapi.com/products');
         const data = await response.json();
         setCards(data);
-        
-        // Carousel uchun rasmlarni API'dan olish
         setCarouselImages(data.map(product => product.image));
+        setLoading(false); // Yuklanish tugadi
       } catch (error) {
         console.error('Mahsulot ma\'lumotlarini olishda xato:', error);
+        setLoading(false);
       }
     };
 
@@ -33,10 +36,11 @@ const MainPage = ({ addToCart }) => {
     setVisibleCards(showMore ? 3 : visibleCards + 3);
   };
 
-  // Mahsulot sahifasiga yo'naltirish funksiyasi
   const handleCardClick = (card) => {
-    navigate(`/product/${card.id}`); // `product/:id` sahifasiga o'tish
+    navigate(`/product/${card.id}`);
   };
+
+  if (loading) return <Loader />;
 
   return (
     <div className="main-page">
@@ -46,6 +50,12 @@ const MainPage = ({ addToCart }) => {
         </div>
       </section>
 
+      {/* Carousel */}
+      <section className="carousel-section">
+        <ImageCarousel images={carouselImages} />
+      </section>
+
+      {/* Mahsulotlar */}
       <section className="cards-section">
         <div className="cards-container">
           {cards.slice(0, visibleCards).map((card) => (
@@ -59,7 +69,7 @@ const MainPage = ({ addToCart }) => {
                 </div>
                 <button className="add-to-cart-btn" onClick={(e) => {
                   e.stopPropagation();
-                  addToCart(card); // Mahsulotni savatchaga qo'shish
+                  addToCart(card);
                 }}>
                   <FaCartPlus /> Add to Cart
                 </button>
@@ -73,11 +83,15 @@ const MainPage = ({ addToCart }) => {
           </button>
         </div>
       </section>
+
+      {/* Mahsulotlar haqida qo'shimcha 3 ta section */}
+      <section className="product-sections">
+       
+      </section>
     </div>
   );
 };
 
-// Matnni qisqartirish funksiyasi
 const truncateText = (text, limit) => {
   const words = text.split(' ');
   if (words.length <= limit) return text;

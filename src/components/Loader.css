@@ -1,167 +1,34 @@
-/* Loader Styles */
 .loader-container {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: #FFEB3B; /* Light yellow background */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 9999; /* Ensure it's on top of other elements */
-    overflow: hidden;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #FFEB3B;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+#poly {
+  animation: rotate 1s infinite;
+  transform: translateY(-20px);
+}
+
+.st0 {
+  fill: #FFFFFF;
+  stroke: #EB8B2D;
+  stroke-width: 20;
+  stroke-miterlimit: 10;
+  animation-timing-function: linear;
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
   }
-  
-  .bee {
-    position: relative;
-    margin: auto;
-    width: 60px; /* Adjust size for better visibility */
-    height: 60px;
-    animation: to-fly 0.4s infinite;
+  to {
+    transform: rotate(360deg);
   }
-  
-  @keyframes to-fly {
-    50% {
-      transform: translateY(-4px); /* Increased movement for better effect */
-    }
-    100% {
-      transform: translateY(0);
-    }
-  }
-  
-  .body {
-    position: relative;
-    width: 50px;
-    height: 22px; /* Increased height for better visibility */
-    border: 4px solid #FBC02D; /* Dark yellow */
-    background: #FFEB3B; /* Light yellow */
-    border-radius: 25px; /* Adjusted for better appearance */
-    perspective: 2500px;
-    z-index: 99;
-  }
-  
-  .body:before, .body:after {
-    content: '';
-    position: absolute;
-    width: 0;
-    height: 0;
-  }
-  
-  .body:before {
-    right: 100%;
-    top: 3px;
-    border-top: 8px solid transparent; /* Increased size for better visibility */
-    border-right: 15px solid #FBC02D; /* Dark yellow */
-    border-bottom: 8px solid transparent;
-  }
-  
-  .body:after {
-    right: 97%;
-    top: 8px;
-    border-top: 4px solid transparent; /* Increased size for better visibility */
-    border-right: 8px solid #FFEB3B; /* Light yellow */
-    border-bottom: 4px solid transparent;
-  }
-  
-  .line {
-    position: relative;
-    left: 12px;
-    height: 22px; /* Increased height for better visibility */
-    width: 22px; /* Increased width for better visibility */
-    background: #FBC02D; /* Dark yellow */
-  }
-  
-  .wing-right, .wing-left {
-    position: absolute;
-    top: -22px; /* Adjusted for better positioning */
-    left: 14px;
-    width: 20px; /* Increased size for better visibility */
-    height: 20px;
-    background: #FFEB3B; /* Light yellow */
-    border: 5px solid #FBC02D; /* Dark yellow */
-    border-radius: 100%;
-  }
-  
-  .wing-right {
-    left: 18px;
-    transform: skew(-20deg);
-    animation: wing-beat-right 0.25s infinite;
-    transform-origin: bottom;
-    z-index: 9;
-  }
-  
-  .wing-left {
-    transform: skew(20deg);
-    animation: wing-beat-left 0.25s infinite;
-    transform-origin: bottom;
-    z-index: 999;
-  }
-  
-  @keyframes wing-beat-right {
-    50% {
-      transform: rotateX(60deg) skew(-20deg) rotateZ(25deg);
-    }
-    100% {
-      transform: rotateX(0) skew(-20deg);
-    }
-  }
-  
-  @keyframes wing-beat-left {
-    50% {
-      transform: rotateX(-65deg) skew(20deg) rotateZ(-10deg);
-    }
-    100% {
-      transform: rotateX(0) skew(20deg);
-    }
-  }
-  
-  .path {
-    display: inline-block;
-    position: relative;
-    top: -30px; /* Adjusted for better positioning */
-    left: -100px;
-    width: 160px; /* Increased width for better visibility */
-    animation: pollen 0.2s infinite; /* Adjusted animation speed */
-  }
-  
-  .pollen {
-    display: inline-block;
-    margin: 0;
-    margin-top: 20px;
-    width: 4px; /* Increased size for better visibility */
-    height: 4px;
-    background: #2dfb7c; /* Dark yellow */
-    border-radius: 100%;
-  }
-  
-  @keyframes pollen {
-    0% {
-      left: -100px;
-    }
-    100% {
-      left: -105px;
-    }
-  }
-  
-  /* Honey Flow Effect */
-  @keyframes honey-flow {
-    0% {
-      background-position: 0 0;
-    }
-    100% {
-      background-position: 0 100px; /* Adjust based on your desired flow */
-    }
-  }
-  
-  .loader-container::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 10px; /* Height of the honey effect */
-    background: rgba(255, 213, 77, 0.6); /* Semi-transparent yellow */
-    animation: honey-flow 2s infinite; /* Adjust duration for honey flow */
-  }
-  
+}
