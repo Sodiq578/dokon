@@ -2,16 +2,18 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { FaCartPlus } from 'react-icons/fa';
 import './MainPage.css';
-import backgroundImage from '../img/asal1.png'; // Tekshirib ko'ring
+import backgroundImage from '../img/asal1.png'; // Ensure the path is correct
 import Loader from '../components/Loader';
-import ImageCarousel from '../pages/ImageCarousel'; // Fayl yo'lini to'g'rilang
+import ImageCarousel from '../pages/ImageCarousel'; // Ensure the path is correct
+import Accordion from '../Layout/Accordion'; // Ensure the path is correct
+import BigSlider from '../Layout/BigSlider'; // Ensure the path is correct
 
 const MainPage = ({ addToCart }) => {
   const [cards, setCards] = useState([]);
   const [visibleCards, setVisibleCards] = useState(3);
   const [showMore, setShowMore] = useState(false);
   const [carouselImages, setCarouselImages] = useState([]);
-  const [loading, setLoading] = useState(true); // Yuklanish holati
+  const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -21,9 +23,9 @@ const MainPage = ({ addToCart }) => {
         const data = await response.json();
         setCards(data);
         setCarouselImages(data.map(product => product.image));
-        setLoading(false); // Yuklanish tugadi
+        setLoading(false);
       } catch (error) {
-        console.error('Mahsulot ma\'lumotlarini olishda xato:', error);
+        console.error('Error fetching product data:', error);
         setLoading(false);
       }
     };
@@ -50,12 +52,10 @@ const MainPage = ({ addToCart }) => {
         </div>
       </section>
 
-      {/* Carousel */}
       <section className="carousel-section">
         <ImageCarousel images={carouselImages} />
       </section>
 
-      {/* Mahsulotlar */}
       <section className="cards-section">
         <div className="cards-container">
           {cards.slice(0, visibleCards).map((card) => (
@@ -79,14 +79,21 @@ const MainPage = ({ addToCart }) => {
         </div>
         <div className="load-more-container">
           <button className="load-more" onClick={toggleShowMore}>
-            {showMore ? 'Yopish' : 'Yana ko\'proq ko\'rsatish'}
+            {showMore ? 'Collapse' : 'Show More'}
           </button>
         </div>
       </section>
 
-      {/* Mahsulotlar haqida qo'shimcha 3 ta section */}
+      <section className="container accordion-section">
+        <Accordion />
+      </section>
+
+      <section className="big-slider-section">
+        <BigSlider />
+      </section>
+
       <section className="product-sections">
-       
+        {/* Additional content can be added here */}
       </section>
     </div>
   );
