@@ -71,7 +71,7 @@ const MainPage = ({ addToCart }) => {
                   e.stopPropagation();
                   addToCart(card);
                 }}>
-                  <FaCartPlus /> Add to Cart
+                  <FaCartPlus /> 
                 </button>
               </div>
             </div>
@@ -92,8 +92,14 @@ const MainPage = ({ addToCart }) => {
         <BigSlider />
       </section>
 
-      <section className="product-sections">
-        {/* Additional content can be added here */}
+      <section className="container product-sections">
+        <div className='prduct-section-box-whan'>
+          <h2>Lorem ipsum dolor sit, amet consectetur adipisicing.</h2>
+          <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Hic consectetur ea accusantium tempore dolorem.</p>
+        </div>
+        <div className='prduct-section-box-whan'>
+          <iframe width="560" height="315" src="https://www.youtube.com/embed/kacHLh3fPpg?si=PUQrWqDSgGKeWLzx" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>
+        </div>
       </section>
     </div>
   );

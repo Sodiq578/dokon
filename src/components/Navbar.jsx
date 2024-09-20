@@ -4,6 +4,7 @@ import Modal from '../pages/Modal';
 import './Navbar.css';
 import { FaShoppingCart, FaHome, FaServicestack, FaBuilding, FaComments, FaPhone, FaRegCreditCard } from 'react-icons/fa';
 import { MdMenu } from 'react-icons/md'; 
+import Logo from '../img/logo.svg'
 
 const Navbar = ({ cartItems, isModalOpen, openModal, closeModal, addToCart }) => {
   const [quantities, setQuantities] = useState({});
@@ -41,7 +42,7 @@ const Navbar = ({ cartItems, isModalOpen, openModal, closeModal, addToCart }) =>
       <nav className="navbar">
         <div className="nav-wrapper">
           <div className="logo">
-            <img src="/img/logo.svg" alt="Logo" />
+            <img src={Logo} alt="Logo" />
           </div>
           <div className="nav-elements">
             <ul className="nav-links">
@@ -51,10 +52,7 @@ const Navbar = ({ cartItems, isModalOpen, openModal, closeModal, addToCart }) =>
               <li><Link to="/consultation"><FaComments className="nav-icon" /><span>Консультация</span></Link></li>
               <li><Link to="/contacts"><FaPhone className="nav-icon" /><span>Контакты</span></Link></li>
               <li>
-               
-              </li>
-            </ul>
-            <div className="cart-icon-container" onClick={openModal}>
+                <div className="cart-icon-container" onClick={openModal}>
               <FaShoppingCart className="cart-icon" />
               {totalItemCount > 0 && (
                 <div className="cart-badge">
@@ -62,12 +60,16 @@ const Navbar = ({ cartItems, isModalOpen, openModal, closeModal, addToCart }) =>
                 </div>
               )}
             </div>
-            <div className="menu-icon" onClick={() => setIsMenuOpen(!isMenuOpen)}>
-              <MdMenu />
-            </div>
+              </li>
+
+            </ul>
+           
+          
           </div>
         </div>
       </nav>
+
+
 
       <div className={`bottom-navbar ${isMenuOpen ? 'active' : ''}`}>
         <Link to="/"><FaHome className="nav-icon" /><span>Главная</span></Link>
@@ -75,6 +77,7 @@ const Navbar = ({ cartItems, isModalOpen, openModal, closeModal, addToCart }) =>
         <Link to="/company"><FaBuilding className="nav-icon" /><span>Компания</span></Link>
         <Link to="/consultation"><FaComments className="nav-icon" /><span>Консультация</span></Link>
         <Link to="/contacts"><FaPhone className="nav-icon" /><span>Контакты</span></Link>
+        
         <div className="cart-icon-container" onClick={openModal}>
               <FaShoppingCart className="cart-icon" />
               {totalItemCount > 0 && (
@@ -122,6 +125,7 @@ const Navbar = ({ cartItems, isModalOpen, openModal, closeModal, addToCart }) =>
           </div>
         }
       />
+
 
       <Modal 
         isOpen={isCardModalOpen} 

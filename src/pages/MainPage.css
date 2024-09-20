@@ -7,7 +7,7 @@
   position: relative;
   background-size: cover;
   background-position: center;
-  height: 400px; /* Sizga mos ravishda sozlash mumkin */
+  height: 800px; /* Sizga mos ravishda sozlash mumkin */
 }
 
 .parallax-inner {
@@ -31,13 +31,18 @@
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
+  align-items: center;
+  justify-content: center;
+  justify-content: space-between;
 }
 
 .card {
   cursor: pointer;
   border: 1px solid #ddd;
   border-radius: 10px;
-  width: 470px;
+  min-width: 300px;
+  width: 30%;
+  /* width: 80%; */
   overflow: hidden;
   transition: transform 0.3s ease;
 }
@@ -136,3 +141,102 @@
     padding: 5px;
   }
 }
+
+
+
+
+
+
+
+
+
+
+.product-sections {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px;
+  display: flex;
+  gap: 20px;
+}
+
+.section {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  text-align: center;
+}
+
+/* Responsiv dizayn */
+@media (max-width: 768px) {
+  .carousel-section, .cards-section, .product-sections {
+    padding: 10px;
+  }
+
+  .card {
+    width: 100%;
+  }
+
+  .section {
+    padding: 5px;
+  }
+}
+
+
+/* MainPage.css */
+
+.product-sections {
+  padding: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.prduct-section-box-whan {
+  background-color: #ffffff;
+  border-radius: 8px;
+  /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); */
+  padding: 20px;
+  max-width: 600px;
+  flex: 1;
+  min-width: 300px;
+}
+
+.prduct-section-box-whan h2 {
+  font-size: 1.5rem;
+  margin-top: 0;
+  color: #333;
+}
+
+.prduct-section-box-whan p {
+  font-size: 1rem;
+  color: #555;
+  line-height: 1.6;
+}
+
+.prduct-section-box-whan iframe {
+  width: 100%;
+  border: none;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Ensure that the iframe adjusts properly on smaller screens */
+@media (max-width: 768px) {
+  .product-sections {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+
+
+section{
+  margin: 100px 0;
+}
+
