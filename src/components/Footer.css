@@ -1,31 +1,33 @@
 .footer {
-    background-color: #1b1b1b;
-    color: #d3d3d3;
-    padding: 30px 0;
-    font-family: 'Arial', sans-serif;
-    position: relative;
+    background-image: url('../img/footerImg.jpg'); /* Rasmingizning to'liq yo'lini kiritishingiz kerak */
+    background-size: cover; /* Rasmni to'liq to'siq qiladi */
+    background-position: center; /* Rasm markazda joylashadi */
+    color: #fff;
+    padding: 20px 0;
+    font-family: Arial, sans-serif;
+    overflow: hidden; /* Scroll chiqmasligi uchun */
   }
   
   .footer-container {
     display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
+    flex-wrap: wrap; /* Flex elementlarini qatorlarga joylashtirish */
+    justify-content: space-around;
     max-width: 1200px;
     margin: 0 auto;
     padding: 20px;
+    background: rgba(0, 0, 0, 0.5); /* Rasmning ustida yarim shaffof fon */
+    box-sizing: border-box; /* Padding va marginlarni hisobga olish */
   }
   
   .footer-section {
-    flex: 1 1 200px; /* Flex-grow, flex-shrink, flex-basis */
-    padding: 15px;
+    flex: 1 1 200px; /* Kichikroq ekranlarda flex itemlarni moslashuvchan qilish */
+    padding: 10px;
   }
   
   .footer-section h6 {
-    margin-bottom: 10px;
-    font-size: 20px;
-    color: #ffcc00; /* Highlighted color for headers */
-    border-bottom: 2px solid #ffcc00; /* Underline effect */
-    padding-bottom: 5px;
+    margin-bottom: 15px;
+    font-size: 18px;
+    color: #ffcc00; /* Sarlavhalar uchun turli rang */
   }
   
   .footer-section p {
@@ -38,17 +40,17 @@
   }
   
   .footer-section ul li {
-    margin: 8px 0;
+    margin: 5px 0;
   }
   
   .footer-section ul li a {
-    color: #d3d3d3;
+    color: #fff;
     text-decoration: none;
     transition: color 0.3s;
   }
   
   .footer-section ul li a:hover {
-    color: #ffcc00; /* Highlighted color on hover */
+    color: #ffcc00; /* Hover paytida rang o'zgaradi */
   }
   
   .social-icons {
@@ -56,28 +58,41 @@
   }
   
   .social-icons li {
-    margin-right: 15px;
+    margin-right: 10px;
   }
   
   .social-icons a {
-    color: #d3d3d3;
-    font-size: 22px;
+    color: #fff;
+    font-size: 20px;
     transition: color 0.3s;
   }
   
   .social-icons a:hover {
-    color: #ffcc00; /* Highlighted color on hover */
+    color: #ffcc00; /* Hover paytida rang o'zgaradi */
   }
   
   .footer-bottom {
     text-align: center;
-    padding: 15px 0;
-    background-color: #222;
+    padding: 10px 0;
+    background-color: rgba(0, 0, 0, 0.7); /* Pastki qism uchun shaffof fon */
     font-size: 14px;
   }
   
   .footer-bottom a {
     color: #ffcc00;
     text-decoration: none;
+  }
+  
+  /* Media Queries for Responsiveness */
+  @media (max-width: 768px) {
+    .footer-container {
+      flex-direction: column; /* Mobil qurilmalarda vertikal joylashish */
+      align-items: center; /* Markazlashtirish */
+    }
+  
+    .footer-section {
+      flex: 1 1 100%; /* Kichik ekranlarda to'liq kenglik */
+      text-align: center; /* Markazlashtirish */
+    }
   }
   
