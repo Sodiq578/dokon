@@ -2,15 +2,15 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { FaCartPlus } from 'react-icons/fa';
 import './MainPage.css';
-import backgroundImage from '../img/asal1.png'; // Ensure the path is correct
+import backgroundImage from '../img/asal1.png';
 import Loader from '../components/Loader';
-import ImageCarousel from '../pages/ImageCarousel'; // Ensure the path is correct
-import Accordion from '../Layout/Accordion'; // Ensure the path is correct
-import BigSlider from '../Layout/BigSlider'; // Ensure the path is correct
+import ImageCarousel from '../pages/ImageCarousel';
+import Accordion from '../Layout/Accordion';
+import BigSlider from '../Layout/BigSlider';
 
 const MainPage = ({ addToCart }) => {
   const [cards, setCards] = useState([]);
-  const [visibleCards, setVisibleCards] = useState(3);
+  const [visibleCards, setVisibleCards] = useState(4);
   const [showMore, setShowMore] = useState(false);
   const [carouselImages, setCarouselImages] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -33,9 +33,29 @@ const MainPage = ({ addToCart }) => {
     fetchData();
   }, []);
 
+  useEffect(() => {
+    const handleScroll = () => {
+      const boxes = document.querySelectorAll('.product-section-box-one, .product-section-box-two, .card');
+
+      boxes.forEach(box => {
+        const boxPosition = box.getBoundingClientRect().top;
+        const screenPosition = window.innerHeight / 1.5;
+
+        if (boxPosition < screenPosition) {
+          box.classList.add('in-view');
+        } else {
+          box.classList.remove('in-view');
+        }
+      });
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   const toggleShowMore = () => {
     setShowMore(!showMore);
-    setVisibleCards(showMore ? 3 : visibleCards + 3);
+    setVisibleCards(showMore ? 4 : visibleCards + 4);
   };
 
   const handleCardClick = (card) => {
@@ -48,7 +68,8 @@ const MainPage = ({ addToCart }) => {
     <div className="main-page">
       <section id="parallax" className="parallax-section" style={{ backgroundImage: `url(${backgroundImage})` }}>
         <div className="parallax-inner">
-          <h1>Beaches</h1>
+          <h1>Asal haqida</h1>
+          <p>Asal — tabiiy shirin ne’mat bo'lib, asosan asalarilar tomonidan tayyorlanadi. U inson salomatligi uchun foydali va ozuqaviy moddalarga boydir.</p>
         </div>
       </section>
 
@@ -71,7 +92,7 @@ const MainPage = ({ addToCart }) => {
                   e.stopPropagation();
                   addToCart(card);
                 }}>
-                  <FaCartPlus /> 
+                  <FaCartPlus />
                 </button>
               </div>
             </div>
@@ -93,14 +114,18 @@ const MainPage = ({ addToCart }) => {
       </section>
 
       <section className="container product-sections">
-        <div className='prduct-section-box-whan'>
+        <div className='product-section-box-one'>
           <h2>Lorem ipsum dolor sit, amet consectetur adipisicing.</h2>
           <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Hic consectetur ea accusantium tempore dolorem.</p>
         </div>
-        <div className='prduct-section-box-whan'>
-          <iframe width="560" height="315" src="https://www.youtube.com/embed/kacHLh3fPpg?si=PUQrWqDSgGKeWLzx" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>
+        <div className='product-section-box-two'>
+          <img 
+            src="https://static.vecteezy.com/system/resources/previews/030/639/575/large_2x/honey-image-hd-free-photo.jpg" 
+            alt="Honey Image" 
+            className="responsive-image"
+          />
         </div>
-      </section>
+      </section>     
     </div>
   );
 };

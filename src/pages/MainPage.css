@@ -2,12 +2,11 @@
 .main-page {
   font-family: Arial, sans-serif;
 }
-
 .parallax-section {
   position: relative;
   background-size: cover;
   background-position: center;
-  height: 800px; /* Sizga mos ravishda sozlash mumkin */
+  height: 800px;
 }
 
 .parallax-inner {
@@ -17,7 +16,96 @@
   transform: translate(-50%, -50%);
   color: white;
   text-align: center;
+  font-family: 'Montserrat', sans-serif;
 }
+
+.parallax-inner h1 {
+  font-size: 72px;
+  background: linear-gradient(to right, #ffffff, hsl(0, 0%, 100%), #a1a0a0, rgba(0, 0, 0, 0));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: titleAnim 4s linear forwards;
+  background-size: 500% auto;
+  display: inline-block;
+  background-position: 150% center;
+  background-repeat: no-repeat;
+  margin-bottom: 20px;
+}
+
+.parallax-inner p {
+  
+  font-size: 24px;
+  background: linear-gradient(to right, #FF9800, #FF9800, rgba(0, 0, 0, 0));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: textAnim 8s linear forwards;
+  background-size: 500% auto;
+  display: inline-block;
+  background-position: 150% center;
+  background-repeat: no-repeat;
+}
+
+@keyframes titleAnim {
+  from {
+    background-position: 150% center;
+  }
+  to {
+    background-position: 0 center;
+  }
+}
+
+@keyframes textAnim {
+  from {
+    background-position: 150% center;
+  }
+  to {
+    background-position: 0 center;
+  }
+}
+
+
+/* Kichik ekranlar (mobil) uchun media query */
+@media (max-width: 768px) {
+  .parallax-section {
+    height: 600px; /* Telefon uchun balandlikni kichraytirish */
+  }
+
+  .parallax-inner {
+    top: 55%; /* Telefon ekranida joylashuvni o'zgartirish */
+    transform: translate(-50%, -55%);
+    padding: 10px; /* Mobil ekranda paddingni kamaytirish */
+  }
+
+  .parallax-inner h1 {
+    font-size: 36px; /* Telefon uchun kichikroq shrift */
+    font-weight: 600; /* Yengilroq shrift vazni */
+    line-height: 1.2; /* Telefon ekranida matnni yaqinroq qilish */
+  }
+
+  .parallax-inner p {
+    font-size: 16px; /* Matn hajmini telefonlar uchun moslash */
+    margin-top: 10px; /* Matnni sarlavhadan keyin biroz yaqinroq qilish */
+    line-height: 1.4; /* Telefon uchun matn o'qilishini yaxshilash */
+  }
+}
+
+/* Juda kichik ekranlar (telefonlar 480px dan kichik) uchun media query */
+@media (max-width: 480px) {
+  .parallax-section {
+    height: 500px; /* Juda kichik ekranlar uchun balandlikni yanada kamaytirish */
+  }
+
+  .parallax-inner h1 {
+    font-size: 28px; /* Juda kichik ekranlar uchun shriftni kamaytirish */
+  }
+
+  .parallax-inner p {
+    font-size: 14px; /* Juda kichik ekranlar uchun matnni moslash */
+  }
+}
+
 
 .carousel-section {
   padding: 20px;
@@ -27,12 +115,11 @@
   padding: 20px;
 }
 
-.cards-container {
+
+
+.card-container {
   display: flex;
   flex-wrap: wrap;
-  gap: 20px;
-  align-items: center;
-  justify-content: center;
   justify-content: space-between;
 }
 
@@ -40,12 +127,18 @@
   cursor: pointer;
   border: 1px solid #ddd;
   border-radius: 10px;
-  min-width: 300px;
-  width: 30%;
-  /* width: 80%; */
+  width: 24%; /* Kartalarning kengligi oshirildi */
+  margin-bottom: 20px; /* Vertikal bo'sh joy */
   overflow: hidden;
   transition: transform 0.3s ease;
+  margin-right: 10px; /* Kartalar orasidagi gorizontal bo'sh joy kamaytirildi */
 }
+
+/* Oxirgi kartadan keyin bo'sh joy qoldirmaslik uchun */
+.card:nth-child(4n) {
+  margin-right: 0;
+}
+
 
 .card:hover {
   transform: scale(1.05);
@@ -113,11 +206,7 @@
   background-color: #e55;
 }
 
-.product-sections {
-  padding: 20px;
-  display: flex;
-  gap: 20px;
-}
+
 
 .section {
   flex: 1;
@@ -127,46 +216,59 @@
   text-align: center;
 }
 
-/* Responsiv dizayn */
-@media (max-width: 768px) {
-  .carousel-section, .cards-section, .product-sections {
-    padding: 10px;
-  }
 
-  .card {
-    width: 100%;
-  }
-
-  .section {
-    padding: 5px;
-  }
-}
-
-
-
-
-
-
-
-
-
-
-.product-sections {
+.cards-container {
   display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
   align-items: center;
   justify-content: space-between;
-  padding: 20px;
-  display: flex;
-  gap: 20px;
 }
 
-.section {
-  flex: 1;
-  padding: 10px;
-  border: 1px solid #ddd;
-  border-radius: 10px;
-  text-align: center;
+
+
+.card:hover {
+  transform: scale(1.05);
 }
+
+
+.responsive-image {
+  width: 100%;
+  max-width: 600px;
+  height: auto;
+  border-radius: 10px;
+}
+
+/* Media queries for responsive behavior */
+@media (max-width: 768px) {
+  .responsive-image {
+    max-width: 100%;
+    margin: 0 auto;
+  
+  }
+}
+
+
+/* Responsiv dizayn */
+@media (max-width: 1024px) {
+  .card {
+    flex-basis: calc(33.33% - 40px); /* O‘rtacha ekranlarda 3 ta kartaga moslashish */
+  }
+
+}
+
+@media (max-width: 768px) {
+  .card {
+    flex-basis: calc(50% - 20px); /* Kichik ekranlarda 2 ta karta */
+  }
+}
+
+@media (max-width: 480px) {
+  .card {
+    flex-basis: 100%; /* Eng kichik ekranlarda 1 ta karta */
+  }
+}
+
 
 /* Responsiv dizayn */
 @media (max-width: 768px) {
@@ -180,53 +282,123 @@
 
   .section {
     padding: 5px;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+.section {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  text-align: center;
+}
+
+/* Responsiv dizayn */
+
+
+.cards-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between; /* Kartalarni teng joylash */
+}
+
+.card {
+  cursor: pointer;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  width: 23.5%; /* Kenglikni biroz kamaytirdik, shunda 4 ta karta bir qatorga joylashadi */
+  margin-bottom: 20px; /* Kartalar orasidagi vertikal bo'sh joy */
+  transition: transform 0.3s ease;
+  overflow: hidden;
+}
+
+.card:nth-child(4n) {
+  margin-right: 0; /* Har to'rtinchi kartadan keyin bo'sh joy qoldirmaymiz */
+}
+
+.card:hover {
+  transform: scale(1.05); /* Hover qilinganda kartalar biroz kattalashadi */
+}
+
+/* O‘rtacha ekranlar uchun */
+@media (max-width: 1024px) {
+  .card {
+    width: calc(33.33% - 20px); /* O'rtacha ekranlarda 3 ta karta */
+  }
+}
+
+/* Kichik ekranlar uchun */
+@media (max-width: 768px) {
+  .card {
+    width: calc(50% - 10px); /* Kichik ekranlarda 2 ta karta */
+  }
+}
+
+/* Eng kichik ekranlar uchun */
+@media (max-width: 480px) {
+  .card {
+    width: 100%; /* Eng kichik ekranlarda 1 ta karta */
   }
 }
 
 
 /* MainPage.css */
-
 .product-sections {
   padding: 20px;
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
   justify-content: center;
-  display: flex;
   align-items: center;
-  justify-content: space-between;
 }
 
-.prduct-section-box-whan {
+.product-section-box-one, .product-section-box-two {
   background-color: #ffffff;
   border-radius: 8px;
-  /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); */
   padding: 20px;
   max-width: 600px;
   flex: 1;
   min-width: 300px;
+  transition: transform 0.3s ease; /* Animatsiya qo'shish */
+  opacity: 0; /* Boshlang'ich shaffoflik */
+  transform: translateY(20px); /* Boshlang'ich joylashuv */
+  animation: fadeInUp 0.5s forwards; /* Animatsiya */
 }
 
-.prduct-section-box-whan h2 {
-  font-size: 1.5rem;
+.product-section-box-one h2 {
+  font-size: 2rem; /* Kattaroq sarlavha */
   margin-top: 0;
   color: #333;
 }
 
-.prduct-section-box-whan p {
-  font-size: 1rem;
+.product-section-box-one p {
+  font-size: 1.2rem; /* Kattaroq matn */
   color: #555;
   line-height: 1.6;
 }
 
-.prduct-section-box-whan iframe {
-  width: 100%;
-  border: none;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+/* Rasm uchun uslublar */
+.product-section-box-two {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-/* Ensure that the iframe adjusts properly on smaller screens */
+.responsive-image {
+  width: 100%;
+  border-radius: 8px;
+}
+
+/* Media querylar */
 @media (max-width: 768px) {
   .product-sections {
     flex-direction: column;
@@ -234,9 +406,54 @@
   }
 }
 
-
-
-section{
-  margin: 100px 0;
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
+/* Scroll animatsiyasi */
+.product-section-box-one.in-view,
+.product-section-box-two.in-view {
+  opacity: 1; /* Ochiq qilish */
+  transform: translateY(0); /* Harakat qilishi */
+}
+
+
+/* MainPage.css */
+
+.product-section-box-one,
+.product-section-box-two {
+  background-color: #ffffff;
+  border-radius: 8px;
+  padding: 20px;
+  max-width: 600px;
+  flex: 1;
+  min-width: 300px;
+  transition: transform 0.3s ease, opacity 0.3s ease; /* Animatsiya qo'shish */
+  opacity: 0; /* Boshlang'ich shaffoflik */
+  transform: translateY(20px); /* Boshlang'ich joylashuv */
+}
+
+/* Scroll animatsiyasi */
+.product-section-box-one.in-view,
+.product-section-box-two.in-view {
+  opacity: 1; /* Ochiq qilish */
+  transform: translateY(0); /* Harakat qilishi */
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
