@@ -19,6 +19,8 @@ const Navbar = ({ cartItems, isModalOpen, openModal, closeModal, addToCart }) =>
     });
   };
 
+
+  
   const handleRemoveItem = (itemId) => {
     setQuantities(prevQuantities => {
       const newQuantities = { ...prevQuantities };
