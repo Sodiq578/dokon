@@ -1,191 +1,70 @@
-/* Asosiy sahifa uslublari */
+/* Link to fonts */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap');
+@import url('https://fonts.cdnfonts.com/css/tt-runs-trial');
+
+
+.container{
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
 .main-page {
-  font-family: Arial, sans-serif;
-}
-.parallax-section {
-  position: relative;
-  background-size: cover;
-  background-position: center;
-  height: 800px;
+  padding: 20px;
+  margin-top: 40px;
 }
 
-.parallax-inner {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  color: white;
-  text-align: center;
+.main-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 40px;
+}
+
+.text-section {
+  width: 548px;
+}
+
+.main-page-title {
+  font-family: 'TT Runs Trial', sans-serif;
+  font-size: 48px;
+  font-weight: 700;
+  line-height: 67.2px;
+  text-align: left;
+}
+
+.main-page-text {
   font-family: 'Montserrat', sans-serif;
-}
-
-.parallax-inner h1 {
-  font-size: 72px;
-  background: linear-gradient(to right, #ffffff, hsl(0, 0%, 100%), #a1a0a0, rgba(0, 0, 0, 0));
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  animation: titleAnim 4s linear forwards;
-  background-size: 500% auto;
-  display: inline-block;
-  background-position: 150% center;
-  background-repeat: no-repeat;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 24px;
+  text-align: left;
   margin-bottom: 20px;
 }
 
-.parallax-inner p {
-  
-  font-size: 24px;
-  background: linear-gradient(to right, #FF9800, #FF9800, rgba(0, 0, 0, 0));
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  animation: textAnim 8s linear forwards;
-  background-size: 500% auto;
-  display: inline-block;
-  background-position: 150% center;
-  background-repeat: no-repeat;
+.more-info-button {
+  width: 170px;
+  height: 56px;
+  padding: 16px 24px;
+  border-radius: 54px;
+  background-color: #A21212;
+  color: white;
+  border: none;
+  cursor: pointer;
 }
 
-@keyframes titleAnim {
-  from {
-    background-position: 150% center;
-  }
-  to {
-    background-position: 0 center;
-  }
+.image-section {
+  flex: 1;
+  text-align: right;
 }
 
-@keyframes textAnim {
-  from {
-    background-position: 150% center;
-  }
-  to {
-    background-position: 0 center;
-  }
-}
-
-
-/* Kichik ekranlar (mobil) uchun media query */
-@media (max-width: 768px) {
-  .parallax-section {
-    height: 600px; /* Telefon uchun balandlikni kichraytirish */
-  }
-
-  .parallax-inner {
-    top: 55%; /* Telefon ekranida joylashuvni o'zgartirish */
-    transform: translate(-50%, -55%);
-    padding: 10px; /* Mobil ekranda paddingni kamaytirish */
-  }
-
-  .parallax-inner h1 {
-    font-size: 36px; /* Telefon uchun kichikroq shrift */
-    font-weight: 600; /* Yengilroq shrift vazni */
-    line-height: 1.2; /* Telefon ekranida matnni yaqinroq qilish */
-  }
-
-  .parallax-inner p {
-    font-size: 16px; /* Matn hajmini telefonlar uchun moslash */
-    margin-top: 10px; /* Matnni sarlavhadan keyin biroz yaqinroq qilish */
-    line-height: 1.4; /* Telefon uchun matn o'qilishini yaxshilash */
-  }
-}
-
-/* Juda kichik ekranlar (telefonlar 480px dan kichik) uchun media query */
-@media (max-width: 480px) {
-  .parallax-section {
-    height: 500px; /* Juda kichik ekranlar uchun balandlikni yanada kamaytirish */
-  }
-
-  .parallax-inner h1 {
-    font-size: 28px; /* Juda kichik ekranlar uchun shriftni kamaytirish */
-  }
-
-  .parallax-inner p {
-    font-size: 14px; /* Juda kichik ekranlar uchun matnni moslash */
-  }
-}
-
-
-.carousel-section {
-  padding: 20px;
+.main-image {
+  max-width: 100%;
+  height: auto;
 }
 
 .cards-section {
-  padding: 20px;
-}
-
-
-
-.card-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-}
-
-.card {
-  cursor: pointer;
-  border: 1px solid #ddd;
-  border-radius: 10px;
-  width: 24%; /* Kartalarning kengligi oshirildi */
-  margin-bottom: 20px; /* Vertikal bo'sh joy */
-  overflow: hidden;
-  transition: transform 0.3s ease;
-  margin-right: 10px; /* Kartalar orasidagi gorizontal bo'sh joy kamaytirildi */
-}
-
-/* Oxirgi kartadan keyin bo'sh joy qoldirmaslik uchun */
-.card:nth-child(4n) {
-  margin-right: 0;
-}
-
-
-.card:hover {
-  transform: scale(1.05);
-}
-
-.card-img {
-  width: 100%;
-  height: 200px;
-  object-fit: cover;
-}
-
-.card-content {
-  padding: 10px;
-}
-
-.card-title {
-  font-size: 18px;
-  margin-bottom: 10px;
-}
-
-.card-text {
-  font-size: 14px;
-  margin-bottom: 10px;
-}
-
-.card-price {
-  margin-bottom: 10px;
-}
-
-.sale-price {
-  font-size: 16px;
-  color: #333;
-}
-
-.add-to-cart-btn {
-  display: flex;
-  align-items: center;
-  background-color: #f60;
-  color: white;
-  border: none;
-  padding: 10px;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-.add-to-cart-btn:hover {
-  background-color: #e55;
+  margin-top: 40px;
 }
 
 .load-more-container {
@@ -194,266 +73,290 @@
 }
 
 .load-more {
-  background-color: #f60;
+  padding: 10px 20px;
+  background-color: #A21212;
   color: white;
   border: none;
-  padding: 10px 20px;
   border-radius: 5px;
   cursor: pointer;
 }
 
-.load-more:hover {
-  background-color: #e55;
-}
-
-
-
-.section {
-  flex: 1;
-  padding: 10px;
-  border: 1px solid #ddd;
-  border-radius: 10px;
-  text-align: center;
-}
-
-
-.cards-container {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  align-items: center;
-  justify-content: space-between;
-}
-
-
-
-.card:hover {
-  transform: scale(1.05);
-}
-
-
-.responsive-image {
-  width: 100%;
-  max-width: 600px;
-  height: auto;
-  border-radius: 10px;
-}
-
-/* Media queries for responsive behavior */
-@media (max-width: 768px) {
-  .responsive-image {
-    max-width: 100%;
-    margin: 0 auto;
-  
-  }
-}
-
-
-/* Responsiv dizayn */
+/* Responsive Design */
 @media (max-width: 1024px) {
-  .card {
-    flex-basis: calc(33.33% - 40px); /* O‘rtacha ekranlarda 3 ta kartaga moslashish */
+  .main-content {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
   }
 
-}
-
-@media (max-width: 768px) {
-  .card {
-    flex-basis: calc(50% - 20px); /* Kichik ekranlarda 2 ta karta */
-  }
-}
-
-@media (max-width: 480px) {
-  .card {
-    flex-basis: 100%; /* Eng kichik ekranlarda 1 ta karta */
-  }
-}
-
-
-/* Responsiv dizayn */
-@media (max-width: 768px) {
-  .carousel-section, .cards-section, .product-sections {
-    padding: 10px;
-  }
-
-  .card {
+  .text-section {
     width: 100%;
   }
 
-  .section {
-    padding: 5px;
+  .main-page-title {
+    font-size: 42px;
+    line-height: 60px;
+  }
+
+  .main-page-text {
+    font-size: 15px;
+    line-height: 22px;
+  }
+
+  .image-section {
+    text-align: center;
+    margin-top: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .main-page-title {
+    font-size: 36px;
+    line-height: 50px;
+  }
+
+  .main-page-text {
+    font-size: 14px;
+    line-height: 20px;
+  }
+
+  .more-info-button {
+    width: 150px;
+    height: 50px;
+  }
+}
+
+@media (max-width: 480px) {
+  .main-page {
+    padding: 10px;
+  }
+
+  .main-content {
+    gap: 10px;
+  }
+
+  .main-page-title {
+    font-size: 30px;
+    line-height: 40px;
+  }
+
+  .main-page-text {
+    font-size: 13px;
+    line-height: 18px;
+  }
+
+  .more-info-button {
+    width: 140px;
+    height: 45px;
+    padding: 14px 20px;
+  }
+
+  .cards-section {
+    margin-top: 20px;
+  }
+
+  .load-more {
+    padding: 8px 16px;
   }
 }
 
 
 
-
-
-
-
-
-
-
-.section {
-  flex: 1;
-  padding: 10px;
-  border: 1px solid #ddd;
-  border-radius: 10px;
-  text-align: center;
-}
-
-/* Responsiv dizayn */
-
-
+/* //////////////////////  CARDS  //////////////////////////// */
 .cards-container {
   display: flex;
+  justify-content: center;
   flex-wrap: wrap;
-  justify-content: space-between; /* Kartalarni teng joylash */
+  gap: 20px; /* Space between cards */
 }
 
 .card {
-  cursor: pointer;
-  border: 1px solid #ddd;
-  border-radius: 10px;
-  width: 23.5%; /* Kenglikni biroz kamaytirdik, shunda 4 ta karta bir qatorga joylashadi */
-  margin-bottom: 20px; /* Kartalar orasidagi vertikal bo'sh joy */
-  transition: transform 0.3s ease;
+  display: flex; /* Enable flexbox for side-by-side layout */
+  width: 559px; /* Set width */
+  height: 286px; /* Set height */
+  background-color: #fff;
+  border-radius: 20px; /* Adjust border radius */
   overflow: hidden;
+  border: 1px solid #ddd; /* Add a border */
+  transition: transform 0.2s ease; /* Transition for the card itself */
+  position: relative;
+  padding: 15px;
 }
 
-.card:nth-child(4n) {
-  margin-right: 0; /* Har to'rtinchi kartadan keyin bo'sh joy qoldirmaymiz */
+.card-img {
+  width: 267px; /* Set image width */
+  height: 286px; /* Match height */
+  object-fit: cover;
+  transition: transform 0.8s ease; /* Smooth transition for scaling */
 }
 
-.card:hover {
-  transform: scale(1.05); /* Hover qilinganda kartalar biroz kattalashadi */
+.card:hover .card-img {
+  transform: scale(1.05); /* Scale the image on card hover */
 }
 
-/* O‘rtacha ekranlar uchun */
-@media (max-width: 1024px) {
-  .card {
-    width: calc(33.33% - 20px); /* O'rtacha ekranlarda 3 ta karta */
-  }
-}
-
-/* Kichik ekranlar uchun */
-@media (max-width: 768px) {
-  .card {
-    width: calc(50% - 10px); /* Kichik ekranlarda 2 ta karta */
-  }
-}
-
-/* Eng kichik ekranlar uchun */
-@media (max-width: 480px) {
-  .card {
-    width: 100%; /* Eng kichik ekranlarda 1 ta karta */
-  }
-}
-
-
-/* MainPage.css */
-.product-sections {
-  padding: 20px;
+/* Card content styling */
+.card-content {
+  padding: 15px;
+  text-align: left; /* Align text to the left */
   display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-  justify-content: center;
-  align-items: center;
+  flex-direction: column; /* Stack content vertically */
+  justify-content: space-between; /* Space out content */
+  flex-grow: 1; /* Allow content to grow */
 }
 
-.product-section-box-one, .product-section-box-two {
-  background-color: #ffffff;
-  border-radius: 8px;
-  padding: 20px;
-  max-width: 600px;
-  flex: 1;
-  min-width: 300px;
-  transition: transform 0.3s ease; /* Animatsiya qo'shish */
-  opacity: 0; /* Boshlang'ich shaffoflik */
-  transform: translateY(20px); /* Boshlang'ich joylashuv */
-  animation: fadeInUp 0.5s forwards; /* Animatsiya */
+.card-title {
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+  font-family: 'TT Runs Trial', sans-serif;
 }
 
-.product-section-box-one h2 {
-  font-size: 2rem; /* Kattaroq sarlavha */
-  margin-top: 0;
+.card-text {
+  font-size: 1rem;
+  margin-bottom: 15px;
+  font-family: 'TT Runs Trial', sans-serif;
+}
+
+.card-price {
+  font-size: 1.2rem;
   color: #333;
+  margin-bottom: 10px;
 }
 
-.product-section-box-one p {
-  font-size: 1.2rem; /* Kattaroq matn */
-  color: #555;
-  line-height: 1.6;
+/* Button styles */
+.add-to-favorites-btn {
+  position: relative;
+  background-color: transparent;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: grey;
+  transition: color 0.3s ease;
 }
 
-/* Rasm uchun uslublar */
-.product-section-box-two {
+.add-to-favorites-btn.active {
+  color: red; /* Change color to red when active */
+}
+
+.add-to-cart-btn {
+  background-color: transparent;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: grey;
+}
+
+/* Load more button */
+.load-more-container {
+  text-align: center;
+}
+
+.load-more {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.load-more:hover {
+  background-color: #0056b3;
+}
+
+/* Icon styles */
+.clic-icon {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  background-color: rgb(228, 225, 225);
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s ease; /* Rang o'zgarishi uchun */
 }
 
-.responsive-image {
-  width: 100%;
-  border-radius: 8px;
+.clic-icon i {
+  font-size: 24px; /* Ikonaning o'lchami */
+  color: rgb(186, 182, 182); /* Ikonaning rangi */
 }
 
-/* Media querylar */
+.clic-icon.active {
+  background-color: gold; /* Bosilgan ikonaga rang berish */
+}
+
+.clic-icon.active i {
+  color: red; /* Bosilgan ikona rangini o'zgartirish */
+}
+
+.card-actions {
+  display: flex;
+  gap: 20px;
+}
+
+/* Media queries */
 @media (max-width: 768px) {
-  .product-sections {
+  .cards-container {
+    flex-direction: column; /* Stack cards vertically */
+    align-items: center; /* Center cards */
+  }
+
+  .card {
+    width: 90%; /* Full width on smaller screens */
+    height: auto; /* Automatic height */
+    display: flex;
     flex-direction: column;
-    align-items: center;
+  }
+
+  .card-img {
+    height: 200px; /* Fixed height for image on smaller screens */
+  }
+
+  .card-content {
+    padding: 10px; /* Adjust padding for smaller screens */
+  }
+
+  .card-title {
+    font-size: 1.1rem; /* Smaller title on very small screens */
+  }
+
+  .card-text {
+    font-size: 0.9rem; /* Smaller text on very small screens */
+  }
+
+  .card-price {
+    font-size: 1rem; /* Smaller price text */
+  }
+
+  .add-to-favorites-btn,
+  .add-to-cart-btn {
+    font-size: 1.2rem; /* Smaller icon buttons */
+  }
+
+  .card-actions {
+display: flex;/* Stack buttons vertically */
+    gap: 10px; /* Adjust gap between buttons */
+    align-items: center; /* Center buttons */
   }
 }
 
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* Scroll animatsiyasi */
-.product-section-box-one.in-view,
-.product-section-box-two.in-view {
-  opacity: 1; /* Ochiq qilish */
-  transform: translateY(0); /* Harakat qilishi */
-}
 
 
-/* MainPage.css */
 
-.product-section-box-one,
-.product-section-box-two {
-  background-color: #ffffff;
-  border-radius: 8px;
-  padding: 20px;
-  max-width: 600px;
-  flex: 1;
-  min-width: 300px;
-  transition: transform 0.3s ease, opacity 0.3s ease; /* Animatsiya qo'shish */
-  opacity: 0; /* Boshlang'ich shaffoflik */
-  transform: translateY(20px); /* Boshlang'ich joylashuv */
-}
+/* Qolgan CSS qoidalari ... */
 
-/* Scroll animatsiyasi */
-.product-section-box-one.in-view,
-.product-section-box-two.in-view {
-  opacity: 1; /* Ochiq qilish */
-  transform: translateY(0); /* Harakat qilishi */
-}
 
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
+
+
+/* ///////////////////////// */
+
+
+
+
+/* ///////////////// CARUSEL ////////////////////// */
+
+
+
+
+
+
+/* ////////////////////  */

@@ -10,10 +10,12 @@ import ContactPage from './pages/ContactPage';
 import OrderPage from './pages/OrderPage';
 import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
-import Loader from './components/Loader'; // Import the Loader component
+import Favorites from './pages/Favorites'; // Import Favorites page
+import Loader from './components/Loader';
 
 const App = () => {
   const [cartItems, setCartItems] = useState([]);
+  const [favorites, setFavorites] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [loading, setLoading] = useState(true);
 
@@ -21,13 +23,17 @@ const App = () => {
   useEffect(() => {
     const timer = setTimeout(() => {
       setLoading(false);
-    }, 2000); // Adjust the timeout duration as needed
+    }, 2000);
 
     return () => clearTimeout(timer);
   }, []);
 
   const addToCart = (item) => {
     setCartItems([...cartItems, item]);
+  };
+
+  const addToFavorites = (item) => {
+    setFavorites([...favorites, item]);
   };
 
   const openModal = () => {
@@ -40,7 +46,7 @@ const App = () => {
 
   return (
     <Router>
-      {loading && <Loader />} {/* Show loader while loading */}
+      {loading && <Loader />}
       <Navbar 
         cartItems={cartItems} 
         isModalOpen={isModalOpen} 
@@ -48,7 +54,10 @@ const App = () => {
         closeModal={closeModal} 
       />
       <Routes>
-        <Route path="/" element={<MainPage addToCart={addToCart} />} />
+        <Route 
+          path="/" 
+          element={<MainPage addToCart={addToCart} addToFavorites={addToFavorites} />} 
+        />
         <Route path="/categories" element={<CategoriesPage />} />
         <Route path="/product/:id" element={<ProductInfoPage />} />
         <Route path="/about" element={<AboutUsPage />} />
@@ -56,8 +65,9 @@ const App = () => {
         <Route path="/order" element={<OrderPage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/register" element={<RegisterPage />} />
+        <Route path="/favorites" element={<Favorites favorites={favorites} />} /> {/* Favorites page route */}
       </Routes>
-      <Footer />
+      {/* <Footer /> */}
     </Router>
   );
 };
