@@ -13,14 +13,7 @@ const Accordion = () => {
       question: "How much does a website cost?",
       answer: `While we would love to be able to give a definitive, fixed price for a website...`
     },
-    {
-      question: "Nega aynan bizni tanlashingiz kerak?",
-      answer: `Bizni tanlash sababi...`
-    },
-    {
-      question: "How much does a website cost?",
-      answer: `While we would love to be able to give a definitive, fixed price for a website...`
-    },
+  
     {
       question: "Nega aynan bizni tanlashingiz kerak?",
       answer: `Bizni tanlash sababi...`
@@ -31,14 +24,7 @@ const Accordion = () => {
     {
       question: "Nega aynan bizni tanlashingiz kerak?",
       answer: `Bizni tanlash sababi...`
-    }, {
-      question: "How much does a website cost?",
-      answer: `While we would love to be able to give a definitive, fixed price for a website...`
-    },
-    {
-      question: "Nega aynan bizni tanlashingiz kerak?",
-      answer: `Bizni tanlash sababi...`
-    },
+    }, 
     
     // Qo'shimcha savollar va javoblar
   ];

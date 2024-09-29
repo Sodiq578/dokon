@@ -167,8 +167,9 @@
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  gap: 20px; /* Space between cards */
+  gap: 50px; /* Space between cards */
 }
+
 
 .card {
   display: flex; /* Enable flexbox for side-by-side layout */
@@ -180,7 +181,7 @@
   border: 1px solid #ddd; /* Add a border */
   transition: transform 0.2s ease; /* Transition for the card itself */
   position: relative;
-  padding: 15px;
+  /* padding: 15px; */
 }
 
 .card-img {
@@ -249,19 +250,36 @@
 .load-more-container {
   text-align: center;
 }
-
 .load-more {
-  padding: 10px 20px;
-  background-color: #007bff;
-  color: #fff;
-  border: none;
+  width: 253px; /* To'g'ri kenglik berilgan */
+  height: 56px; /* To'g'ri balandlik berilgan */
+  padding: 16px 24px; /* Padding noto'g'ri shaklda berilgan edi, to'g'irlandi */
+  gap: 10px;
+  border-radius: 54px;
+  border: 1px solid #FFB01E; /* Border qiymatlari noto'g'ri edi */
+  opacity: 1; /* Tugma ko'rinishi uchun opacity 1 qilindi */
+  background-color: #FFE4BD;
+    color: #F27222;
+ /* Faqat bir rang berildi */
   cursor: pointer;
   transition: background-color 0.3s ease;
+
+  /* Tugmaning shrift parametrlari */
+margin-top: 50px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 24px;
 }
 
+/* Hover effekti qo'shildi */
 .load-more:hover {
-  background-color: #0056b3;
+  background-color: #FFB01E;
+  color: #ffffff;
 }
+
+
+
 
 /* Icon styles */
 .clic-icon {
@@ -336,6 +354,13 @@
 display: flex;/* Stack buttons vertically */
     gap: 10px; /* Adjust gap between buttons */
     align-items: center; /* Center buttons */
+  }
+
+
+  .card-img-box{
+    display: flex;
+    align-items: center; 
+    justify-content: center;
   }
 }
 
