@@ -2,11 +2,12 @@ import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import Modal from '../pages/Modal';
 import './Navbar.css';
-import { FaShoppingCart, FaHome, FaServicestack, FaBuilding, FaComments, FaPhone } from 'react-icons/fa';
+import { FaShoppingCart, FaHome, FaServicestack, FaBuilding, FaComments, FaPhone, FaHeart } from 'react-icons/fa'; // Yurak ikonkasi import
 import Logo from '../img/logo.svg';
 
 const Navbar = ({ cartItems, isModalOpen, openModal, closeModal }) => {
   const [quantities, setQuantities] = useState({});
+  const [showServicesDropdown, setShowServicesDropdown] = useState(false); // Dropdown ko'rsatish uchun
   const navigate = useNavigate();
 
   const handleQuantityChange = (itemId, value) => {
@@ -39,20 +40,41 @@ const Navbar = ({ cartItems, isModalOpen, openModal, closeModal }) => {
           </div>
           <div className="nav-elements">
             <ul className="nav-links">
-              <li><Link to="/"><FaHome className="nav-icon" /><span>Главная</span></Link></li>
-              <li><Link to="/services"><FaServicestack className="nav-icon" /><span>Услуги</span></Link></li>
-              <li><Link to="/company"><FaBuilding className="nav-icon" /><span>Компания</span></Link></li>
-              <li><Link to="/consultation"><FaComments className="nav-icon" /><span>Консультация</span></Link></li>
-              <li><Link to="/contacts"><FaPhone className="nav-icon" /><span>Контакты</span></Link></li>
+              <li><Link to="/"><FaHome className="nav-icon" /><span>Home</span></Link></li>
+              <li 
+                onMouseEnter={() => setShowServicesDropdown(true)} 
+                onMouseLeave={() => setShowServicesDropdown(false)}
+              >
+                <FaServicestack className="nav-icon" /><span>Services</span>
+                {showServicesDropdown && (
+                  <div className="dropdown">
+                    <Link to="/service1">Service 1</Link>
+                    <Link to="/service2">Service 2</Link>
+                    <Link to="/service3">Service 3</Link>
+                    <Link to="/service4">Service 4</Link>
+                  </div>
+                )}
+              </li>
+              <li><Link to="/company"><FaBuilding className="nav-icon" /><span>Company</span></Link></li>
+              <li><Link to="/consultation"><FaComments className="nav-icon" /><span>Consultation</span></Link></li>
+              <li><Link to="/contacts"><FaPhone className="nav-icon" /><span>Contacts</span></Link></li>
               <li>
                 <div className="cart-icon-container" onClick={openModal}>
-                  <FaShoppingCart className="cart-icon" />
+                  <FaShoppingCart className="cart-icon favorites-icon" />
+                  <span>Add card</span>
                   {totalItemCount > 0 && (
                     <div className="cart-badge">
                       {totalItemCount}
                     </div>
                   )}
                 </div>
+              </li>
+
+              <li>
+                <Link to="/favorites">
+                  <FaHeart className="favorites-icon" />
+                  <span>Sevimli mahsulotlar</span> {/* Yangi yozuv bilan */}
+                </Link>
               </li>
             </ul>
           </div>

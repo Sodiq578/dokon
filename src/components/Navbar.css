@@ -7,7 +7,8 @@
   background-color: #ffffff !important;
   color: #333;
   padding: 10px 20px;
-  box-shadow: rgba(212, 212, 213, 0.25) 0px 1px 1px, rgba(148, 149, 150, 0.13) 0px 0px 1px 1px;
+  /* box-shadow-bottom: rgba(212, 212, 213, 0.25) 0px 1px 1px, rgba(148, 149, 150, 0.13) 0px 0px 1px 1px; */
+  border-bottom: 3px solid rgba(212, 212, 213, 0.25); 
   width: 100%;
   box-sizing: border-box;
   z-index: 1000;
@@ -98,7 +99,8 @@
     background-color: #ffffff;
     color: #333;
     padding: 20px 10px;
-    box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+
     z-index: 1000;
     display: flex;
     justify-content: space-around;
@@ -216,4 +218,56 @@
 
 .dropdown:hover .dropdown-menu {
   display: block;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.nav-links {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  align-items: center;
+}
+
+.nav-links li {
+  position: relative; /* Dropdownni joylashtirish uchun */
+  margin: 0 15px;
+  cursor: pointer;
+}
+
+.dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: #fff; /* Dropdown fon rangi */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+}
+
+.dropdown a {
+  display: block;
+  padding: 10px;
+  text-decoration: none;
+  color: #333; /* Link rangi */
+}
+
+.dropdown a:hover {
+  background-color: #f1f1f1; /* Hover effekt */
 }

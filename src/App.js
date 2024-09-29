@@ -10,8 +10,7 @@ import ContactPage from './pages/ContactPage';
 import OrderPage from './pages/OrderPage';
 import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
-import Favorites from './pages/Favorites'; // Import Favorites page
-import Loader from './components/Loader';
+import Favorites from './pages/Favorites'; // Sevimli mahsulotlar sahifasi
 
 const App = () => {
   const [cartItems, setCartItems] = useState([]);
@@ -19,7 +18,6 @@ const App = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [loading, setLoading] = useState(true);
 
-  // Simulate data fetching or initialization
   useEffect(() => {
     const timer = setTimeout(() => {
       setLoading(false);
@@ -46,7 +44,6 @@ const App = () => {
 
   return (
     <Router>
-      {loading && <Loader />}
       <Navbar 
         cartItems={cartItems} 
         isModalOpen={isModalOpen} 
@@ -65,9 +62,12 @@ const App = () => {
         <Route path="/order" element={<OrderPage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/register" element={<RegisterPage />} />
-        <Route path="/favorites" element={<Favorites favorites={favorites} />} /> {/* Favorites page route */}
+        <Route path="/favorites" element={<Favorites favorites={favorites} />} />
+        <Route path="/consulting" element={<div>Consulting Services</div>} />
+        <Route path="/development" element={<div>Development Services</div>} />
+        <Route path="/design" element={<div>Design Services</div>} />
       </Routes>
-      {/* <Footer /> */}
+      <Footer />
     </Router>
   );
 };

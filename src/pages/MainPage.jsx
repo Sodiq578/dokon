@@ -6,6 +6,7 @@ import backgroundImage from '../img/main-back.svg';
 import Loader from "../components/Loader";
 import ImageCarousel from "../pages/ImageCarousel";
 import Accordion from "../Layout/Accordion";
+import Thumbs from "../components/Thumbs"; // O'z komponentingizni import qiling
 
 const MainPage = ({ addToCart, addToFavorites }) => {
   const [cards, setCards] = useState([]);
@@ -13,7 +14,7 @@ const MainPage = ({ addToCart, addToFavorites }) => {
   const [showMore, setShowMore] = useState(false);
   const [carouselImages, setCarouselImages] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [clickedIcons, setClickedIcons] = useState({}); // Yangilangan holat
+  const [clickedIcons, setClickedIcons] = useState({});
 
   const navigate = useNavigate();
 
@@ -45,7 +46,7 @@ const MainPage = ({ addToCart, addToFavorites }) => {
       ...prevState,
       [card.id]: {
         ...prevState[card.id],
-        [action]: !prevState[card.id]?.[action], // Ikon bosilganini belgilaydi
+        [action]: !prevState[card.id]?.[action],
       },
     }));
 
@@ -70,12 +71,15 @@ const MainPage = ({ addToCart, addToFavorites }) => {
           <p className="main-page-text">
             Isuzu is a Japanese company specializing in the production of trucks and commercial vehicles...
           </p>
-          
         </div>
         <div className="image-section" style={{ maxWidth: "100%", flexGrow: 1 }}>
           <img src={backgroundImage} alt="Honey background" className="main-image" />
         </div>
       </div>
+
+      <section>
+        <Thumbs />
+      </section>
 
       <section className="carousel-section">
         <ImageCarousel images={carouselImages} />
@@ -89,7 +93,9 @@ const MainPage = ({ addToCart, addToFavorites }) => {
               key={card.id}
               onClick={() => handleCardClick(card)}
             >
-              <img src={card.image} alt={card.title} className="card-img" />
+              <div className="card-img-box">
+                <img src={card.image} alt={card.title} className="card-img" />
+              </div>
               <div className="card-content">
                 <h3 className="card-title">{card.title}</h3>
                 <p className="card-text">{truncateText(card.description, 7)}</p>
@@ -126,13 +132,12 @@ const MainPage = ({ addToCart, addToFavorites }) => {
         </div>
       </section>
 
-      <Link to="/favorites">
-        <button className="favorites-button">Sevimli mahsulotlar</button>
-      </Link>
 
       <section className="container accordion-section">
         <Accordion />
       </section>
+
+     
     </div>
   );
 };
