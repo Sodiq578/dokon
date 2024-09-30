@@ -2,12 +2,13 @@ import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import Modal from '../pages/Modal';
 import './Navbar.css';
-import { FaShoppingCart, FaHome, FaServicestack, FaBuilding, FaComments, FaPhone, FaHeart } from 'react-icons/fa'; // Yurak ikonkasi import
+import { FaShoppingCart, FaHome, FaServicestack, FaBuilding, FaComments, FaPhone, FaHeart } from 'react-icons/fa'; 
 import Logo from '../img/logo.svg';
+import { FaTools } from 'react-icons/fa'; 
 
 const Navbar = ({ cartItems, isModalOpen, openModal, closeModal }) => {
   const [quantities, setQuantities] = useState({});
-  const [showServicesDropdown, setShowServicesDropdown] = useState(false); // Dropdown ko'rsatish uchun
+  const [showServicesDropdown, setShowServicesDropdown] = useState(false);
   const navigate = useNavigate();
 
   const handleQuantityChange = (itemId, value) => {
@@ -36,7 +37,7 @@ const Navbar = ({ cartItems, isModalOpen, openModal, closeModal }) => {
       <nav className="navbar">
         <div className="nav-wrapper">
           <div className="logo"> 
-            <img src={Logo} alt="Logo" className='logo' />
+            <img src={Logo} alt="Logo" />
           </div>
           <div className="nav-elements">
             <ul className="nav-links">
@@ -61,7 +62,6 @@ const Navbar = ({ cartItems, isModalOpen, openModal, closeModal }) => {
               <li>
                 <div className="cart-icon-container" onClick={openModal}>
                   <FaShoppingCart className="cart-icon favorites-icon" />
-                  <span>Add card</span>
                   {totalItemCount > 0 && (
                     <div className="cart-badge">
                       {totalItemCount}
@@ -69,17 +69,62 @@ const Navbar = ({ cartItems, isModalOpen, openModal, closeModal }) => {
                   )}
                 </div>
               </li>
-
               <li>
                 <Link to="/favorites">
                   <FaHeart className="favorites-icon" />
-                  <span>Sevimli mahsulotlar</span> {/* Yangi yozuv bilan */}
+                  <span>Sevimli mahsulotlar</span>
                 </Link>
               </li>
             </ul>
           </div>
         </div>
       </nav>
+
+      <div className="bottom-navbar">
+        <Link to="/">
+          <FaHome />
+          <span>Home</span>
+        </Link>
+        <div
+          className="dropdown"
+          onMouseEnter={() => setShowServicesDropdown(true)}
+          onMouseLeave={() => setShowServicesDropdown(false)}
+        >
+          <FaServicestack />
+         
+          {showServicesDropdown && (
+            <div className="dropdown-menu">
+              <Link to="/service1">Service 1</Link>
+              <Link to="/service2">Service 2</Link>
+              <Link to="/service3">Service 3</Link>
+              <Link to="/service4">Service 4</Link>
+            </div>
+          )}
+        </div>
+        <Link to="/company">
+          <FaBuilding />
+          <span>Company</span>
+        </Link>
+        <Link to="/consultation">
+          <FaComments />
+          <span>Consultation</span>
+        </Link>
+        <Link to="/contacts">
+          <FaPhone />
+          <span>Contacts</span>
+        </Link>
+        <div className="cart-icon-container" onClick={openModal}>
+          <FaShoppingCart />
+          
+          {totalItemCount > 0 && (
+            <div className="cart-badge">{totalItemCount}</div>
+          )}
+        </div>
+        <Link to="/favorites">
+          <FaHeart />
+          <span>Sevimli mahsulotlar</span>
+        </Link>
+      </div>
 
       <Modal 
         isOpen={isModalOpen} 

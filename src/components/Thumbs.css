@@ -91,7 +91,8 @@
   }
 
   .small-images-container {
-    justify-content: center; /* Kichik rasmlar markazga joylash */
+    justify-content: center;
+    display: flex; /* Kichik rasmlar markazga joylash */
   }
 
   .small-image {
@@ -103,6 +104,10 @@
 @media (max-width: 480px) {
   .content-title {
     font-size: 20px; /* Sarlavha o'lchamini kamaytirish */
+  }
+
+  .small-images-container img{
+    width: 20%;
   }
 
   .content-description {
