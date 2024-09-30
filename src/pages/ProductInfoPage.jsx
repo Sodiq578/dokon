@@ -2,15 +2,15 @@ import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import Loader from '../components/Loader'; // Loader importi
+import Modal from '../pages/Modal'; // Modal importi
 import './ProductInfoPage.css';
 
 const ProductInfoPage = () => {
   const { id } = useParams();
   const [product, setProduct] = useState(null);
   const [quantity, setQuantity] = useState(1);
-  const [selectedColor, setSelectedColor] = useState('');
-  const [selectedSize, setSelectedSize] = useState('');
-  const [mainImage, setMainImage] = useState('');
+  const [cartItems, setCartItems] = useState([]); // Savatcha maxsulotlari
+  const [isModalOpen, setIsModalOpen] = useState(false); // Modal holati
   const [loading, setLoading] = useState(true); // Yuklanish holati
 
   useEffect(() => {
@@ -18,7 +18,6 @@ const ProductInfoPage = () => {
       try {
         const response = await axios.get(`https://fakestoreapi.com/products/${id}`);
         setProduct(response.data);
-        setMainImage(response.data.image);
         setLoading(false); // Yuklanish tugadi
       } catch (error) {
         console.error('Mahsulot ma\'lumotlarini olishda xato:', error);
@@ -41,15 +40,25 @@ const ProductInfoPage = () => {
   };
 
   const handleAddToCart = () => {
-    console.log(`Mahsulot: ${product.title}, Son: ${quantity}, Rang: ${selectedColor}, O'lcham: ${selectedSize}`);
+    const newItem = { 
+      id: product.id, 
+      title: product.title, 
+      price: product.price, 
+      quantity: quantity, 
+      image: product.image 
+    };
+    setCartItems([...cartItems, newItem]);
+    setIsModalOpen(true); // Modalni ochish
   };
 
-  const handleBuyNow = () => {
-    console.log(`Buy Now - Mahsulot: ${product.title}, Son: ${quantity}, Rang: ${selectedColor}, O'lcham: ${selectedSize}`);
+  const updateQuantity = (id, newQuantity) => {
+    setCartItems(cartItems.map(item => 
+      item.id === id ? { ...item, quantity: newQuantity } : item
+    ));
   };
 
-  const handleThumbnailClick = (image) => {
-    setMainImage(image);
+  const removeItem = (id) => {
+    setCartItems(cartItems.filter(item => item.id !== id));
   };
 
   const totalPrice = (product.price * quantity).toFixed(2);
@@ -61,34 +70,15 @@ const ProductInfoPage = () => {
           <div className="col-md-6">
             <div className="image-gallery">
               <div className="main-image">
-                <img src={mainImage} alt={product.title} className="img-fluid" />
+                <img src={product.image} alt={product.title} className="img-fluid" />
               </div>
+              {/* Kichik rasmlar API orqali olingan rasmlar */}
               <div className="thumbnail-images">
-                {/* Kichik rasmlar API orqali olingan rasmlar */}
                 <img
                   src={product.image}
                   alt="Thumbnail 1"
                   className="thumbnail"
-                  onClick={() => handleThumbnailClick(product.image)}
-                />
-                <img
-                src={product.image}
-                  alt="Thumbnail 2"
-                  className="thumbnail"
-                  onClick={() => handleThumbnailClick("https://fakestoreapi.com/img/1.jpg")}
-                />
-                <img
-                  src={product.image}
-                  alt="Thumbnail 3"
-                  className="thumbnail"
-                  onClick={() => handleThumbnailClick("https://fakestoreapi.com/img/2.jpg")}
-                />
-               
-                <img
-                  src={product.image}
-                  alt="Thumbnail 5"
-                  className="thumbnail"
-                  onClick={() => handleThumbnailClick("https://fakestoreapi.com/img/4.jpg")}
+                  onClick={() => {}}
                 />
               </div>
             </div>
@@ -102,38 +92,6 @@ const ProductInfoPage = () => {
 
             <div className="product-options">
               <div className="option-group">
-                <label htmlFor="color-select">Rang:</label>
-                <select
-                  id="color-select"
-                  value={selectedColor}
-                  onChange={(e) => setSelectedColor(e.target.value)}
-                  disabled={!product.colors || product.colors.length === 0}
-                  className={!product.colors || product.colors.length === 0 ? 'disabled-select' : ''}
-                >
-                  <option value="">Tanlang</option>
-                  {product.colors?.map((color, index) => (
-                    <option key={index} value={color}>{color}</option>
-                  ))}
-                </select>
-              </div>
-
-              <div className="option-group">
-                <label htmlFor="size-select">O'lcham:</label>
-                <select
-                  id="size-select"
-                  value={selectedSize}
-                  onChange={(e) => setSelectedSize(e.target.value)}
-                  disabled={!product.sizes || product.sizes.length === 0}
-                  className={!product.sizes || product.sizes.length === 0 ? 'disabled-select' : ''}
-                >
-                  <option value="">Tanlang</option>
-                  {product.sizes?.map((size, index) => (
-                    <option key={index} value={size}>{size}</option>
-                  ))}
-                </select>
-              </div>
-
-              <div className="option-group">
                 <label htmlFor="quantity-select">Miqdor:</label>
                 <input
                   type="number"
@@ -146,10 +104,16 @@ const ProductInfoPage = () => {
             </div>
 
             <button onClick={handleAddToCart} className="btn btn-primary">Savatchaga qo'shish</button>
-            <button onClick={handleBuyNow} className="btn btn-success">Hozir sotib olish</button>
           </div>
         </div>
       </div>
+      <Modal 
+        isOpen={isModalOpen} 
+        onClose={() => setIsModalOpen(false)} 
+        cartItems={cartItems} 
+        updateQuantity={updateQuantity} 
+        removeItem={removeItem} 
+      />
     </div>
   );
 };
