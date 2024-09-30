@@ -60,8 +60,9 @@ const Navbar = ({ cartItems, isModalOpen, openModal, closeModal }) => {
               <li><Link to="/consultation"><FaComments className="nav-icon" /><span>Consultation</span></Link></li>
               <li><Link to="/contacts"><FaPhone className="nav-icon" /><span>Contacts</span></Link></li>
               <li>
-                <div className="cart-icon-container" onClick={openModal}>
+              <div className="cart-icon-container" onClick={openModal}>
                   <FaShoppingCart className="cart-icon favorites-icon" />
+                  <span>Add Card</span> {/* "Add Card" matni qo'shildi */}
                   {totalItemCount > 0 && (
                     <div className="cart-badge">
                       {totalItemCount}
@@ -101,14 +102,14 @@ const Navbar = ({ cartItems, isModalOpen, openModal, closeModal }) => {
             </div>
           )}
         </div>
-        <Link to="/company">
+        {/* <Link to="/company">
           <FaBuilding />
           <span>Company</span>
-        </Link>
-        <Link to="/consultation">
+        </Link> */}
+        {/* <Link to="/consultation">
           <FaComments />
           <span>Consultation</span>
-        </Link>
+        </Link> */}
         <Link to="/contacts">
           <FaPhone />
           <span>Contacts</span>

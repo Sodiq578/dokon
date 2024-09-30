@@ -282,21 +282,7 @@
 }
 
 
-.card-box-title::before{
-    content: '';
-    display: inline-block;
-    background-image: url('../img/bee.svg');
-    background-size: contain;
-    background-repeat: no-repeat;
-    width: 100px; /* Ixtiyoriy kenglik */
-    height: 100px; /* Ixtiyoriy balandlik */
-    position: absolute;
-    left: 0px; /* Tugmaning chap tomoniga joylashtirish */
-    top: px;
-    transform: translateY(-50%); /* Vertikal markazlashtirish */
 
-  
-}
 
 /* Card content styling */
 .card-content {
