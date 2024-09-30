@@ -148,12 +148,12 @@
 }
 
 .bottom-navbar {
-  display: none;
+  display: none !important;
 }
 
 @media (max-width: 768px) {
   .bottom-navbar {
-    display: flex;
+    display: flex !important;
   }
 
   .nav-elements {
@@ -339,7 +339,8 @@
 
 .nav-icon,
 .cart-icon,
-.favorites-icon {
+.favorites-icon,
+.card-icon { /* Kartochka ikonasini ham kiritish */
   font-size: 30px; /* Ikonalarning o'lchami 30px */
   margin-right: 5px; /* Matn va ikonalar orasida masofa */
 }
@@ -369,4 +370,9 @@
 
 .dropdown-wrapper:hover .dropdown-menu {
   display: block; /* Dropdown ko'rsatish */
+}
+
+.card-icon {
+  font-size: 30px; /* Kartochka ikonasining o'lchamini 30px qilib belgilash */
+  margin-right: 5px; /* Matn va ikonalar orasida masofa */
 }
