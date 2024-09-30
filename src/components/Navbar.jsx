@@ -35,8 +35,8 @@ const Navbar = ({ cartItems, isModalOpen, openModal, closeModal }) => {
     <>
       <nav className="navbar">
         <div className="nav-wrapper">
-          <div className="logo">
-            <img src={Logo} alt="Logo" />
+          <div className="logo"> 
+            <img src={Logo} alt="Logo" className='logo' />
           </div>
           <div className="nav-elements">
             <ul className="nav-links">

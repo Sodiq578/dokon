@@ -79,7 +79,38 @@
   border: none;
   border-radius: 5px;
   cursor: pointer;
+  position: relative; /* Pseudo-elementni to'g'ri joylashtirish uchun */
 }
+
+.load-more::before {
+  content: '';
+  display: inline-block;
+  background-image: url('../img/bee.svg');
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 70px; /* Ixtiyoriy kenglik */
+  height: 70px; /* Ixtiyoriy balandlik */
+  position: absolute;
+  left: -20px; /* Tugmaning chap tomoniga joylashtirish */
+  top: 10px;
+  transform: translateY(-50%); /* Vertikal markazlashtirish */
+}
+
+.logo::before{
+  content: '';
+  display: inline-block;
+  background-image: url('../img/bee.svg');
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 70px; /* Ixtiyoriy kenglik */
+  height: 70px; /* Ixtiyoriy balandlik */
+  position: absolute;
+  left: 0px; /* Tugmaning chap tomoniga joylashtirish */
+  top: 70px;
+  transform: translateY(-50%);
+}
+
+
 
 /* Responsive Design */
 @media (max-width: 1024px) {
@@ -170,6 +201,52 @@
   gap: 50px; /* Space between cards */
 }
 
+.cards-section::before{
+  display: inline-block;
+  background-image: url('../img/Cover.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 100px; /* Ixtiyoriy kenglik */
+  height: 100px; /* Ixtiyoriy balandlik */
+  position: absolute;
+  left: 0; /* Tugmaning chap tomoniga joylashtirish */
+  top: 50%; /* Tugmani o'rtaga joylashtirish uchun top ni 50% ga qo'ydik */
+  transform: translateY(-50%); 
+}
+
+
+
+/* adssads */
+
+/* Cards Section with background image */
+.cards-section {
+  position: relative;
+  padding: 20px;
+  z-index: 1;
+}
+
+.cards-section::before {
+  content: '';
+  display: block;
+  
+  background-image: url('../img/Cover.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 100%; /* Rasm kengligi */
+  height: 100%; /* Rasm balandligi */
+  position: absolute;
+  left: -100px; /* Rasimni chap tomonga joylashtirish */
+  top: 50%; /* Vertikal markazlash */
+  transform: translateY(-50%); /* To'g'ri markazlash */
+  z-index: -1; /* Rasimni kartalarning orqasiga qo'yish */
+}
+
+
+
+
+
+
+/* sdcsds */
 
 .card {
   display: flex; /* Enable flexbox for side-by-side layout */
@@ -193,6 +270,32 @@
 
 .card:hover .card-img {
   transform: scale(1.05); /* Scale the image on card hover */
+}
+
+
+.card-box-title {
+  font-family: 'TT Runs Trial', sans-serif;
+  font-size: 36px;
+  font-weight: 700;
+  line-height: 50.4px;
+  text-align: center;
+}
+
+
+.card-box-title::before{
+    content: '';
+    display: inline-block;
+    background-image: url('../img/bee.svg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 100px; /* Ixtiyoriy kenglik */
+    height: 100px; /* Ixtiyoriy balandlik */
+    position: absolute;
+    left: 0px; /* Tugmaning chap tomoniga joylashtirish */
+    top: px;
+    transform: translateY(-50%); /* Vertikal markazlashtirish */
+
+  
 }
 
 /* Card content styling */
@@ -377,7 +480,91 @@ display: flex;/* Stack buttons vertically */
 
 
 
-/* ///////////////// CARUSEL ////////////////////// */
+/* ///////////////// YPUTUBE ////////////////////// */
+.process-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  gap: 40px;
+}
+
+.text-container {
+  max-width: 45%; /* Matn konteynerining kengligini belgiladik */
+}
+
+.process-title {
+  font-family: 'TT Runs Trial', sans-serif;
+  font-size: 36px;
+  font-weight: 700;
+  color: #000;
+  line-height: 50.4px;
+  margin-bottom: 10px;
+}
+
+.process-description {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 24px;
+  text-align: left;
+  color: #000;
+  margin-top: 10px;
+}
+
+.video-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50%; /* Videoning kengligini belgiladik */
+}
+
+.video-container iframe {
+  width: 100%;
+  height: 426px; /* Videoning balandligi */
+  border-radius: 24px;
+}
+
+/* Mobil telefonlar uchun (kichik ekranlar) */
+@media (max-width: 768px) {
+  .process-section {
+    flex-direction: column; /* Matn va videoni ustma-ust qilib joylashtiramiz */
+    gap: 20px; /* Elementlar orasidagi bo'sh joyni kichikroq qilamiz */
+  }
+
+  .text-container {
+    max-width: 100%; /* Matn kengligini 100% qilib qo'yamiz */
+  }
+
+  .video-container {
+    width: 100%; /* Videoning kengligi ham 100% bo'ladi */
+  }
+
+  .video-container iframe {
+    height: 250px; /* Kichik ekranlarda videoning balandligini kamaytiramiz */
+  }
+}
+
+/* Juda kichik ekranlar (480px va undan kichik) */
+@media (max-width: 480px) {
+  .process-section {
+    padding: 10px; /* Kichik ekranlar uchun paddingni kamaytiramiz */
+  }
+
+  .process-title {
+    font-size: 28px; /* Matn kattaligini moslashtiramiz */
+    line-height: 40px;
+  }
+
+  .process-description {
+    font-size: 14px; /* Matn kattaligini moslashtiramiz */
+    line-height: 22px;
+  }
+
+  .video-container iframe {
+    height: 200px; /* Juda kichik ekranlar uchun videoning balandligini moslaymiz */
+  }
+}
 
 
 

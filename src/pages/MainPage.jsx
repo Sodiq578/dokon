@@ -8,6 +8,8 @@ import ImageCarousel from "../pages/ImageCarousel";
 import Accordion from "../Layout/Accordion";
 import Thumbs from "../components/Thumbs"; // O'z komponentingizni import qiling
 
+
+
 const MainPage = ({ addToCart, addToFavorites }) => {
   const [cards, setCards] = useState([]);
   const [visibleCards, setVisibleCards] = useState(4);
@@ -85,59 +87,90 @@ const MainPage = ({ addToCart, addToFavorites }) => {
         <ImageCarousel images={carouselImages} />
       </section>
 
-      <section className="cards-section">
-        <div className="cards-container">
-          {cards.slice(0, visibleCards).map((card) => (
-            <div
-              className="card"
-              key={card.id}
-              onClick={() => handleCardClick(card)}
-            >
-              <div className="card-img-box">
-                <img src={card.image} alt={card.title} className="card-img" />
-              </div>
-              <div className="card-content">
-                <h3 className="card-title">{card.title}</h3>
-                <p className="card-text">{truncateText(card.description, 7)}</p>
-                <div className="card-price">
-                  <span className="sale-price">${card.price}</span>
-                </div>
-                <div className="card-actions">
-                  <div className={`clic-icon ${clickedIcons[card.id]?.favorite ? 'active' : ''}`}>
-                    <button
-                      className={`add-to-favorites-btn ${clickedIcons[card.id]?.favorite ? 'active' : ''}`}
-                      onClick={(e) => handleIconClick(e, card, 'favorite')}
-                    >
-                      <FaHeart />
-                    </button>
-                  </div>
+      <section className="carousel-section">
+  {/* Bu yerda carousel yoki slayd ko'rsatkich joylashtiriladi */}
+</section>
 
-                  <div className={`clic-icon ${clickedIcons[card.id]?.cart ? 'active' : ''}`}>
-                    <button
-                      className="add-to-cart-btn"
-                      onClick={(e) => handleIconClick(e, card, 'cart')}
-                    >
-                      <FaCartPlus />
-                    </button>
-                  </div>
-                </div>
-              </div>
+<section className="cards-section">
+  <h2 className="card-box-title">Our Products</h2>
+
+  <div className="cards-container">
+    {cards.slice(0, visibleCards).map((card) => (
+      <div
+        className="card"
+        key={card.id}
+        onClick={() => handleCardClick(card)}
+      >
+        <div className="card-img-box">
+          <img src={card.image} alt={card.title} className="card-img" />
+        </div>
+        <div className="card-content">
+          <h3 className="card-title">{card.title}</h3>
+          <p className="card-text">{truncateText(card.description, 7)}</p>
+          <div className="card-price">
+            <span className="sale-price">${card.price}</span>
+          </div>
+          <div className="card-actions">
+            <div className={`clic-icon ${clickedIcons[card.id]?.favorite ? 'active' : ''}`}>
+              <button
+                className={`add-to-favorites-btn ${clickedIcons[card.id]?.favorite ? 'active' : ''}`}
+                onClick={(e) => handleIconClick(e, card, 'favorite')}
+              >
+                <FaHeart />
+              </button>
             </div>
-          ))}
-        </div>
-        <div className="load-more-container">
-          <button className="load-more" onClick={toggleShowMore}>
-            {showMore ? "Collapse" : "Show More"}
-          </button>
-        </div>
-      </section>
 
+            <div className={`clic-icon ${clickedIcons[card.id]?.cart ? 'active' : ''}`}>
+              <button
+                className="add-to-cart-btn"
+                onClick={(e) => handleIconClick(e, card, 'cart')}
+              >
+                <FaCartPlus />
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    ))}
+  </div>
+
+  <div className="load-more-container">
+    <button className="load-more" onClick={toggleShowMore}>
+      {showMore ? "Collapse" : "Show More"}
+    </button>
+  </div>
+</section>
+
+
+   <section className="process-section container">
+  <div className="text-container">
+    <h2 className="process-title">Honey Production Process</h2>
+    <p className="process-description">
+      Our team strives to provide our clients with a personalized experience.
+    </p>
+  </div>
+
+  <div className="video-container">
+    <iframe
+      src="https://www.youtube.com/embed/PdkGSFf8keo"
+      title="YouTube video player"
+      frameBorder="0"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+      allowFullScreen
+    ></iframe>
+  </div>
+</section>
 
       <section className="container accordion-section">
         <Accordion />
       </section>
 
-     
+      {/* Yangi bo'lim */}
+   
+
+
+
+
     </div>
   );
 };
