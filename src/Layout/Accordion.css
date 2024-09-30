@@ -9,7 +9,6 @@
   padding: 20px;
   margin: 0;
   list-style: none;
-
 }
 
 .accordion-list li {
@@ -22,7 +21,6 @@
   border: none;
   border-radius: 5px;
   cursor: pointer;
-
 }
 
 .accordion-list li.active h3::after {
@@ -56,11 +54,14 @@
 }
 
 .accordion-list .answer {
-  display: none;
+  display: block;
+  overflow: hidden;
+  max-height: 0;
+  transition: max-height 0.5s ease-in-out; /* Sekinroq ochilish va yopilish */
 }
 
 .accordion-list li.active .answer {
-  display: block;
+  max-height: 1000px; /* Bu qiymatni tarkib hajmiga mos ravishda o'zgartirish mumkin */
 }
 
 .accordion-list p {

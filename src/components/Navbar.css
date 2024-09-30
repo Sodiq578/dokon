@@ -257,7 +257,7 @@
   top: 100%;
   left: 0;
   background-color: #fff; /* Dropdown fon rangi */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  
   z-index: 1000;
 }
 
@@ -271,3 +271,116 @@
 .dropdown a:hover {
   background-color: #f1f1f1; /* Hover effekt */
 }
+
+
+
+.bottom-navbar {
+  display: none !important; /* Initially hidden */
+}
+
+@media (max-width: 768px) {
+
+  
+  .bottom-navbar {
+    display: flex; /* Show bottom navbar on mobile */
+    position: fixed; /* Keep it at the bottom */
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: #ffffff;
+    color: #333;
+    padding: 10px 0;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    justify-content: space-around;
+  }
+
+  .bottom-navbar a {
+    color: #333;
+    text-decoration: none;
+    font-weight: 500;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .bottom-navbar a span {
+    display: none; /* Hide text labels */
+  }
+
+  .bottom-navbar a:hover {
+    color: #ff6f61;
+  }
+
+  .cart-icon-container {
+    position: relative;
+  }
+
+  .cart-badge {
+    position: absolute;
+    top: -5px;
+    right: -10px;
+    background-color: red;
+    color: white;
+    border-radius: 50%;
+    padding: 2px 5px;
+    font-size: 12px;
+  }
+}
+
+
+/* //////////////////// */
+
+.bottom-navbar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  
+  color: #333;
+  padding: 10px 0;
+ 
+  z-index: 1000;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.bottom-navbar a {
+  color: #333;
+  text-decoration: none;
+  font-weight: 500;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.bottom-navbar a span {
+  font-size: 12px; /* Sizga kerakli o'lchov */
+}
+
+.bottom-navbar a:hover {
+  color: #ff6f61; /* Hover rangini o'zgartirish */
+}
+
+.dropdown {
+  position: relative;
+}
+
+.dropdown-menu {
+  display: none; /* Dastlab yashirish */
+  position: absolute;
+  bottom: 30px; /* Menyu pastga tushishini ta'minlash */
+  background-color: white;
+  border: 1px solid #ccc;
+  z-index: 1000;
+}
+
+.dropdown:hover .dropdown-menu {
+  display: block; /* Hover paytida ko'rsatish */
+}
+
+
+/* ssssssssss */

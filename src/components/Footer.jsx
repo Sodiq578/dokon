@@ -1,27 +1,25 @@
 import React from 'react';
-import './Footer.css';
-import Logo from '../img/logo.svg'; // Logo manzilingiz
+import './Footer.css'; // CSS faylni alohida yozamiz
+
 
 const Footer = () => {
   return (
     <footer className="footer">
-      <div className="footer-section logo-section">
-        <img src={Logo} alt="Logo" className="footer-logo" />
-        <p className="footer-text">Мы гордимся нашим исключительным обслуживанием клиентов и вниманием к деталям.</p>
-      </div>
-      <div className="footer-section links-section">
-        <ul className="footer-links">
-          <li>Home</li>
-          <li>Products</li>
-          <li>About Us</li>
-          <li>Blog</li>
-          <li>Contacts</li>
-        </ul>
-      </div>
-      <div className="footer-section contact-section">
-        <p>Contacts</p>
-        <p>+998 90 333 30 03</p>
-        <p>info@samist.com</p>
+      <div className="footer-content">
+        <div className="footer-text">
+          <h2>ЕСТЬ ВОПРОСЫ?</h2>
+          <p>Мы всегда готовы помочь вам. Свяжитесь с нами или оставьте ваши контакты!</p>
+        </div>
+        <div className="footer-form">
+          <form>
+            <input type="text" placeholder="Ваше имя" required />
+            <input type="email" placeholder="Электронная почта" required />
+            <textarea placeholder="Описание" required></textarea>
+            <button type="submit">
+              ОТПРАВИТЬ <span>→</span>
+            </button>
+          </form>
+        </div>
       </div>
     </footer>
   );
