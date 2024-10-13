@@ -1,29 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import './BigSlider.css';
+import Imgslider from '../img/carusel-asal rasmi.webp'; // Import qilingan rasm
 
 const BigSlider = () => {
   const [slides, setSlides] = useState([]);
   const [currentSlide, setCurrentSlide] = useState(0);
 
-  useEffect(() => {
-    const fetchSlides = async () => {
-      try {
-        const response = await fetch('https://fakestoreapi.com/products'); // API manzili
-        const data = await response.json();
-        // API dan kelgan ma'lumotni slayd formatiga moslashtiramiz
-        const formattedSlides = data.slice(0, 3).map((item) => ({
-          image: item.image, // API dan kelgan rasm
-          title: item.title, // API dan kelgan nom
-          description: item.description // API dan kelgan izoh
-        }));
-        setSlides(formattedSlides);
-      } catch (error) {
-        console.error('Error fetching slides:', error);
-      }
-    };
-
-    fetchSlides();
-  }, []);
 
   useEffect(() => {
     const slideInterval = setInterval(() => {
@@ -33,9 +15,6 @@ const BigSlider = () => {
     return () => clearInterval(slideInterval);
   }, [slides.length]);
 
-  if (slides.length === 0) {
-    return <div>Loading...</div>; // Ma'lumot kelguncha yuklanayotgan holati
-  }
 
   return (
     <div className="big-slider">

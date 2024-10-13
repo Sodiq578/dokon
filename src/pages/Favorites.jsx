@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { FaStar } from 'react-icons/fa';
-import './Favorites.css'; // CSS faylini import qilish
+import './Favorites.css';
 
 const Favorites = ({ favorites }) => {
   return (

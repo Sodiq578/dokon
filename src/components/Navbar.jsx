@@ -2,13 +2,20 @@ import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import Modal from '../pages/Modal';
 import './Navbar.css';
-import { FaShoppingCart, FaHome, FaServicestack, FaBuilding, FaComments, FaPhone, FaHeart } from 'react-icons/fa'; 
+import { FaShoppingCart, FaHome, FaServicestack, FaBuilding, FaComments, FaPhone, FaHeart } from 'react-icons/fa';  
+import { GoHome } from "react-icons/go";
+import { HiOutlinePhone } from "react-icons/hi2";
+import { IoSettingsOutline } from "react-icons/io5";
+import { PiShoppingCartSimple } from "react-icons/pi";
+import { IoIosHeartEmpty } from "react-icons/io";
+
+
 import Logo from '../img/logo.svg';
-import { FaTools } from 'react-icons/fa'; 
 
 const Navbar = ({ cartItems, isModalOpen, openModal, closeModal }) => {
   const [quantities, setQuantities] = useState({});
   const [showServicesDropdown, setShowServicesDropdown] = useState(false);
+  const [favorites, setFavorites] = useState([]);
   const navigate = useNavigate();
 
   const handleQuantityChange = (itemId, value) => {
@@ -30,7 +37,16 @@ const Navbar = ({ cartItems, isModalOpen, openModal, closeModal }) => {
     alert('Purchase functionality is not implemented yet.');
   };
 
+  const handleToggleFavorite = (item) => {
+    if (favorites.includes(item.id)) {
+      setFavorites(favorites.filter(id => id !== item.id));
+    } else {
+      setFavorites([...favorites, item.id]);
+    }
+  };
+
   const totalItemCount = Object.values(quantities).reduce((total, quantity) => total + parseInt(quantity || 1), 0);
+  const totalFavoritesCount = favorites.length;
 
   return (
     <>
@@ -41,12 +57,14 @@ const Navbar = ({ cartItems, isModalOpen, openModal, closeModal }) => {
           </div>
           <div className="nav-elements">
             <ul className="nav-links">
-              <li><Link to="/"><FaHome className="nav-icon" /><span>Home</span></Link></li>
+            
+              <li><Link to="/"><GoHome  className="nav-icon"/> <span>Home</span></Link></li>
               <li 
                 onMouseEnter={() => setShowServicesDropdown(true)} 
                 onMouseLeave={() => setShowServicesDropdown(false)}
               >
-                <FaServicestack className="nav-icon" /><span>Services</span>
+<IoSettingsOutline  className="nav-icon"/>
+                <span>Services</span>
                 {showServicesDropdown && (
                   <div className="dropdown">
                     <Link to="/service1">Service 1</Link>
@@ -56,17 +74,16 @@ const Navbar = ({ cartItems, isModalOpen, openModal, closeModal }) => {
                   </div>
                 )}
               </li>
-              <li><Link to="/company"><FaBuilding className="nav-icon" /><span>Company</span></Link></li>
-              <li><Link to="/consultation"><FaComments className="nav-icon" /><span>Consultation</span></Link></li>
-              <li><Link to="/contacts"><FaPhone className="nav-icon" /><span>Contacts</span></Link></li>
+              {/* <li><Link to="/company"><FaBuilding className="nav-icon" /><span>Company</span></Link></li> */}
+              {/* <li><Link to="/consultation"><FaComments className="nav-icon" /><span>Consultation</span></Link></li> */}
+              <li><Link to="/contacts"> <HiOutlinePhone  className="nav-icon" /> <span>Contacts</span></Link></li>
               <li>
-              <div className="cart-icon-container" onClick={openModal}>
-                  <FaShoppingCart className="cart-icon favorites-icon" />
-                  <span>Add Card</span> {/* "Add Card" matni qo'shildi */}
+              
+                <div className="cart-icon-container" onClick={openModal}>
+                  <PiShoppingCartSimple   className="cart-icon favorites-icon" />
+                  <span>Add Card</span>
                   {totalItemCount > 0 && (
-                    <div className="cart-badge">
-                      {totalItemCount}
-                    </div>
+                    <div className="cart-badge">{totalItemCount}</div>
                   )}
                 </div>
               </li>
@@ -74,6 +91,9 @@ const Navbar = ({ cartItems, isModalOpen, openModal, closeModal }) => {
                 <Link to="/favorites">
                   <FaHeart className="favorites-icon" />
                   <span>Sevimli mahsulotlar</span>
+                  {totalFavoritesCount > 0 && (
+                    <div className="favorites-badge">{totalFavoritesCount}</div>
+                  )}
                 </Link>
               </li>
             </ul>
@@ -92,7 +112,6 @@ const Navbar = ({ cartItems, isModalOpen, openModal, closeModal }) => {
           onMouseLeave={() => setShowServicesDropdown(false)}
         >
           <FaServicestack />
-         
           {showServicesDropdown && (
             <div className="dropdown-menu">
               <Link to="/service1">Service 1</Link>
@@ -102,28 +121,21 @@ const Navbar = ({ cartItems, isModalOpen, openModal, closeModal }) => {
             </div>
           )}
         </div>
-        {/* <Link to="/company">
-          <FaBuilding />
-          <span>Company</span>
-        </Link> */}
-        {/* <Link to="/consultation">
-          <FaComments />
-          <span>Consultation</span>
-        </Link> */}
         <Link to="/contacts">
           <FaPhone />
           <span>Contacts</span>
         </Link>
         <div className="cart-icon-container" onClick={openModal}>
           <FaShoppingCart />
-          
           {totalItemCount > 0 && (
             <div className="cart-badge">{totalItemCount}</div>
           )}
         </div>
         <Link to="/favorites">
-          <FaHeart />
           <span>Sevimli mahsulotlar</span>
+          {totalFavoritesCount > 0 && (
+            <div className="favorites-badge">{totalFavoritesCount}</div>
+          )}
         </Link>
       </div>
 
@@ -141,6 +153,9 @@ const Navbar = ({ cartItems, isModalOpen, openModal, closeModal }) => {
                     <div className="item-info">
                       <h4>{item.title}</h4>
                       <p>${item.price}</p>
+                      <button onClick={() => handleToggleFavorite(item)}> 
+                        {favorites.includes(item.id) ? "Remove from Favorites" : "Add to Favorites"}
+                      </button>
                       <div className="quantity">
                         <input 
                           type="number" 

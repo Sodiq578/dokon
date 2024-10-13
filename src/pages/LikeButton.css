@@ -1,0 +1,80 @@
+.like-button {
+    font-size:28px; /* Oldingi 35vmin o'rniga aniqroq o'lcham */
+    border: none;
+    border-radius: 50%;
+    background: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.5em;
+    height: 1.5em;
+    padding: 0;
+    margin: 0;
+    outline: none;
+    z-index: 2;
+    cursor: pointer;
+    position: relative;
+    box-shadow: 0 0.3em 0.6em rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease; /* Bosilganda tugma kattalashishi uchun tezroq animatsiya */
+  }
+  
+  .like-button:active {
+    transform: scale(1.3); /* Bosilganda tugmaning kattalashishi */
+  }
+  
+  .heart {
+    width: 1.2em; /* Yurakning o'lchamini oshirdik */
+    height: 1.2em;
+    transform-origin: center 80%;
+    transition: transform 0.3s ease;
+  }
+  
+  .heart > path {
+    stroke: #EA442B;
+    stroke-width: 2;
+    fill: transparent;
+    transition: fill 0.5s ease; /* Yurak bo'yoqni sekin kiritadi */
+  }
+  
+  .like-button.active .heart > path {
+    fill: #EA442B;
+  }
+  
+  .particles {
+    display: grid;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transform: scale(0.8); /* Zarrachalar kattalashishi */
+    pointer-events: none;
+  }
+  
+  .particle {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0.2em;
+    height: 0.2em;
+    background-color: var(--color, #EA442B);
+    border-radius: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    transition: transform 0.5s ease-out;
+  }
+  
+  .like-button.active .particle {
+    transform: translate(-50%, -50%) scale(1);
+    animation: particle-move 0.5s ease forwards; /* Zarrachalarning tarqalishi */
+  }
+  
+  @keyframes particle-move {
+    0% {
+      transform: translate(-50%, -50%) scale(0.5);
+    }
+    100% {
+      transform: translate(calc(-50% + 2em), calc(-50% - 2em)) scale(0); /* Zarrachalar tashqariga tarqaladi */
+    }
+  }
+  
+  

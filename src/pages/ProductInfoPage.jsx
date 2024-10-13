@@ -69,7 +69,7 @@ const ProductInfoPage = () => {
         <div className="row product-box">
           <div className="col-md-6">
             <div className="image-gallery">
-              <div className="main-image">
+              <div className="main-image" data-aos="fade-left">
                 <img src={product.image} alt={product.title} className="img-fluid" />
               </div>
               {/* Kichik rasmlar API orqali olingan rasmlar */}
