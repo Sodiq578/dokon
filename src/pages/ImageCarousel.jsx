@@ -1,24 +1,56 @@
 import React, { useEffect, useState } from 'react';
 import './ImageCarousel.css';
+import Imgslider from '../img/carsuelAsal3.jpeg'; // Import qilingan rasm
+import imgSlider2 from '../img/asalcarusel2.jpg';
+import imgSlider3 from "../img/asalRasimunsp1.avif";
+import imgSlider5 from "../img/asalrasimunsp3.avif";
+import imgSlider6 from "../img/imgunsp4.avif"; // Bu ham import qilingan rasm
+import imgSlider7 from "../img/imgunps5.avif"; // Bu ham import qilingan rasm
+import imgSlider8 from "../img/imgunps6.avif"; // Bu ham import qilingan rasm
+import imgSlider9 from "../img/imgunsp7.avif"; // Bu ham import qilingan rasm
 
 const ImageCarousel = () => {
   const [images, setImages] = useState([]);
-  const [currentIndex, setCurrentIndex] = useState(0);
+  const [currentIndex, setCurrentIndex] = useState(1); // Start from the first duplicate
   const itemWidth = 320; // Image width (300px) + margin-right (20px)
 
-  // API'dan rasmlarni olish
+  // Import qilingan rasmlarni saqlash
   useEffect(() => {
-    const fetchImages = async () => {
-      try {
-        const response = await fetch('https://fakestoreapi.com/products');
-        const data = await response.json();
-        setImages(data.map(product => product.image));
-      } catch (error) {
-        console.error('Rasmlarni olishda xato:', error);
-      }
-    };
-
-    fetchImages();
+    const allImages = [
+      Imgslider,
+      imgSlider2,
+      imgSlider3,
+      imgSlider5,
+      imgSlider6,
+      imgSlider7,
+      imgSlider8,
+      imgSlider9,
+      Imgslider,
+      imgSlider2,
+      imgSlider3,
+      imgSlider5,
+      imgSlider6,
+      imgSlider7,
+      imgSlider8,
+      imgSlider9,
+      Imgslider,
+      imgSlider2,
+      imgSlider3,
+      imgSlider5,
+      imgSlider6,
+      imgSlider7,
+      imgSlider8,
+      imgSlider9,  Imgslider,
+      imgSlider2,
+      imgSlider3,
+      imgSlider5,
+      imgSlider6,
+      imgSlider7,
+      imgSlider8,
+      imgSlider9,
+    ];
+    
+    setImages([allImages, ...allImages, allImages[0]]); // Cheksiz aylanish uchun tasvirlarni ikki marta qo'shamiz va birinchi tasvirni oxirida qaytadan qo'shamiz
   }, []);
 
   // Automatic slide transition
@@ -33,13 +65,13 @@ const ImageCarousel = () => {
   // Infinite scrolling - wrap around logic
   const handleNext = () => {
     setCurrentIndex((prevIndex) =>
-      prevIndex === images.length - 1 ? 0 : prevIndex + 1
+      prevIndex === images.length - 1 ? 1 : prevIndex + 1
     );
   };
 
   const handlePrev = () => {
     setCurrentIndex((prevIndex) =>
-      prevIndex === 0 ? images.length - 1 : prevIndex - 1
+      prevIndex === 0 ? images.length - 2 : prevIndex - 1
     );
   };
 
@@ -49,6 +81,7 @@ const ImageCarousel = () => {
         className="carousel"
         style={{
           transform: `translateX(-${currentIndex * itemWidth}px)`,
+          transition: 'transform 0.5s ease-in-out',
         }}
       >
         {images.map((image, index) => (

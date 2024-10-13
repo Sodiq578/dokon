@@ -7,11 +7,25 @@ import thumbs4 from '../img/thumbs4.svg';
 
 const Thumbs = () => {
   const [mainImage, setMainImage] = useState(thumbs1); // Katta rasm uchun lokal rasm
+  const [currentIndex, setCurrentIndex] = useState(0); // Hozirgi kichik rasm indeksi
 
   const smallImages = [thumbs1, thumbs2, thumbs3, thumbs4]; // Kichik rasmlar lokal rasm
 
-  const handleImageClick = (src) => {
+  const handleImageClick = (src, index) => {
     setMainImage(src);
+    setCurrentIndex(index); // Hozirgi kichik rasm indeksini yangilash
+  };
+
+  const nextImage = () => {
+    const newIndex = (currentIndex + 1) % smallImages.length; // Keyingi rasm indeksi
+    setMainImage(smallImages[newIndex]);
+    setCurrentIndex(newIndex);
+  };
+
+  const prevImage = () => {
+    const newIndex = (currentIndex - 1 + smallImages.length) % smallImages.length; // Oldingi rasm indeksi
+    setMainImage(smallImages[newIndex]);
+    setCurrentIndex(newIndex);
   };
 
   return (
@@ -26,8 +40,8 @@ const Thumbs = () => {
               key={index}
               src={src}
               alt={`Thumb ${index + 1}`}
-              className="small-image"
-              onClick={() => handleImageClick(src)}
+              className={`small-image ${index === currentIndex ? 'active' : ''}`} // Hozirgi kichik rasmga klass qo'shish
+              onClick={() => handleImageClick(src, index)}
             />
           ))}
         </div>
