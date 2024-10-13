@@ -101,45 +101,48 @@ const Navbar = ({ cartItems, isModalOpen, openModal, closeModal }) => {
         </div>
       </nav>
 
-      <div className="bottom-navbar">
-        <Link to="/">
-          <FaHome />
-          <span>Home</span>
-        </Link>
-        <div
-          className="dropdown"
-          onMouseEnter={() => setShowServicesDropdown(true)}
-          onMouseLeave={() => setShowServicesDropdown(false)}
-        >
-          <FaServicestack />
-          {showServicesDropdown && (
-            <div className="dropdown-menu">
-              <Link to="/service1">Service 1</Link>
-              <Link to="/service2">Service 2</Link>
-              <Link to="/service3">Service 3</Link>
-              <Link to="/service4">Service 4</Link>
-            </div>
-          )}
-        </div>
-        <Link to="/contacts">
-          <FaPhone />
-          <span>Contacts</span>
-        </Link>
-        <div className="cart-icon-container" onClick={openModal}>
-          <FaShoppingCart />
-          {totalItemCount > 0 && (
-            <div className="cart-badge">{totalItemCount}</div>
-          )}
-        </div>
-
-        <Link to="/favorites">
-        
-          <span>Sevimli mahsulotlar</span>
-          {totalFavoritesCount > 0 && (
-            <div className="favorites-badge">{totalFavoritesCount}</div>
-          )}
-        </Link>
+  <div className="bottom-navbar">
+  <Link to="/">
+    <GoHome className="icon" />
+    <span>Home</span>
+  </Link>
+  <div
+    className="dropdown"
+    onMouseEnter={() => setShowServicesDropdown(true)}
+    onMouseLeave={() => setShowServicesDropdown(false)}
+  >
+    <IoSettingsOutline className="icon" />
+    {showServicesDropdown && (
+      <div className="dropdown-menu">
+        <Link to="/service1">Service 1</Link>
+        <Link to="/service2">Service 2</Link>
+        <Link to="/service3">Service 3</Link>
+        <Link to="/service4">Service 4</Link>
       </div>
+    )}
+  </div>
+  <Link to="/contacts">
+    <HiOutlinePhone className="icon" />
+    <span>Contacts</span>
+  </Link>
+  <div className="cart-icon-container" onClick={openModal}>
+  <PiShoppingCartSimple style={{ fontSize: '30px', width: '30px', height: '30px' }} />
+  {totalItemCount > 0 && (
+    <div className="cart-badge">{totalItemCount}</div>
+  )}
+</div>
+
+
+  <Link to="/favorites">
+    <IoIosHeartEmpty className="icon" />
+    <span>Sevimli mahsulotlar</span>
+    {totalFavoritesCount > 0 && (
+      <div className="favorites-badge">{totalFavoritesCount}</div>
+    )}
+  </Link>
+</div>
+
+
 
       <Modal 
         isOpen={isModalOpen} 

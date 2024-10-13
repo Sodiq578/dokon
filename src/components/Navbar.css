@@ -167,7 +167,7 @@
 
   .bottom-navbar{
     border-radius: 20px 20px 0px 0px;
-    height: 100px;
+    height: 50px;
     background-color: #e89c0f;
    color: #fff;
     /* background-color: red; */
@@ -316,7 +316,7 @@
   align-items: center;
   z-index: 1000;
   border-radius: 20px 20px 0px 0px; /* Burchaklarni yumshatish */
-  height: 100px; /* Boshqa parametrlar bilan birga saqlash */
+  height: 50px; /* Boshqa parametrlar bilan birga saqlash */
 }
 
 .bottom-navbar a {
@@ -379,3 +379,12 @@
 
 
 
+.bottom-navbar .icon {
+  font-size: 30px;
+}
+
+.icon-shop{
+  width: 30px;
+  height: 30px;
+  font-size: 30px;
+}
