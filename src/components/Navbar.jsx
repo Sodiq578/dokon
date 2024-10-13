@@ -89,7 +89,7 @@ const Navbar = ({ cartItems, isModalOpen, openModal, closeModal }) => {
               </li>
               <li>
                 <Link to="/favorites">
-                  <FaHeart className="favorites-icon" />
+                  <IoIosHeartEmpty  className="favorites-icon" />
                   <span>Sevimli mahsulotlar</span>
                   {totalFavoritesCount > 0 && (
                     <div className="favorites-badge">{totalFavoritesCount}</div>
@@ -131,7 +131,9 @@ const Navbar = ({ cartItems, isModalOpen, openModal, closeModal }) => {
             <div className="cart-badge">{totalItemCount}</div>
           )}
         </div>
+
         <Link to="/favorites">
+        
           <span>Sevimli mahsulotlar</span>
           {totalFavoritesCount > 0 && (
             <div className="favorites-badge">{totalFavoritesCount}</div>
