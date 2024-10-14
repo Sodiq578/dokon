@@ -1,3 +1,4 @@
+/* Favorites.css */
 .favorites-container {
   padding: 20px;
   max-width: 1200px;
@@ -60,8 +61,9 @@
   color: #ff4081; /* Yurakni bosilganda rang */
 }
 
-.remove-button {
-  background-color: #ff4d4d;
+.remove-button,
+.add-to-favorites {
+  background-color: #007bff;
   color: white;
   border: none;
   border-radius: 5px;
@@ -70,6 +72,38 @@
   transition: background-color 0.3s;
 }
 
-.remove-button:hover {
-  background-color: #e60000;
+.remove-button:hover,
+.add-to-favorites:hover {
+  background-color: #0056b3;
+}
+
+/* Modal styles */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  max-width: 500px;
+  width: 100%;
+}
+
+.modal-close {
+  background: #ff4d4d;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 5px 10px;
+  cursor: pointer;
+  float: right;
 }

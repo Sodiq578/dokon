@@ -21,6 +21,7 @@
   border: none;
   border-radius: 5px;
   cursor: pointer;
+  overflow: hidden; /* Overflow ni yashirish */
 }
 
 .accordion-list li.active h3::after {
@@ -56,12 +57,12 @@
 .accordion-list .answer {
   display: block;
   overflow: hidden;
-  max-height: 0;
+  max-height: 0; /* Boshlanish balandligi */
   transition: max-height 0.5s ease-in-out; /* Sekinroq ochilish va yopilish */
 }
 
 .accordion-list li.active .answer {
-  max-height: 1000px; /* Bu qiymatni tarkib hajmiga mos ravishda o'zgartirish mumkin */
+  max-height: 500px; /* Bu qiymatni tarkib hajmiga mos ravishda o'zgartirish mumkin */
 }
 
 .accordion-list p {
