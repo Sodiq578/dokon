@@ -93,3 +93,39 @@
 }
 
 
+/* Asosiy o'lchamlar */
+.carousel-item {
+  width: 322px;
+  height: 375px;
+  flex-shrink: 0;
+}
+
+/* Planshetlar uchun */
+@media screen and (max-width: 768px) {
+  .carousel-item {
+    width: 250px;
+    height: 300px;
+  }
+}
+
+/* Mobil qurilmalar uchun - faqat 2 ta rasm ko'rsatish */
+@media screen and (max-width: 480px) {
+  .carousel {
+    width: 100%; /* To'liq ekran kengligi */
+  }
+
+  .carousel-item {
+    width: 45%; /* 2 ta rasmni sig'dirish uchun har bir rasmning kengligini 45% qilamiz */
+    height: 200px; /* Balandlikni moslashtiramiz */
+    margin-right: 5%; /* Har bir element o'rtasida ozgina joy qoldiramiz */
+  }
+}
+
+/* Juda kichik ekranlar uchun (masalan, eski smartfonlar) */
+@media screen and (max-width: 320px) {
+  .carousel-item {
+    width: 45%;
+    height: 180px;
+    margin-right: 5%;
+  }
+}

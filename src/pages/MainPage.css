@@ -556,4 +556,109 @@ display: flex;/* Stack buttons vertically */
 
 
 
+#alerts {
+  width: 400px;
+  top: 12px;
+  right: 50px;
+  position: fixed;
+  z-index: 9999;
+  list-style: none;
+}
+
+.alert {
+  width: 100%;
+  margin-bottom: 8px;
+  display: block;
+  position: relative;
+  border-left: 4px solid;
+  opacity: 0;
+  transition: opacity 400ms;
+}
+
+.alert.open {
+  opacity: 1;
+}
+
+.alert-success {
+  border-color: #539753;
+  background-color: #8fbf2f;
+  color: #fff;
+  padding: 10px;
+  border-radius: 4px;
+}
+
+
+
+
+
+.like-button {
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.like-button.liked {
+  color: red; /* Change color when liked */
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  position: relative;
+}
+
+.modal-image {
+  max-width: 100%;
+  border-radius: 4px;
+}
+
+.close-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+  font-size: 24px;
+}
+
+
+
+
+
+
+.like-button {
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.like-button.liked {
+  color: red;
+}
+
+.add-to-cart-btn {
+  cursor: pointer;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+.add-to-cart-btn:hover {
+  background-color: #218838;
+}
+
 
