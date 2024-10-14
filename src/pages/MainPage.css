@@ -1,6 +1,8 @@
+
 /* Link to fonts */
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap');
 @import url('https://fonts.cdnfonts.com/css/tt-runs-trial');
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&display=swap');
 
 
 .container{
@@ -450,6 +452,10 @@ display: flex;/* Stack buttons vertically */
     display: flex;
     align-items: center; 
     justify-content: center;
+  }
+
+  .load-more{
+    width: 160px;
   }
 }
 

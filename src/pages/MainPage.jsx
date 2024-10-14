@@ -12,6 +12,7 @@ import "aos/dist/aos.css";
 import ImageModal from "../pages/ImageModal"; // Import the modal component
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import Accordion from '../Layout/Accordion';
 
 const MainPage = ({ addToCart, addToFavorites }) => {
   const [cards, setCards] = useState([]);
@@ -169,6 +170,10 @@ const MainPage = ({ addToCart, addToFavorites }) => {
             {showMore ? "Collapse" : "Show More"}
           </button>
         </div>
+      </section>
+
+      <section>
+      <Accordion />
       </section>
 
       {/* ToastContainer har doim sahifada bo'lishi kerak */}

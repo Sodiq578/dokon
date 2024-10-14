@@ -1,10 +1,13 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { FaHeart } from 'react-icons/fa';
+import Modal from './Modal'; // Modal komponentini import qiling
 import './Favorites.css';
 
 const Favorites = ({ favorites, setFavorites }) => {
   const [likedItems, setLikedItems] = useState(favorites.map(item => item.id));
+  const [isModalOpen, setModalOpen] = useState(false);
+  const [selectedProduct, setSelectedProduct] = useState(null);
 
   const handleLikeToggle = (itemId) => {
     if (likedItems.includes(itemId)) {
@@ -19,10 +22,28 @@ const Favorites = ({ favorites, setFavorites }) => {
   };
 
   const handleRemove = (itemId) => {
-    // O'chirish funksiyasi
     const updatedFavorites = favorites.filter(item => item.id !== itemId);
     setFavorites(updatedFavorites);
     setLikedItems(likedItems.filter(id => id !== itemId)); // Yurakni o'chirish
+  };
+
+  const openModal = (item) => {
+    setSelectedProduct(item);
+    setModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setModalOpen(false);
+    setSelectedProduct(null);
+  };
+
+  const addToFavorites = () => {
+    if (selectedProduct) {
+      const updatedFavorites = [...favorites, selectedProduct];
+      setFavorites(updatedFavorites);
+      setLikedItems([...likedItems, selectedProduct.id]);
+      closeModal();
+    }
   };
 
   return (
@@ -58,6 +79,9 @@ const Favorites = ({ favorites, setFavorites }) => {
                   >
                     O'chirish
                   </button>
+                  <button className="add-to-favorites" onClick={() => openModal(item)}>
+                    Qo'shish
+                  </button>
                 </div>
               </div>
             </div>
@@ -66,6 +90,14 @@ const Favorites = ({ favorites, setFavorites }) => {
       ) : (
         <p>Sevimli mahsulotlaringiz yo'q.</p>
       )}
+
+      <Modal isOpen={isModalOpen} onClose={closeModal} content={
+        <div>
+          <h3>{selectedProduct ? selectedProduct.title : ''}</h3>
+          <p>{selectedProduct ? `Narxi: $${selectedProduct.price}` : ''}</p>
+          <button onClick={addToFavorites}>Sevimlilarga qo'shish</button>
+        </div>
+      } />
     </div>
   );
 };

@@ -14,7 +14,7 @@ const Modal = ({ isOpen, onClose, content }) => {
   return (
     <div className="modal-overlay" onClick={handleOverlayClick}>
       <div className="modal-content">
-        <button className="modal-close" onClick={onClose}>Close</button>
+        <button className="modal-close" onClick={onClose}>Yopish</button>
         {content}
       </div>
     </div>
