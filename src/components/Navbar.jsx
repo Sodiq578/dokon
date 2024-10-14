@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import Modal from '../pages/Modal';
 import './Navbar.css';
-import { FaShoppingCart, FaHome, FaServicestack, FaBuilding, FaComments, FaPhone, FaHeart } from 'react-icons/fa';  
 import { GoHome } from "react-icons/go";
 import { HiOutlinePhone } from "react-icons/hi2";
 import { IoSettingsOutline } from "react-icons/io5";

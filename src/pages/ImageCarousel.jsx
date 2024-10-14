@@ -92,12 +92,7 @@ const ImageCarousel = () => {
       </div>
 
       {/* Control buttons */}
-      <button className="carousel-btn carousel-btn-prev" onClick={handlePrev}>
-        Prev
-      </button>
-      <button className="carousel-btn carousel-btn-next" onClick={handleNext}>
-        Next
-      </button>
+      
     </div>
   );
 };

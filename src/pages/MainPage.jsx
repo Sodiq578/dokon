@@ -1,15 +1,17 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { FaCartPlus } from "react-icons/fa";
-import "./MainPage.css"; // CSS fayllarini import qiling
-import backgroundImage from '../img/main-back.svg'; // Rasmlar yo'lini to'g'rilang
-import Loader from "../components/Loader"; // Yuklash holati uchun komponent
-import ImageCarousel from "../pages/ImageCarousel"; // Rasm karuseli komponenti
-import Accordion from "../Layout/Accordion"; // Qo'shimcha ma'lumotlar uchun akordiyon
-import Thumbs from "../components/Thumbs"; // Mini rasmlar komponenti
-import LikeButton from "../pages/LikeButton"; // Yoqqan tugmasi komponenti
+import { IoIosHeartEmpty } from "react-icons/io"; // IoIosHeartEmpty ni import qilindi
+import "./MainPage.css";
+import backgroundImage from '../img/main-back.svg';
+import Loader from "../components/Loader";
+import ImageCarousel from "../pages/ImageCarousel";
+import Thumbs from "../components/Thumbs";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import ImageModal from "../pages/ImageModal"; // Import the modal component
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const MainPage = ({ addToCart, addToFavorites }) => {
   const [cards, setCards] = useState([]);
@@ -18,9 +20,12 @@ const MainPage = ({ addToCart, addToFavorites }) => {
   const [carouselImages, setCarouselImages] = useState([]);
   const [loading, setLoading] = useState(true);
   const [clickedIcons, setClickedIcons] = useState({});
+  const [modalOpen, setModalOpen] = useState(false); // State to manage modal
+  const [selectedImage, setSelectedImage] = useState(""); // State for selected image
 
   const navigate = useNavigate();
 
+  // Fetch data
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -39,7 +44,7 @@ const MainPage = ({ addToCart, addToFavorites }) => {
   }, []);
 
   useEffect(() => {
-    AOS.init({ duration: 1000 }); // AOS kutubxonasini ishga tushirish
+    AOS.init({ duration: 1000 });
   }, []);
 
   const toggleShowMore = () => {
@@ -51,15 +56,27 @@ const MainPage = ({ addToCart, addToFavorites }) => {
     e.stopPropagation();
 
     const newClickedIcons = { ...clickedIcons };
+    newClickedIcons[card.id] = newClickedIcons[card.id] || {};
+    newClickedIcons[card.id][action] = !newClickedIcons[card.id][action];
 
- 
-    setClickedIcons(newClickedIcons); // Davlatni yangilash
+    setClickedIcons(newClickedIcons);
 
-    // Harakatga ko'ra qo'shimcha funksiyalarni chaqirish
-    if (action === 'favorite') {
+    if (action === "favorite") {
       addToFavorites(card);
-    } else if (action === 'cart') {
+
+      if (newClickedIcons[card.id][action]) {
+        // Yurakni bosilganda Toast xabari
+        toast.success(`${card.title} sevimlilarga qo'shildi!`, {
+          position: "top-right", // Positionni string orqali yozdik
+          autoClose: 2000, // 2 seconds
+        });
+      }
+    } else if (action === "cart") {
       addToCart(card);
+      toast.success(`${card.title} savatchaga qo'shildi!`, {
+        position: "top-right", // Positionni string orqali yozdik
+        autoClose: 2000, // 2 seconds
+      });
     }
   };
 
@@ -71,6 +88,16 @@ const MainPage = ({ addToCart, addToFavorites }) => {
     const words = text.split(" ");
     if (words.length <= limit) return text;
     return `${words.slice(0, limit).join(" ")}...`;
+  };
+
+  const openModal = (image) => {
+    setSelectedImage(image);
+    setModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setModalOpen(false);
+    setSelectedImage("");
   };
 
   if (loading) return <Loader />;
@@ -109,7 +136,7 @@ const MainPage = ({ addToCart, addToFavorites }) => {
               key={card.id}
               onClick={() => handleCardClick(card)}
             >
-              <div className="card-img-box">
+              <div className="card-img-box" onClick={() => openModal(card.image)}>
                 <img src={card.image} alt={card.title} className="card-img" />
               </div>
               <div className="card-content">
@@ -119,10 +146,12 @@ const MainPage = ({ addToCart, addToFavorites }) => {
                   <span className="sale-price">${card.price}</span>
                 </div>
                 <div className="card-actions">
-                  <LikeButton
-                    isActive={clickedIcons[card.id]?.favorite}
+                  <div 
+                    className={`like-button ${clickedIcons[card.id]?.favorite ? 'liked' : ''}`} 
                     onClick={(e) => handleIconClick(e, card, 'favorite')}
-                  />
+                  >
+                    <IoIosHeartEmpty />
+                  </div>
                   <button
                     className="add-to-cart-btn"
                     onClick={(e) => handleIconClick(e, card, 'cart')}
@@ -130,7 +159,6 @@ const MainPage = ({ addToCart, addToFavorites }) => {
                     <FaCartPlus />
                   </button>
                 </div>
-                
               </div>
             </div>
           ))}
@@ -143,27 +171,15 @@ const MainPage = ({ addToCart, addToFavorites }) => {
         </div>
       </section>
 
-      <section className="process-section container" >
-        <div className="text-container" data-aos="fade-right">
-          <h2 className="process-title">Honey Production Process</h2>
-          <p className="process-description">
-            Learn about our premium honey production methods.
-          </p>
-        </div>
-        <div className="video-container">
-          <iframe
-            src="https://www.youtube.com/embed/PdkGSFf8keo"
-            title="YouTube video player"
-            frameBorder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowFullScreen
-          ></iframe>
-        </div>
-      </section>
+      {/* ToastContainer har doim sahifada bo'lishi kerak */}
+      <ToastContainer />
 
-      <section className="accordion-section container" data-aos="fade-up">
-        <Accordion />
-      </section>
+      {/* Image Modal */}
+      <ImageModal
+        isOpen={modalOpen}
+        onClose={closeModal}
+        image={selectedImage}
+      />
     </div>
   );
 };
