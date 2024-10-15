@@ -19,7 +19,7 @@
 
 .accordion-list li {
   background-color: #f1f5f9;
-  padding: 25px;
+  padding: 40px 25px;
   margin-bottom: 20px;
   border-radius: 10px;
   cursor: pointer;
@@ -69,3 +69,11 @@
 .accordion-list li.active .answer {
   max-height: 500px;
 }
+
+
+
+
+
+
+
+

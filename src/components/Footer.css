@@ -112,3 +112,12 @@ ul {
     margin-bottom: 30px;
   }
 }
+
+
+
+footer{
+  background-image: url(../img/footerback.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+
+}

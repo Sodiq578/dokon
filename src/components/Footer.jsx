@@ -1,5 +1,5 @@
 import React from 'react';
-import './Footer.css'; // CSS faylni alohida yozamiz
+import './Footer.css'; // CSS file for styling
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFacebookF, faTwitter, faInstagram, faLinkedinIn } from '@fortawesome/free-brands-svg-icons';
 
@@ -9,35 +9,35 @@ const Footer = () => {
       <div className="container">
         <div className="row">
           <div className="footer-col">
-            <h4>Компания</h4>
+            <h4>Company</h4>
             <ul>
-              <li><a href="#">О нас</a></li>
-              <li><a href="#">Наши услуги</a></li>
-              <li><a href="#">Политика конфиденциальности</a></li>
-              <li><a href="#">Партнёрская программа</a></li>
+              <li><a href="#">About Us</a></li>
+              <li><a href="#">Our Services</a></li>
+              <li><a href="#">Privacy Policy</a></li>
+              <li><a href="#">Affiliate Program</a></li>
             </ul>
           </div>
           <div className="footer-col">
-            <h4>Получить помощь</h4>
+            <h4>Get Help</h4>
             <ul>
-              <li><a href="#">Часто задаваемые вопросы</a></li>
-              <li><a href="#">Доставка</a></li>
-              <li><a href="#">Возвраты</a></li>
-              <li><a href="#">Статус заказа</a></li>
-              <li><a href="#">Способы оплаты</a></li>
+              <li><a href="#">FAQ</a></li>
+              <li><a href="#">Shipping</a></li>
+              <li><a href="#">Returns</a></li>
+              <li><a href="#">Order Status</a></li>
+              <li><a href="#">Payment Options</a></li>
             </ul>
           </div>
           <div className="footer-col">
-            <h4>Интернет-магазин</h4>
+            <h4>Online Shop</h4>
             <ul>
-              <li><a href="#">Часы</a></li>
-              <li><a href="#">Сумка</a></li>
-              <li><a href="#">Обувь</a></li>
-              <li><a href="#">Платье</a></li>
+              <li><a href="#">Watches</a></li>
+              <li><a href="#">Bags</a></li>
+              <li><a href="#">Shoes</a></li>
+              <li><a href="#">Dresses</a></li>
             </ul>
           </div>
           <div className="footer-col">
-            <h4>Следите за нами</h4>
+            <h4>Follow Us</h4>
             <div className="social-links">
               <a href="#"><FontAwesomeIcon icon={faFacebookF} /></a>
               <a href="#"><FontAwesomeIcon icon={faTwitter} /></a>
