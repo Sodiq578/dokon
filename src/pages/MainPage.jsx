@@ -1,15 +1,15 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { PiShoppingCartSimple } from "react-icons/pi"; // Import new shopping cart icon
-import { IoIosHeartEmpty } from "react-icons/io"; // Like icon
+import { PiShoppingCartSimple } from "react-icons/pi"; // Savat ikonkasi
+import { IoIosHeartEmpty } from "react-icons/io"; // Like ikonkasi
 import "./MainPage.css";
-import backgroundImage from '../img/main-back.svg';
+import backgroundImage from '../img/backasal.png';
 import Loader from "../components/Loader";
 import ImageCarousel from "../pages/ImageCarousel";
 import Thumbs from "../components/Thumbs";
 import AOS from "aos";
 import "aos/dist/aos.css";
-import ImageModal from "../pages/ImageModal"; // Import the modal component
+import ImageModal from "../pages/ImageModal"; // Modal komponentini import qilish
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Accordion from '../Layout/Accordion';
@@ -21,12 +21,12 @@ const MainPage = ({ addToCart, addToFavorites }) => {
   const [carouselImages, setCarouselImages] = useState([]);
   const [loading, setLoading] = useState(true);
   const [clickedIcons, setClickedIcons] = useState({});
-  const [modalOpen, setModalOpen] = useState(false); // State to manage modal
-  const [selectedImage, setSelectedImage] = useState(""); // State for selected image
+  const [modalOpen, setModalOpen] = useState(false); // Modal holati
+  const [selectedImage, setSelectedImage] = useState(""); // Tanlangan rasm
 
   const navigate = useNavigate();
 
-  // Fetch data
+  // Ma'lumotlarni olish
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -36,7 +36,7 @@ const MainPage = ({ addToCart, addToFavorites }) => {
         setCarouselImages(data.map((product) => product.image));
         setLoading(false);
       } catch (error) {
-        console.error("Error fetching product data:", error);
+        console.error("Mahsulot ma'lumotlarini olishda xatolik:", error);
         setLoading(false);
       }
     };
@@ -58,19 +58,35 @@ const MainPage = ({ addToCart, addToFavorites }) => {
 
     const newClickedIcons = { ...clickedIcons };
     newClickedIcons[card.id] = newClickedIcons[card.id] || {};
-    newClickedIcons[card.id][action] = !newClickedIcons[card.id][action];
 
+    // Agar mahsulot allaqachon sevimlilarga qo'shilgan bo'lsa
+    if (action === "favorite" && newClickedIcons[card.id][action]) {
+      toast.error(`${card.title} allaqachon sevimlilarda!`, {
+        position: "top-right",
+        autoClose: 2000,
+      });
+      return; // Ikkinchi marta qo'shilmasin
+    }
+
+    // Agar mahsulot allaqachon savatga qo'shilgan bo'lsa
+    if (action === "cart" && newClickedIcons[card.id][action]) {
+      toast.error(`${card.title} allaqachon savatchada!`, {
+        position: "top-right",
+        autoClose: 2000,
+      });
+      return; // Ikkinchi marta qo'shilmasin
+    }
+
+    // Mahsulot hali qo'shilmagan bo'lsa, uni qo'shamiz
+    newClickedIcons[card.id][action] = true;
     setClickedIcons(newClickedIcons);
 
     if (action === "favorite") {
       addToFavorites(card);
-
-      if (newClickedIcons[card.id][action]) {
-        toast.success(`${card.title} sevimlilarga qo'shildi!`, {
-          position: "top-right",
-          autoClose: 2000,
-        });
-      }
+      toast.success(`${card.title} sevimlilarga qo'shildi!`, {
+        position: "top-right",
+        autoClose: 2000,
+      });
     } else if (action === "cart") {
       addToCart(card);
       toast.success(`${card.title} savatchaga qo'shildi!`, {
@@ -149,14 +165,14 @@ const MainPage = ({ addToCart, addToFavorites }) => {
                   <div
                     className={`like-button ${clickedIcons[card.id]?.favorite ? 'liked' : ''}`}
                     onClick={(e) => handleIconClick(e, card, 'favorite')}
-                    style={{ fontSize: '30px' }} // Set size of like icon
+                    style={{ fontSize: '30px' }} // Like ikonkasini o'lchami
                   >
                     <IoIosHeartEmpty />
                   </div>
                   <button
                     className="add-to-cart-btn"
                     onClick={(e) => handleIconClick(e, card, 'cart')}
-                    style={{ fontSize: '30px' }} // Set size of cart icon
+                    style={{ fontSize: '30px' }} // Savat ikonkasini o'lchami
                   >
                     <PiShoppingCartSimple />
                   </button>
@@ -172,6 +188,29 @@ const MainPage = ({ addToCart, addToFavorites }) => {
           </button>
         </div>
       </section>
+
+
+      <section class="process-section" data-aos="fade-up">
+  <div class="text-container">
+    <h2 class="process-title">Our Process</h2>
+    <p class="process-description">
+      Learn more about how we create our honey and our dedication to quality and sustainability. Our video showcases the entire process, from beekeeping to packaging, ensuring you receive the best honey possible.
+    </p>
+  </div>
+  <div class="video-container">
+    <iframe 
+      width="560" 
+      height="315" 
+      src="https://www.youtube.com/embed/PdkGSFf8keo?si=TUcqaOAZX5uN9P_t" 
+      title="YouTube video player" 
+      frameborder="0" 
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+      referrerpolicy="strict-origin-when-cross-origin" 
+      allowfullscreen
+    ></iframe>
+  </div>
+</section>
+
 
       <section>
         <Accordion />

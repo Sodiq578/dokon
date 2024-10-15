@@ -1,52 +1,34 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;700&display=swap');
+
+.accordion-container {
+  font-family: 'Montserrat', sans-serif;
+  margin: 0 auto;
+  padding: 20px;
+}
+
 .accordion-container * {
   box-sizing: border-box;
 }
 
 .accordion-list {
-  position: relative;
   display: block;
   width: 100%;
-  padding: 20px;
-  margin: 0;
+  padding: 0;
   list-style: none;
 }
 
 .accordion-list li {
-  position: relative;
-  display: block;
-  width: 100%;
   background-color: #f1f5f9;
-  padding: 30px;
-  margin-bottom: 15px;
-  border: none;
-  border-radius: 5px;
+  padding: 25px;
+  margin-bottom: 20px;
+  border-radius: 10px;
   cursor: pointer;
-  overflow: hidden; /* Overflow ni yashirish */
+  box-shadow: rgba(33, 35, 38, 0.1) 0px 10px 10px -10px;
+  transition: all 0.3s ease;
 }
 
-.accordion-list li.active h3::after {
-  transform: rotate(45deg);
-}
-
-.accordion-list h3 {
-  font-weight: 700;
-  position: relative;
-  margin: 0;
-  font-size: 15px;
-  letter-spacing: 0.01em;
-  cursor: pointer;
-}
-
-.accordion-list h3::after {
-  content: "+";
-  font-family: Arial, sans-serif;
-  position: absolute;
-  right: 0;
-  top: 0;
-  color: #7a7978;
-  transition: all 0.3s ease-in-out;
-  font-size: 24px;
-  font-weight: 400;
+.accordion-list li:hover {
+  background-color: #f9fafb;
 }
 
 .accordion-list li.active h3::after {
@@ -54,21 +36,36 @@
   transform: rotate(0deg);
 }
 
+.accordion-list h3 {
+  font-weight: 500;
+  font-size: 18px;
+  color: #333;
+  margin: 0;
+  position: relative;
+  padding-right: 30px;
+  cursor: pointer;
+}
+
+.accordion-list h3::after {
+  content: "+";
+  font-size: 24px;
+  color: #333;
+  position: absolute;
+  right: 0;
+  top: 0;
+  transition: transform 0.3s ease;
+}
+
 .accordion-list .answer {
-  display: block;
+  max-height: 0;
   overflow: hidden;
-  max-height: 0; /* Boshlanish balandligi */
-  transition: max-height 0.5s ease-in-out; /* Sekinroq ochilish va yopilish */
+  font-size: 16px;
+  color: #666;
+  padding-top: 10px;
+  transition: max-height 1s ease-in-out;
+  font-weight: 400;
 }
 
 .accordion-list li.active .answer {
-  max-height: 500px; /* Bu qiymatni tarkib hajmiga mos ravishda o'zgartirish mumkin */
-}
-
-.accordion-list p {
-  font-weight: 300;
-  padding: 10px 0;
-  line-height: 150%;
-  margin: 0 0 15px;
-  font-size: 14px;
+  max-height: 500px;
 }
