@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { FaCartPlus } from "react-icons/fa";
-import { IoIosHeartEmpty } from "react-icons/io"; // IoIosHeartEmpty ni import qilindi
+import { PiShoppingCartSimple } from "react-icons/pi"; // Import new shopping cart icon
+import { IoIosHeartEmpty } from "react-icons/io"; // Like icon
 import "./MainPage.css";
 import backgroundImage from '../img/main-back.svg';
 import Loader from "../components/Loader";
@@ -66,17 +66,16 @@ const MainPage = ({ addToCart, addToFavorites }) => {
       addToFavorites(card);
 
       if (newClickedIcons[card.id][action]) {
-        // Yurakni bosilganda Toast xabari
         toast.success(`${card.title} sevimlilarga qo'shildi!`, {
-          position: "top-right", // Positionni string orqali yozdik
-          autoClose: 2000, // 2 seconds
+          position: "top-right",
+          autoClose: 2000,
         });
       }
     } else if (action === "cart") {
       addToCart(card);
       toast.success(`${card.title} savatchaga qo'shildi!`, {
-        position: "top-right", // Positionni string orqali yozdik
-        autoClose: 2000, // 2 seconds
+        position: "top-right",
+        autoClose: 2000,
       });
     }
   };
@@ -147,17 +146,19 @@ const MainPage = ({ addToCart, addToFavorites }) => {
                   <span className="sale-price">${card.price}</span>
                 </div>
                 <div className="card-actions">
-                  <div 
-                    className={`like-button ${clickedIcons[card.id]?.favorite ? 'liked' : ''}`} 
+                  <div
+                    className={`like-button ${clickedIcons[card.id]?.favorite ? 'liked' : ''}`}
                     onClick={(e) => handleIconClick(e, card, 'favorite')}
+                    style={{ fontSize: '30px' }} // Set size of like icon
                   >
                     <IoIosHeartEmpty />
                   </div>
                   <button
                     className="add-to-cart-btn"
                     onClick={(e) => handleIconClick(e, card, 'cart')}
+                    style={{ fontSize: '30px' }} // Set size of cart icon
                   >
-                    <FaCartPlus />
+                    <PiShoppingCartSimple />
                   </button>
                 </div>
               </div>
@@ -173,13 +174,11 @@ const MainPage = ({ addToCart, addToFavorites }) => {
       </section>
 
       <section>
-      <Accordion />
+        <Accordion />
       </section>
 
-      {/* ToastContainer har doim sahifada bo'lishi kerak */}
       <ToastContainer />
 
-      {/* Image Modal */}
       <ImageModal
         isOpen={modalOpen}
         onClose={closeModal}
