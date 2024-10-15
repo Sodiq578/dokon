@@ -63,11 +63,7 @@
     transition: transform 0.5s ease-out;
   }
   
-  .like-button.active .particle {
-    transform: translate(-50%, -50%) scale(1);
-    animation: particle-move 0.5s ease forwards; /* Zarrachalarning tarqalishi */
-  }
-  
+ 
   @keyframes particle-move {
     0% {
       transform: translate(-50%, -50%) scale(0.5);
