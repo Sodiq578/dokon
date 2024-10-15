@@ -13,6 +13,7 @@
 .main-page {
   padding: 20px;
   margin-top: 40px;
+ 
 }
 
 .main-content {
@@ -160,7 +161,9 @@
 }
 
 @media (max-width: 480px) {
+
   .main-page {
+    margin-top: 150px;
     padding: 10px;
   }
 
