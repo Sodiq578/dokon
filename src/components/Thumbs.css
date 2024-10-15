@@ -1,30 +1,29 @@
 .thumbs-wrapper {
   display: flex;
   align-items: flex-start; /* Vertical alignment */
-  gap: 20px; /* Elementlar orasidagi masofa */
+  gap: 20px; /* Space between elements */
 }
 
 .main-wrapper {
-  flex: 1; /* Katta rasm joyi */
+  flex: 1; /* Space for the main image */
 }
 
 .main-image-box {
-  flex: 1; /* Katta rasm joyi */
+  flex: 1; /* Space for the main image */
 }
 
-
 .main-image-bottom {
-  width: 100%; /* Katta rasm ekran o'lchamiga mos */
-  max-width: 461px; /* Maksimal kenglik */
-  height: auto; /* Balansni saqlash uchun avtomatik balandlik */
+  width: 100%; /* Main image responsive to screen size */
+  max-width: 461px; /* Maximum width */
+  height: auto; /* Maintain aspect ratio */
   border-radius: 24px;
   opacity: 1;
 }
 
 .small-images-container {
   display: flex;
-  gap: 10px; /* Kichik rasmlar orasidagi masofa */
-  flex-wrap: wrap; /* Kichik rasmlar qatorlarga joylashadi */
+  gap: 10px; /* Space between thumbnails */
+  flex-wrap: wrap; /* Thumbnails wrap to the next line */
 }
 
 .small-image {
@@ -33,84 +32,84 @@
   border-radius: 12px;
   opacity: 1;
   cursor: pointer;
-  flex-shrink: 0; /* Kichik rasmlar o'lchamini saqlab qolish */
-  object-fit: cover; /* Rasmlarni konteynerga muvofiq ravishda joylash */
+  flex-shrink: 0; /* Maintain size of thumbnails */
+  object-fit: cover; /* Fit images within the container */
 }
 
 .small-image:hover {
-  opacity: 0.7; /* Hover effekti */
+  opacity: 0.7; /* Hover effect */
 }
 
 .content-section {
-  flex: 1; /* Matn bo'sh joyi */
+  flex: 1; /* Space for text */
 }
 
 .content-title {
-  width: 100%; /* O'lchovlarni moslashtirish */
+  width: 100%; /* Adjust to fit */
   max-width: 617px;
-  height: auto; /* Balandlik avtomatik */
-  font-family: 'Montserrat', sans-serif; /* Shrift */
-  font-size: 24px; /* Sarlavha o'lchami */
-  font-weight: 600; /* Sarlavha qalinligi */
-  color: #11171C; /* Rangi */
+  height: auto; /* Automatic height */
+  font-family: 'TT Runs Trial', sans-serif; /* Updated font */
+  font-size: 24px; /* Title size */
+  font-weight: 600; /* Title weight */
+  color: #11171C; /* Color */
 }
 
 .content-description {
-  width: 100%; /* O'lchovlarni moslashtirish */
+  width: 100%; /* Adjust to fit */
   max-width: 615px;
-  height: auto; /* Balandlik avtomatik */
-  font-family: 'Montserrat', sans-serif; /* Shrift */
-  font-size: 16px; /* Tasvir o'lchami */
-  font-weight: 400; /* Tasvir qalinligi */
-  line-height: 24px; /* Qatorlar o'rtasidagi masofa */
-  text-align: left; /* Matnni chapga qaratish */
-  color: #11171C; /* Rangi */
+  height: auto; /* Automatic height */
+  font-family: 'TT Runs Trial', sans-serif; /* Updated font */
+  font-size: 16px; /* Description size */
+  font-weight: 400; /* Description weight */
+  line-height: 24px; /* Line height */
+  text-align: left; /* Left align text */
+  color: #11171C; /* Color */
 }
 
 .content-list {
-  list-style-type: disc; /* Ro'yxat belgilari */
-  padding-left: 20px; /* Chapdan masofa */
+  list-style-type: disc; /* List markers */
+  padding-left: 20px; /* Left padding */
 }
 
 .content-list-item {
-  margin-bottom: 10px; /* Har bir ro'yxat elementi orasidagi masofa */
+  margin-bottom: 10px; /* Space between list items */
 }
 
 /* Media queries for responsiveness */
 @media (max-width: 768px) {
   .thumbs-wrapper {
-    flex-direction: column; /* Mobil o'lchamda vertikal joylash */
+    flex-direction: column; /* Vertical layout on mobile */
   }
 
   .main-image-box {
-    width: 100%; /* Katta rasm kengligini 100% ga o'zgartirish */
+    width: 100%; /* Set main image width to 100% */
   }
 
   .content-section {
-    width: 100%; /* Matn bo'sh joyi kengligini 100% ga o'zgartirish */
+    width: 100%; /* Set text section width to 100% */
   }
 
   .small-images-container {
-    justify-content: center;
-    display: flex; /* Kichik rasmlar markazga joylash */
+    justify-content: center; /* Center small images */
+    display: flex;
   }
 
   .small-image {
-    width: 80px; /* Kichik rasmlar o'lchamini kamaytirish */
-    height: 56px; /* Kichik rasmlar balandligini kamaytirish */
+    width: 80px; /* Reduce thumbnail size */
+    height: 56px; /* Reduce thumbnail height */
   }
 }
 
 @media (max-width: 480px) {
   .content-title {
-    font-size: 20px; /* Sarlavha o'lchamini kamaytirish */
+    font-size: 20px; /* Reduce title size */
   }
 
-  .small-images-container img{
+  .small-images-container img {
     width: 20%;
   }
 
   .content-description {
-    font-size: 14px; /* Tasvir o'lchamini kamaytirish */
+    font-size: 14px; /* Reduce description size */
   }
 }

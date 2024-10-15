@@ -120,7 +120,7 @@ const MainPage = ({ addToCart, addToFavorites }) => {
 
   return (
     <div className="main-page">
-      <div className="main-content container">
+      <div className="main-content container" data-aos="fade-up"> {/* AOS qo'shildi */}
         <div className="text-section" data-aos="fade-right">
           <h2 className="main-page-title">The Finest and Purest Honey</h2>
           <p className="main-page-text">
@@ -189,28 +189,26 @@ const MainPage = ({ addToCart, addToFavorites }) => {
         </div>
       </section>
 
-
-      <section class="process-section" data-aos="fade-up">
-  <div class="text-container">
-    <h2 class="process-title">Our Process</h2>
-    <p class="process-description">
-      Learn more about how we create our honey and our dedication to quality and sustainability. Our video showcases the entire process, from beekeeping to packaging, ensuring you receive the best honey possible.
-    </p>
-  </div>
-  <div class="video-container">
-    <iframe 
-      width="560" 
-      height="315" 
-      src="https://www.youtube.com/embed/PdkGSFf8keo?si=TUcqaOAZX5uN9P_t" 
-      title="YouTube video player" 
-      frameborder="0" 
-      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-      referrerpolicy="strict-origin-when-cross-origin" 
-      allowfullscreen
-    ></iframe>
-  </div>
-</section>
-
+      <section className="process-section" data-aos="fade-up">
+        <div className="text-container">
+          <h2 className="process-title">Our Process</h2>
+          <p className="process-description">
+            Learn more about how we create our honey and our dedication to quality and sustainability. Our video showcases the entire process, from beekeeping to packaging, ensuring you receive the best honey possible.
+          </p>
+        </div>
+        <div className="video-container">
+          <iframe 
+            width="560" 
+            height="315" 
+            src="https://www.youtube.com/embed/PdkGSFf8keo?si=TUcqaOAZX5uN9P_t" 
+            title="YouTube video player" 
+            frameBorder="0" 
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+            referrerPolicy="strict-origin-when-cross-origin" 
+            allowFullScreen
+          ></iframe>
+        </div>
+      </section>
 
       <section>
         <Accordion />
