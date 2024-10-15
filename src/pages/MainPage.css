@@ -655,16 +655,10 @@ display: flex;/* Stack buttons vertically */
 
 .add-to-cart-btn {
   cursor: pointer;
-  background-color: #28a745;
-  color: white;
-  border: none;
-  padding: 8px 12px;
-  border-radius: 4px;
-  transition: background-color 0.3s ease;
+  color: rgb(41, 40, 40);
+ 
 }
 
-.add-to-cart-btn:hover {
-  background-color: #218838;
-}
+
 
 
