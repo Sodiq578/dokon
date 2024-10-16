@@ -1,3 +1,10 @@
+body {
+  margin: 0; /* Katta bo'shliqlarni olib tashlash */
+  padding: 0; /* Katta bo'shliqlarni olib tashlash */
+  overflow-x: hidden; /* Gorizontal skrollni olib tashlash */
+  font-family: Arial, sans-serif; /* Shriftni belgilash */
+}
+
 .navbar {
   position: fixed;
   top: 0;
@@ -6,12 +13,10 @@
   background-color: #ffffff;
   color: #333;
   padding: 10px 20px;
-  border-bottom: 3px solid rgba(212, 212, 213, 0.25); 
+  border-bottom: 3px solid rgba(212, 212, 213, 0.25);
   width: 100%;
   box-sizing: border-box;
   z-index: 1000;
-  overflow: hidden;
-  
 }
 
 .nav-wrapper {
@@ -97,28 +102,25 @@
   position: absolute;
   width: 200px;
   top: 100%;
-
   left: 0;
   background-color: white;
-  border-radius: 5pxpx;
+  border-radius: 5px;
   border: 1px solid #ccc;
   z-index: 100;
   display: none;
   text-align: center;
 }
 
-
 .cart-icon-container span {
   margin-left: 5px; /* Ikona va matn orasida masofa */
   vertical-align: middle; /* Matnni vertikal markazda joylashtirish */
-  align-items: center;
 }
 
-
-.cart-icon-container{
+.cart-icon-container {
   display: flex;
   align-items: center;
 }
+
 .dropdown-wrapper:hover .dropdown-menu {
   display: block;
 }
@@ -166,21 +168,13 @@
     font-size: 20px;
   }
 
-
-  .bottom-navbar{
+  .bottom-navbar {
     border-radius: 20px 20px 0px 0px;
     height: 50px;
     background-color: #e89c0f;
-   color: #fff;
-    /* background-color: red; */
+    color: #fff;
   }
-
-
-
 }
-
-
-
 
 .modal-overlay {
   position: fixed;
@@ -212,17 +206,6 @@
   font-size: 20px;
   cursor: pointer;
 }
-
-
- 
-
-
-
-
-
-
-
-
 
 .nav-icon,
 .cart-icon,
@@ -265,19 +248,17 @@
   display: block;
 }
 
-
-
-.nav-icon, .cart-icon-container svg {
+.nav-icon,
+.cart-icon-container svg {
   font-size: 24px; /* Barcha ikonlarning o'lchamini 24px qilib belgilaymiz */
   width: 20px; /* Ikonning kengligini 24px qilib belgilaymiz */
-  height: 20bottom-navbarpx; /* Ikonning balandligini 24px qilib belgilaymiz */
+  height: 20px; /* Ikonning balandligini 24px qilib belgilaymiz */
 }
 
 /* agar kerak bo'lsa, shuningdek, .bottom-navbar a ga ham qo'shing */
 .bottom-navbar a {
   font-size: 24px; /* O'lchamni bir xil saqlash uchun */
 }
-
 
 .dropdown {
   position: absolute; /* Absolute positioning */
@@ -299,11 +280,7 @@
   display: block; /* Show dropdown on hover */
 }
 
-
-
-
 /* ////////////////////////////////// */
-
 
 .bottom-navbar {
   position: fixed;
@@ -319,7 +296,6 @@
   z-index: 1000;
   border-radius: 20px 20px 0px 0px; /* Burchaklarni yumshatish */
   height: 50px; /* Boshqa parametrlar bilan birga saqlash */
-  
 }
 
 .bottom-navbar a {
@@ -357,39 +333,4 @@
   margin-left: 5px; /* Ikona va matn orasida masofa */
   vertical-align: middle; /* Matnni vertikal markazda joylashtirish */
 }
-
-.dropdown-menu {
-  position: absolute;
-  width: 200px;
-  top: 100%;
-  left: 0;
-  background-color: white;
-  border-radius: 5px;
-  border: 1px solid #ccc;
-  z-index: 100;
-  display: none;
-  text-align: center;
-}
-
-.dropdown-wrapper:hover .dropdown-menu {
-  display: block; /* Dropdown ko'rsatish */
-}
-
-.card-icon {
-  font-size: 30px; /* Kartochka ikonasining o'lchamini 30px qilib belgilash */
-  margin-right: 5px; /* Matn va ikonalar orasida masofa */
-}
-
-
-
-.bottom-navbar .icon {
-  font-size: 30px;
-}
-
-.icon-shop{
-  width: 30px;
-  height: 30px;
-  font-size: 30px;
-}
-
 

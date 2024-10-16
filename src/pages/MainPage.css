@@ -13,6 +13,8 @@
 .main-page {
   padding: 20px;
   margin-top: 40px;
+  justify-content: center; /* Gorizontal markazlashtirish */
+  align-items: center; 
  
 }
 
