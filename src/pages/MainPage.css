@@ -13,8 +13,6 @@
 .main-page {
   padding: 20px;
   margin-top: 40px;
-  justify-content: center; /* Gorizontal markazlashtirish */
-  align-items: center; 
  
 }
 
@@ -79,13 +77,14 @@
 
 .load-more {
   padding: 10px 20px;
-  background-color: #A21212;
   color: white;
   border: none;
   border-radius: 5px;
   cursor: pointer;
   position: relative; /* Pseudo-elementni to'g'ri joylashtirish uchun */
 }
+
+
 
 .load-more::before {
   content: '';

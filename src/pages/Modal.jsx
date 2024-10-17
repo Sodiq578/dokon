@@ -1,18 +1,27 @@
-import React from 'react';
-import './Modal.css'; // If you have custom styles
+import React, { useEffect, useState } from 'react';
+import './Modal.css'; // Custom styles
 
 const Modal = ({ isOpen, onClose, content }) => {
-  if (!isOpen) return null;
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    if (isOpen) {
+      setIsVisible(true);
+    } else {
+      setTimeout(() => setIsVisible(false), 300); // Match with the fade-out animation duration
+    }
+  }, [isOpen]);
+
+  if (!isVisible) return null;
 
   const handleOverlayClick = (e) => {
-    // Close the modal if the overlay (background) is clicked
     if (e.target.classList.contains('modal-overlay')) {
       onClose();
     }
   };
 
   return (
-    <div className="modal-overlay" onClick={handleOverlayClick}>
+    <div className={`modal-overlay ${isOpen ? 'active' : ''}`} onClick={handleOverlayClick}>
       <div className="modal-content">
         <button className="modal-close" onClick={onClose}>Yopish</button>
         {content}
