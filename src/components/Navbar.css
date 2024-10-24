@@ -334,3 +334,8 @@ body {
   vertical-align: middle; /* Matnni vertikal markazda joylashtirish */
 }
 
+
+
+.favorites-icon-heart{
+  font-size: 20px;
+}

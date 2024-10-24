@@ -83,7 +83,7 @@ const Navbar = ({ cartItems, isModalOpen, openModal, closeModal }) => {
 </li>
 <li>
   <Link to="/favorites">
-    <IoIosHeartEmpty className="favorites-icon" />
+    <IoIosHeartEmpty className="favorites-icon  favorites-icon-heart" />
     <span>Sevimli mahsulotlar</span>
     {totalFavoritesCount > 0 && (
       <div className="favorites-badge">{totalFavoritesCount}</div>
