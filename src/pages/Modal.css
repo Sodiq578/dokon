@@ -142,3 +142,24 @@
   background-color: #218838; /* Darker green on hover */
   transform: translateY(-3px); /* Slight lift effect */
 }
+
+
+
+
+
+
+
+.delete-button {
+  background-color: #e74c3c; /* Qizil rang */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 8px 12px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-left: 10px; /* Item ma'lumotlari va o'chirish tugmasi o'rtasidagi bo'shliq */
+}
+
+.delete-button:hover {
+  background-color: #c0392b; /* Hover holatidagi qizil rang */
+}
