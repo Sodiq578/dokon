@@ -1,21 +1,21 @@
 .contact {
-    margin-top: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
   }
   
   .chat-container {
-    border-radius: 10px;
-    padding: 20px;
-    max-width: 1200px;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
+    width: 100%;
+    max-width: 600px;
   }
   
   .chat-box {
-    flex-grow: 1;
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-bottom: 20px;
     height: 300px;
     overflow-y: auto;
-    margin-bottom: 10px;
   }
   
   .chat-message {
@@ -26,28 +26,31 @@
     text-align: right;
   }
   
-  .chat-message.bot {
-    text-align: left;
-  }
-  
-  .input-box {
+  .button-group {
     display: flex;
+    flex-direction: column;
+    gap: 10px;
   }
   
-  input[type="text"] {
-    flex-grow: 1;
+  .button-group button {
     padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-  }
-  
-  button {
-    padding: 10px;
-    margin-left: 5px;
-    background-color: #007bff;
+    background-color: #4caf50;
     color: white;
     border: none;
-    border-radius: 5px;
     cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+  }
+  
+  .button-group button:hover {
+    background-color: #45a049;
+  }
+  
+  .call-operator {
+    background-color: #f44336;
+  }
+  
+  .call-operator:hover {
+    background-color: #d32f2f;
   }
   
