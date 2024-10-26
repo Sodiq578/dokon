@@ -193,8 +193,10 @@ const MainPage = ({ addToCart, addToFavorites }) => {
         <div className="text-container">
           <h2 className="process-title">Our Process</h2>
           <p className="process-description">
-            Learn more about how we create our honey and our dedication to quality and sustainability. Our video showcases the entire process, from beekeeping to packaging, ensuring you receive the best honey possible.
-          </p>
+  Learn more about how we create our honey and our dedication to quality and sustainability. Our video showcases the entire process, from beekeeping to packaging, ensuring you receive the best honey possible. 
+  We prioritize organic practices and maintain healthy bee populations, ensuring that our honey not only tastes great but also supports the environment. Watch our journey and discover the passion behind every jar of our honey.
+</p>
+
         </div>
         <div className="video-container">
           <iframe 

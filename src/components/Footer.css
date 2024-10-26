@@ -114,10 +114,21 @@ ul {
 }
 
 
+footer {
+  position: relative;
+  z-index: 1; /* Asosiy kontent yuqorida bo'lishi uchun */
+}
 
-footer{
+footer::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
   background-image: url(../img/footerback.png);
   background-size: cover;
   background-repeat: no-repeat;
-
+ opacity: 0.1; /* Rasmni xiralashtirish */
+  z-index: -1; /* Faqat background uchun */
 }
