@@ -1,56 +1,86 @@
-.contact {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-  }
-  
-  .chat-container {
-    width: 100%;
-    max-width: 600px;
-  }
-  
-  .chat-box {
-    border: 1px solid #ccc;
-    padding: 10px;
-    margin-bottom: 20px;
-    height: 300px;
-    overflow-y: auto;
-  }
-  
-  .chat-message {
-    margin-bottom: 10px;
-  }
-  
-  .chat-message.user {
-    text-align: right;
-  }
-  
-  .button-group {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-  }
-  
-  .button-group button {
-    padding: 10px;
-    background-color: #4caf50;
-    color: white;
-    border: none;
-    cursor: pointer;
-    border-radius: 5px;
-    transition: background-color 0.3s;
-  }
-  
-  .button-group button:hover {
-    background-color: #45a049;
-  }
-  
-  .call-operator {
-    background-color: #f44336;
-  }
-  
-  .call-operator:hover {
-    background-color: #d32f2f;
-  }
-  
+.contact-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Markazga joylash */
+  padding: 20px;
+  background: linear-gradient(135deg, #f3f4f6, #e2e8f0); /* To'lqinli fon */
+  height: 100vh; /* Butun ekran balandligi */
+  padding-top: 100px;
+}
+
+.contact-title {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+  color: #333; /* Sarlavha rangi */
+}
+
+.contact-container {
+  display: flex;
+  flex-direction: column;
+  background: white;
+  border-radius: 8px; /* Burchaklarni yumshatish */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* So'ndirish effektini berish */
+  padding: 20px;
+  width: 100%; /* Katta joyni to'ldirish */
+  max-width: 600px; /* Maksimal kenglik */
+}
+
+.contact-info {
+  margin-bottom: 20px; /* Aloqa ma'lumotlari o'rtasidagi bo'shliq */
+}
+
+.info-title {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+  color: #555; /* Mahsulotlar bo'yicha ma'lumotlar rangi */
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-title {
+  font-size: 1.5rem;
+  margin-bottom: 10px; /* Xabar qoldirish sarlavhasi bo'shligi */
+  color: #555;
+}
+
+.form-group {
+  margin-bottom: 15px; /* Formadagi elementlar orasidagi bo'shliq */
+}
+
+label {
+  margin-bottom: 5px;
+  font-weight: bold; /* Belgilarning qalinligi */
+}
+
+input,
+textarea {
+  padding: 10px; /* Ichki bo'shliq */
+  border: 1px solid #ccc; /* Chizilgan chiziq */
+  border-radius: 4px; /* Burchaklarni yumshatish */
+  font-size: 1rem; /* Font o'lchami */
+}
+
+textarea {
+  resize: none; /* O'lchov o'zgartirishni o'chirish */
+}
+
+.submit-btn {
+  background-color: #007bff; /* Tugma rangi */
+  color: white; /* Tugma matni rangi */
+  padding: 10px 20px; /* Tugma ichki bo'shligi */
+  border: none; /* Chizilgan chiziq yo'q */
+  border-radius: 4px; /* Burchaklarni yumshatish */
+  cursor: pointer; /* Ko'rsatgichni o'zgartirish */
+  transition: background-color 0.3s; /* Rangi o'zgarishining animatsiyasi */
+}
+
+.submit-btn:hover {
+  background-color: #0056b3; /* Hover holatidagi tugma rangi */
+}
+
+.submit-btn:active {
+  transform: scale(0.98); /* Tugmani bosilganda kichraytirish */
+}

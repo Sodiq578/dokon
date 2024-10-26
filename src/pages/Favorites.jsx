@@ -1,16 +1,7 @@
-<<<<<<< HEAD
-// Favorites.jsx
-import React from 'react';
-import { Link } from 'react-router-dom';
-import { IoIosHeart } from 'react-icons/io';
-import './Favorites.css';
-
-const Favorites = ({ favorites, removeFromFavorites }) => {
-=======
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { FaHeart } from 'react-icons/fa';
-import Modal from './Modal'; // Modal komponentini import qiling
+import Modal from './Modal'; // Import the Modal component
 import './Favorites.css';
 
 const Favorites = ({ favorites, setFavorites }) => {
@@ -20,20 +11,20 @@ const Favorites = ({ favorites, setFavorites }) => {
 
   const handleLikeToggle = (itemId) => {
     if (likedItems.includes(itemId)) {
-      // Agar sevimli bo'lsa, o'chirish
+      // Remove from favorites if already liked
       const updatedFavorites = favorites.filter(item => item.id !== itemId);
-      setFavorites(updatedFavorites); // Mahsulotni sevimli ro'yxatdan o'chirish
-      setLikedItems(likedItems.filter(id => id !== itemId)); // Yurakni o'chirish
+      setFavorites(updatedFavorites);
+      setLikedItems(likedItems.filter(id => id !== itemId));
     } else {
-      // Sevimli mahsulotlar ro'yxatida yo'q bo'lsa, qo'shish
-      setLikedItems([...likedItems, itemId]); // Yurakni yoqish
+      // Add to favorites if not already liked
+      setLikedItems([...likedItems, itemId]);
     }
   };
 
   const handleRemove = (itemId) => {
     const updatedFavorites = favorites.filter(item => item.id !== itemId);
     setFavorites(updatedFavorites);
-    setLikedItems(likedItems.filter(id => id !== itemId)); // Yurakni o'chirish
+    setLikedItems(likedItems.filter(id => id !== itemId));
   };
 
   const openModal = (item) => {
@@ -55,7 +46,6 @@ const Favorites = ({ favorites, setFavorites }) => {
     }
   };
 
->>>>>>> 22aa6dacf8b05926782f71211ce29377d338f41d
   return (
     <div className="favorites-container">
       <h2>Favorites</h2>
@@ -72,14 +62,10 @@ const Favorites = ({ favorites, setFavorites }) => {
                   <Link to={`/product/${item.id}`} className="favorite-details-link">
                     View Details
                   </Link>
-<<<<<<< HEAD
-                  
-                 
-=======
                   <div
                     className="favorite-icon"
                     onClick={() => handleLikeToggle(item.id)}
-                    title="Sevimli"
+                    title="Toggle Favorite"
                   >
                     {likedItems.includes(item.id) ? (
                       <FaHeart className="favorite-icon liked" />
@@ -90,14 +76,13 @@ const Favorites = ({ favorites, setFavorites }) => {
                   <button
                     className="remove-button"
                     onClick={() => handleRemove(item.id)}
-                    title="O'chirish"
+                    title="Remove from Favorites"
                   >
-                    O'chirish
+                    Remove
                   </button>
                   <button className="add-to-favorites" onClick={() => openModal(item)}>
-                    Qo'shish
+                    Add to Favorites
                   </button>
->>>>>>> 22aa6dacf8b05926782f71211ce29377d338f41d
                 </div>
               </div>
             </div>
@@ -107,13 +92,17 @@ const Favorites = ({ favorites, setFavorites }) => {
         <p>You have no favorite products.</p>
       )}
 
-      <Modal isOpen={isModalOpen} onClose={closeModal} content={
-        <div>
-          <h3>{selectedProduct ? selectedProduct.title : ''}</h3>
-          <p>{selectedProduct ? `Narxi: $${selectedProduct.price}` : ''}</p>
-          <button onClick={addToFavorites}>Sevimlilarga qo'shish</button>
-        </div>
-      } />
+      <Modal 
+        isOpen={isModalOpen} 
+        onClose={closeModal} 
+        content={selectedProduct && (
+          <div>
+            <h3>{selectedProduct.title}</h3>
+            <p>Price: ${selectedProduct.price}</p>
+            <button onClick={addToFavorites}>Add to Favorites</button>
+          </div>
+        )} 
+      />
     </div>
   );
 };

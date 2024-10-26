@@ -1,14 +1,100 @@
-import React from 'react';
+import React, { useState } from "react";
+import axios from "axios";
+import "./Contact.css"; // CSS faylini import qilish
 
 const ContactPage = () => {
-  return (
-    <div>
-      <h1>Aloqa</h1>
-      <p>Biz bilan bog'lanish uchun quyidagi ma'lumotlardan foydalaning:</p>
-      <p>Email: example@example.com</p>
-      <p>Telefon: +998 90 123 45 67</p>
+  const [name, setName] = useState(""); // Ismni saqlash uchun state
+  const [email, setEmail] = useState(""); // Emailni saqlash uchun state
+  const [message, setMessage] = useState(""); // Xabarni saqlash uchun state
+  const [loading, setLoading] = useState(false); // Yuklash holati
+  const [error, setError] = useState(""); // Xato holati
 
-      <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nostrum accusamus assumenda consequuntur rerum? Quia similique rerum, ipsam exercitationem officiis velit, fugiat debitis possimus laboriosam reprehenderit consequuntur explicabo modi labore error quasi minima saepe tempore. Voluptas, autem amet enim esse libero atque molestias? Necessitatibus repellendus eius odio ex quisquam nihil esse, culpa blanditiis ipsum minus assumenda doloribus architecto sapiente excepturi nobis beatae rerum tempore animi sed fugiat numquam modi accusamus ab fugit! Laborum illum placeat eligendi, repudiandae eum maxime, nulla aperiam ducimus, provident eos rem voluptatum repellat dolore consequuntur. Sed minima quo, quas repellat, vero quaerat incidunt omnis, vitae nisi eos nam autem recusandae beatae reprehenderit consequatur tenetur laudantium unde dolores error ratione voluptas cumque? Commodi eligendi soluta esse quae. Inventore asperiores aut natus impedit reiciendis quibusdam aspernatur amet, repudiandae provident nulla praesentium accusamus perspiciatis vel culpa saepe, sint facilis! Quia, sit distinctio recusandae officiis unde quaerat totam nam asperiores consectetur hic! Voluptatibus totam consequuntur, ex beatae fugiat accusamus nulla id impedit deleniti voluptate, corrupti fuga deserunt tempora. Quod excepturi laboriosam veritatis id natus? Recusandae eos corporis in quia iste. Dolor et libero commodi totam minima nulla unde maiores sequi? Placeat, laudantium. Assumenda molestias, corporis veritatis deserunt fugiat quasi quod amet velit placeat nemo sequi dignissimos labore! Nemo doloremque minima quia laboriosam quidem beatae totam odit pariatur. Totam laboriosam facilis quae impedit cum cumque eius harum nemo saepe mollitia, quidem pariatur aliquid deleniti delectus natus. Possimus perferendis fugit aut temporibus incidunt cumque iusto vel animi, molestiae facilis id fuga sed beatae corporis maiores sit quae inventore omnis in nam dolore neque. Illum atque id reprehenderit doloribus, amet suscipit. Qui odio error distinctio rem modi repellat reprehenderit eligendi laudantium, fugiat optio suscipit debitis sapiente voluptatem inventore quos atque molestias? Nesciunt, pariatur quod? Fugiat dolor dolorum, ab in commodi quos. Ratione, velit incidunt!</p>
+  const handleSubmit = async (e) => {
+    e.preventDefault(); // Formani yuborishda sahifaning yangilanishini oldini olish
+    const botToken = "7753999301:AAF44xI3AzisnwNu-sCWu5cVs8gnadqx9JY"; // Telegram bot tokenini kiriting
+    const chatId = "5838205785"; // Telegram chat ID'ni kiriting
+
+    const text = `
+      Ism: ${name}
+      Email: ${email}
+      Xabar: ${message}
+    `;
+
+    setLoading(true); // Yuklash holatini faollashtirish
+
+    try {
+      await axios.post(
+        `https://api.telegram.org/bot${botToken}/sendMessage`,
+        {
+          chat_id: chatId,
+          text: text,
+          parse_mode: "Markdown",
+        }
+      );
+
+      // Formani tozalash
+      setName("");
+      setEmail("");
+      setMessage("");
+      setError(""); // Xatoni tozalash
+      alert("Xabar muvaffaqiyatli jo'natildi!");
+    } catch (err) {
+      console.error("Xabar jo'natishda xatolik:", err);
+      setError("Xabar jo'natishda xatolik yuz berdi.");
+    } finally {
+      setLoading(false); // Yuklash holatini to'xtatish
+    }
+  };
+
+  return (
+    <div className="contact-page">
+      <h1 className="contact-title">Biz bilan bog'laning</h1>
+      <div className="contact-container">
+        <div className="contact-info">
+          <h2 className="info-title">Aloqa ma'lumotlari</h2>
+          <p>Email: <a href="mailto:info@example.com">info@example.com</a></p>
+          <p>Telefon: <a href="tel:+123456789">+1 234 567 89</a></p>
+          <p>Manzil: Tashkent, Uzbekistan</p>
+        </div>
+
+        <form className="contact-form" onSubmit={handleSubmit}>
+          <h2 className="form-title">Xabar qoldiring</h2>
+          {error && <div className="error-message">{error}</div>} {/* Xato xabari */}
+          <div className="form-group">
+            <label htmlFor="name">Ismingiz:</label>
+            <input
+              type="text"
+              id="name"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              required
+            />
+          </div>
+          <div className="form-group">
+            <label htmlFor="email">Email:</label>
+            <input
+              type="email"
+              id="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+            />
+          </div>
+          <div className="form-group">
+            <label htmlFor="message">Xabar:</label>
+            <textarea
+              id="message"
+              rows="5"
+              value={message}
+              onChange={(e) => setMessage(e.target.value)}
+              required
+            ></textarea>
+          </div>
+          <button type="submit" className="submit-btn" disabled={loading}>
+            {loading ? "Yuborilmoqda..." : "Yuborish"}
+          </button>
+        </form>
+      </div>
     </div>
   );
 };

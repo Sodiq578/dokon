@@ -55,23 +55,25 @@ const Navbar = ({ cartItems, isModalOpen, openModal, closeModal }) => {
             <img src={Logo} alt="Logo" />
           </div>
           <div className="nav-elements">
-<<<<<<< HEAD
+ 
           <li><Link to="/"><GoHome className="nav-icon" /> <span>Home</span></Link></li>
-<li 
+          <li 
   onMouseEnter={() => setShowServicesDropdown(true)} 
   onMouseLeave={() => setShowServicesDropdown(false)}
+  className="relative"
 >
   <IoSettingsOutline className="nav-icon" />
   <span>Services</span>
   {showServicesDropdown && (
     <div className="dropdown">
-      <Link to="/service1">Service 1</Link>
-      <Link to="/service2">Service 2</Link>
-      <Link to="/service3">Service 3</Link>
-      <Link to="/service4">Service 4</Link>
+      <Link className='dropdown-content' to="/service1">Service 1</Link>
+      <Link className='dropdown-content' to="/service2">Service 2</Link>
+      <Link className='dropdown-content' to="/service3">Service 3</Link>
+      <Link className='dropdown-content' to="/service4">Service 4</Link>
     </div>
   )}
 </li>
+
 <li><Link to="/contact"> <HiOutlinePhone className="nav-icon" /> <span>Contacts</span></Link></li>
 <li>
   <div className="cart-icon-container" onClick={openModal}>
@@ -92,49 +94,9 @@ const Navbar = ({ cartItems, isModalOpen, openModal, closeModal }) => {
   </Link>
 </li>
 
-=======
-            <ul className="nav-links">
-            
-              <li><Link to="/"><GoHome  className="nav-icon"/> <span>Home</span></Link></li>
-              <li 
-                onMouseEnter={() => setShowServicesDropdown(true)} 
-                onMouseLeave={() => setShowServicesDropdown(false)}
-              >
-<IoSettingsOutline  className="nav-icon"/>
-                <span>Services</span>
-                {showServicesDropdown && (
-                  <div className="dropdown">
-                    <Link to="/service1">Service 1</Link>
-                    <Link to="/service2">Service 2</Link>
-                    <Link to="/service3">Service 3</Link>
-                    <Link to="/service4">Service 4</Link>
-                  </div>
-                )}
-              </li>
-              {/* <li><Link to="/company"><FaBuilding className="nav-icon" /><span>Company</span></Link></li> */}
-              {/* <li><Link to="/consultation"><FaComments className="nav-icon" /><span>Consultation</span></Link></li> */}
-              <li><Link to="/contacts"> <HiOutlinePhone  className="nav-icon" /> <span>Contacts</span></Link></li>
-              <li>
-              
-                <div className="cart-icon-container" onClick={openModal}>
-                  <PiShoppingCartSimple   className="cart-icon favorites-icon" />
-                  <span>Add Card</span>
-                  {totalItemCount > 0 && (
-                    <div className="cart-badge">{totalItemCount}</div>
-                  )}
-                </div>
-              </li>
-              <li>
-                <Link to="/favorites">
-                  <IoIosHeartEmpty  className="favorites-icon" />
-                  <span>Sevimli mahsulotlar</span>
-                  {totalFavoritesCount > 0 && (
-                    <div className="favorites-badge">{totalFavoritesCount}</div>
-                  )}
-                </Link>
-              </li>
-            </ul>
->>>>>>> 22aa6dacf8b05926782f71211ce29377d338f41d
+ 
+     
+ 
           </div>
         </div>
       </nav>
@@ -196,13 +158,10 @@ const Navbar = ({ cartItems, isModalOpen, openModal, closeModal }) => {
                     <div className="item-info">
                       <h4>{item.title}</h4>
                       <p>${item.price}</p>
-<<<<<<< HEAD
-                    
-=======
+ 
                       <button onClick={() => handleToggleFavorite(item)}> 
                         {favorites.includes(item.id) ? "Remove from Favorites" : "Add to Favorites"}
                       </button>
->>>>>>> 22aa6dacf8b05926782f71211ce29377d338f41d
                       <div className="quantity">
                         <input 
                           type="number" 

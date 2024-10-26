@@ -94,22 +94,9 @@ body {
   display: none;
 }
 
-.dropdown-wrapper {
-  position: relative;
-}
+ 
 
-.dropdown-menu {
-  position: absolute;
-  width: 200px;
-  top: 100%;
-  left: 0;
-  background-color: white;
-  border-radius: 5px;
-  border: 1px solid #ccc;
-  z-index: 100;
-  display: none;
-  text-align: center;
-}
+ 
 
 .cart-icon-container span {
   margin-left: 5px; /* Ikona va matn orasida masofa */
@@ -121,21 +108,11 @@ body {
   align-items: center;
 }
 
-.dropdown-wrapper:hover .dropdown-menu {
-  display: block;
-}
+ 
 
-.dropdown-menu a {
-  display: block;
-  padding: 10px;
-  text-decoration: none;
-  color: #333;
-}
+ 
 
-.dropdown-menu a:hover {
-  background-color: #f2f2f2;
-}
-
+ 
 .cart-icon-container {
   position: relative;
 }
@@ -230,23 +207,9 @@ body {
   margin-left: 5px; /* Ikona va matn orasidagi masofa */
   vertical-align: middle; /* Matnni vertikal markazda joylashtirish */
 }
+ 
 
-.dropdown-menu {
-  position: absolute;
-  width: 200px;
-  top: 100%;
-  left: 0;
-  background-color: white;
-  border-radius: 5px; /* Ushbu joyda radiusni to'g'ri yozing */
-  border: 1px solid #ccc;
-  z-index: 100;
-  display: none;
-  text-align: center;
-}
-
-.dropdown-wrapper:hover .dropdown-menu {
-  display: block;
-}
+ 
 
 .nav-icon,
 .cart-icon-container svg {
@@ -260,25 +223,83 @@ body {
   font-size: 24px; /* O'lchamni bir xil saqlash uchun */
 }
 
-.dropdown {
-  position: absolute; /* Absolute positioning */
-  width: 200px;
-  top: 100%; /* Position below the navbar */
-  left: 0; /* Align to the left of the parent */
-  background-color: rgb(240, 236, 236);
-  border-radius: 5px;
-  border: 1px solid #ccc;
-  /* Ensure it's on top of other content */
-  text-align: center;
-}
+ 
 
 .nav-elements li {
   position: relative; /* Make the li a positioned element */
 }
 
-.dropdown-wrapper:hover .dropdown {
-  display: block; /* Show dropdown on hover */
+ 
+ 
+
+.bottom-navbar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: #e89c0f; /* Background rangini saqlash */
+  color: #fff; /* Matn rangini oq qilib o'zgartirish */
+  padding: 10px 0;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  z-index: 1000;
+  border-radius: 20px 20px 0px 0px; /* Burchaklarni yumshatish */
+  height: 50px; /* Boshqa parametrlar bilan birga saqlash */
 }
+
+.bottom-navbar a {
+  color: #fff; /* Oq rangda matn */
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 30px; /* Ikonalar o'lchami */
+  transition: transform 0.3s; /* Animatsiya qo'shish */
+}
+
+.bottom-navbar a:hover {
+  transform: scale(1.1); /* Bosilganda biroz kattalashtirish */
+}
+
+.bottom-navbar a span {
+  display: none; /* Agar kerak bo'lsa, matnni yashirish */
+}
+
+.nav-icon,
+.cart-icon,
+.favorites-icon,
+.card-icon { /* Kartochka ikonasini ham kiritish */
+  font-size: 30px; /* Ikonalarning o'lchami 30px */
+  margin-right: 5px; /* Matn va ikonalar orasida masofa */
+}
+
+.cart-icon-container {
+  display: flex;
+  align-items: center;
+}
+
+.cart-icon-container span {
+  margin-left: 5px; /* Ikona va matn orasida masofa */
+  vertical-align: middle; /* Matnni vertikal markazda joylashtirish */
+}
+
+ 
+.favorites-icon-heart{
+  font-size: 20px;
+}
+ 
+
+
+
+
+
+
+.nav-elements li {
+  position: relative; /* Make li a positioned element */
+}
+ 
+
 
 /* ////////////////////////////////// */
 
@@ -339,3 +360,41 @@ body {
   font-size: 20px;
 }
  
+
+.dropdown {
+  position: absolute; /* Positioned absolutely relative to parent */
+  width: 200px; /* Dropdown width */
+  top: 100%; /* Positioned just below the parent */
+  left: 0; /* Left-aligned with parent */
+  background-color: rgba(244, 243, 243, 0.9); /* Slightly transparent background */
+  border-radius: 5px; /* Rounded corners */
+  border: 1px solid #f2eeee; /* Light border */
+  text-align: center; /* Center-align text */
+  padding: 10px; /* Padding inside the dropdown */
+  
+  opacity: 0; /* Start hidden */
+  visibility: hidden; /* Hide for interaction */
+  transform: translateY(10px); /* Start a bit lower for smooth entry */
+  
+  /* Add a delay for both appearance and disappearance */
+  transition: opacity 0.5s ease-in-out 0.1s, transform 0.5s ease-in-out 0.1s; 
+  z-index: 100; /* Ensure dropdown stays above other elements */
+}
+
+li:hover .dropdown {
+  opacity: 1; /* Make visible on hover */
+  visibility: visible; /* Enable interaction */
+  transform: translateY(0); /* Move to original position */
+}
+
+.dropdown-content {
+  display: block; /* Display links in block mode */
+  padding: 10px; /* Padding for each link */
+  text-decoration: none; /* Remove underline */
+  color: #333; /* Text color */
+  transition: background-color 0.3s ease; /* Smooth hover color transition */
+}
+
+.dropdown-content:hover {
+  background-color: #e0e0e0; /* Change background on hover */
+}

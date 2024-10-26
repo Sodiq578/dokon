@@ -40,8 +40,7 @@ const ImageCarousel = () => {
       imgSlider6,
       imgSlider7,
       imgSlider8,
-<<<<<<< HEAD
-      imgSlider9,
+       imgSlider9,
       Imgslider,
       imgSlider2,
       imgSlider3,
@@ -65,8 +64,7 @@ const ImageCarousel = () => {
       imgSlider6,
       imgSlider7,
       imgSlider8,
-=======
->>>>>>> 22aa6dacf8b05926782f71211ce29377d338f41d
+ 
       imgSlider9,  Imgslider,
       imgSlider2,
       imgSlider3,
