@@ -1,20 +1,66 @@
- 
+/* Contact.css */
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f7f7f7;
+  margin: 0;
+  padding: 0;
+}
+
+.for-back {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-image: url(https://png.pngtree.com/thumb_back/fw800/background/20231009/pngtree-texture-of-honeycombs-made-by-bees-image_13614089.png);
+  background-size: cover;
+  position: relative; /* Poydevor o'rnatamiz */
+}
+
+
+.submit-btn{
+  margin: 20px auto;
+   
+   
+  display: flex;
+  align-content: center;
+  justify-content: center;
+}
+.submit-btn:hover{
+
+    background-color: #FFB01E;
+    color: #ffffff;
+  
+   
+}
+
+.for-back::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5); /* Qora fon, shaffoflik darajasi 0.5 */
+  z-index: 1; /* Fon tasviridan yuqorida bo'lishi uchun */
+}
 
 .contact-page {
-  max-width: 600px;
-  margin: 40px auto;
+  position: relative; /* Kontakt sahifasi qismida */
+  z-index: 2; /* Sahifani qora fon ustida ko'rsatish uchun */
+  background-color: rgba(15, 15, 15, 0.586);
   padding: 20px;
-  background-color: #ffffff;
-  border-radius: 10px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-  margin-top: 100px;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  width: 90%;
+  max-width: 600px;
 }
 
 .contact-title {
   text-align: center;
+  color: #333;
   margin-bottom: 20px;
-  font-size: 24px;
-  color: #007bff;
+  font-size: 24px; /* Yozuv o'lchamini oshirish */
 }
 
 .contact-form {
@@ -29,57 +75,130 @@
 label {
   margin-bottom: 5px;
   font-weight: bold;
-  color: #555;
+  color: #fffefe;
+  font-size: 18px; /* Yozuv o'lchamini oshirish */
 }
 
-input,
+input[type="text"],
+input[type="tel"],
 textarea {
+  width: 100%;
   padding: 10px;
-  border: 2px solid #ccc;
-  border-radius: 5px;
-  transition: border 0.3s, box-shadow 0.3s;
-  font-size: 16px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  transition: border-color 0.3s;
+  font-size: 16px; /* Kiritish maydonidagi yozuv o'lchami */
 }
 
-input:focus,
+input[type="text"]:focus,
+input[type="tel"]:focus,
 textarea:focus {
-  border: 2px solid #007bff;
-  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+  border-color: #66b3ff;
+  outline: none;
 }
 
 .input-error {
-  border: 2px solid red;
-  box-shadow: 0 0 5px red;
+  border-color: red;
 }
 
+textarea {
+  resize: vertical;
+}
+
+ 
+
+ 
 .error-message {
   color: red;
-  margin-top: 10px;
-  font-weight: bold;
+  margin: 10px 0;
+  text-align: center;
+  font-size: 16px; /* Xato xabari yozuv o'lchami */
 }
 
-.success-message {
-  color: green;
-  margin-top: 10px;
-  font-weight: bold;
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
 }
 
-.submit-btn {
+.content {
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  text-align: center;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+#timer {
+  font-weight: bold;
+  margin-top: 10px;
+  font-size: 20px; /* Taymer yozuvi o'lchami */
+}
+
+@media (max-width: 768px) {
+  .contact-page {
+      padding: 15px;
+  }
+
+ 
+}
+
+
+
+body {
+  font-family: 'TT Runs Trial', sans-serif; /* Butun sahifa uchun shrift */
+  background-color: #f7f7f7;
+  margin: 0;
+  padding: 0;
+}
+
+.contact-title {
+  text-align: center;
+  color: #333;
+  margin-bottom: 20px;
+  font-size: 24px; /* Yozuv o'lchamini oshirish */
+  font-family: 'TT Runs Trial', sans-serif; /* Kontakt sarlavhasi shrift */
+}
+
+label {
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: #555;
+  font-size: 18px; /* Yozuv o'lchamini oshirish */
+  font-family: 'TT Runs Trial', sans-serif; /* Label shrift */
+}
+
+input[type="text"],
+input[type="tel"],
+textarea {
+  width: 100%;
   padding: 10px;
-  background-color: #007bff;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 16px;
-  transition: background-color 0.3s, transform 0.3s;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  transition: border-color 0.3s;
+  font-size: 16px; /* Kiritish maydonidagi yozuv o'lchami */
+  font-family: 'TT Runs Trial', sans-serif; /* Kiritish maydonlari shrift */
 }
 
-.submit-btn:hover {
-  background-color: #0056b3;
-  transform: translateY(-2px);
+ 
+.error-message {
+  color: red;
+  margin: 10px 0;
+  text-align: center;
+  font-size: 16px; /* Xato xabari yozuv o'lchami */
+  font-family: 'TT Runs Trial', sans-serif; /* Xato xabari shrift */
 }
 
-.submit-btn:disabled {
-  background-color: #ccc;
+#timer {
+  font-weight: bold;
+  margin-top: 10px;
+  font-size: 20px; /* Taymer yozuvi o'lchami */
+  font-family: 'TT Runs Trial', sans-serif; /* Taymer shrift */
 }
