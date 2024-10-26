@@ -114,6 +114,7 @@ ul {
 }
 
 
+ 
 footer {
   position: relative;
   z-index: 1; /* Asosiy kontent yuqorida bo'lishi uchun */
@@ -132,3 +133,12 @@ footer::before {
  opacity: 0.1; /* Rasmni xiralashtirish */
   z-index: -1; /* Faqat background uchun */
 }
+ 
+
+footer{
+  background-image: url(../img/footerback.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+
+}
+

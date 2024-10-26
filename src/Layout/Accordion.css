@@ -23,7 +23,10 @@
   margin-bottom: 20px;
   border-radius: 10px;
   cursor: pointer;
-  /* box-shadow: rgba(33, 35, 38, 0.1) 0px 10px 10px -10px; */
+ 
+ 
+  box-shadow: rgba(33, 35, 38, 0.1) 0px 10px 10px -10px;
+ 
   transition: all 0.3s ease;
 }
 

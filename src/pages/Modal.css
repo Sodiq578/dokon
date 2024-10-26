@@ -141,6 +141,7 @@
 .purchase-button:hover {
   background-color: #218838; /* Darker green on hover */
   transform: translateY(-3px); /* Slight lift effect */
+<<<<<<< HEAD
 }
 
 
@@ -162,4 +163,6 @@
 
 .delete-button:hover {
   background-color: #c0392b; /* Hover holatidagi qizil rang */
+=======
+>>>>>>> 22aa6dacf8b05926782f71211ce29377d338f41d
 }

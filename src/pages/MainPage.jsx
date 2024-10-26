@@ -193,6 +193,7 @@ const MainPage = ({ addToCart, addToFavorites }) => {
         <div className="text-container">
           <h2 className="process-title">Our Process</h2>
           <p className="process-description">
+<<<<<<< HEAD
   Learn more about how we create our honey and our dedication to quality and sustainability. Our video showcases the entire process, from beekeeping to packaging, ensuring you receive the best honey possible. 
   We prioritize organic practices and maintain healthy bee populations, ensuring that our honey not only tastes great but also supports the environment. Watch our journey and discover the passion behind every jar of our honey.
 </p>
@@ -212,6 +213,25 @@ const MainPage = ({ addToCart, addToFavorites }) => {
         </div>
       </section>
 
+=======
+            Learn more about how we create our honey and our dedication to quality and sustainability. Our video showcases the entire process, from beekeeping to packaging, ensuring you receive the best honey possible.
+          </p>
+        </div>
+        <div className="video-container">
+          <iframe 
+            width="560" 
+            height="315" 
+            src="https://www.youtube.com/embed/PdkGSFf8keo?si=TUcqaOAZX5uN9P_t" 
+            title="YouTube video player" 
+            frameBorder="0" 
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+            referrerPolicy="strict-origin-when-cross-origin" 
+            allowFullScreen
+          ></iframe>
+        </div>
+      </section>
+
+>>>>>>> 22aa6dacf8b05926782f71211ce29377d338f41d
       <section>
         <Accordion />
       </section>

@@ -6,9 +6,20 @@ import Footer from './components/Footer';
 import MainPage from './pages/MainPage';
 import ProductInfoPage from './pages/ProductInfoPage';
 import AboutUsPage from './pages/AboutUsPage';
+<<<<<<< HEAD
  
 import Favorites from './pages/Favorites'; 
  import Contact from "./pages/Contact"
+=======
+
+import OrderPage from './pages/OrderPage';
+import LoginPage from './pages/LoginPage';
+import RegisterPage from './pages/RegisterPage';
+import Favorites from './pages/Favorites'; // Sevimli mahsulotlar sahifasi
+import ContactPage from './pages/ContactPage';
+
+
+>>>>>>> 22aa6dacf8b05926782f71211ce29377d338f41d
 
 const App = () => {
   const [cartItems, setCartItems] = useState([]);
@@ -71,6 +82,7 @@ const App = () => {
         />
         <Route path="/product/:id" element={<ProductInfoPage />} />
         <Route path="/about" element={<AboutUsPage />} />
+<<<<<<< HEAD
         <Route  path='/contact' element={<Contact/>}/>
     
         <Route 
@@ -83,6 +95,16 @@ const App = () => {
           } 
         />
         {/* Other routes */}
+=======
+        <Route path="/contact" element={<ContactPage />} />
+        <Route path="/order" element={<OrderPage />} />
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/register" element={<RegisterPage />} />
+        <Route path="/favorites" element={<Favorites favorites={favorites} />} />
+        <Route path="/consulting" element={<div>Consulting Services</div>} />
+        <Route path="/development" element={<div>Development Services</div>} />
+        <Route path="/design" element={<div>Design Services</div>} />
+>>>>>>> 22aa6dacf8b05926782f71211ce29377d338f41d
       </Routes>
       <Footer />
     </Router>
