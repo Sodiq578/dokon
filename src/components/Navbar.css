@@ -398,3 +398,57 @@ li:hover .dropdown {
 .dropdown-content:hover {
   background-color: #e0e0e0; /* Change background on hover */
 }
+
+
+
+
+
+body {
+  margin: 0; /* Katta bo'shliqlarni olib tashlash */
+  padding: 0; /* Katta bo'shliqlarni olib tashlash */
+  overflow-x: hidden; /* Gorizontal skrollni olib tashlash */
+  font-family: Arial, sans-serif; /* Shriftni belgilash */
+}
+
+.bottom-navbar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: #e89c0f;
+  color: #fff;
+  padding: 10px 0;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  z-index: 1000;
+  border-radius: 20px 20px 0 0;
+  height: 50px;
+  width: 100%; /* To'liq kenglik berish */
+}
+
+.bottom-navbar a {
+  color: #fff;
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 24px;
+  transition: transform 0.3s;
+}
+
+.bottom-navbar a:hover {
+  transform: scale(1.1);
+}
+
+@media (max-width: 768px) {
+  .bottom-navbar {
+    display: flex;
+    height: 60px;
+    padding: 5px 0;
+  }
+
+  .bottom-navbar a {
+    font-size: 20px;
+  }
+}

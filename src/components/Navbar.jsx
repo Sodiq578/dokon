@@ -101,7 +101,7 @@ const Navbar = ({ cartItems, isModalOpen, openModal, closeModal }) => {
         </div>
       </nav>
 
-  <div className="bottom-navbar">
+      <div className="bottom-navbar">
   <Link to="/">
     <GoHome className="icon" />
     <span>Home</span>
@@ -121,18 +121,16 @@ const Navbar = ({ cartItems, isModalOpen, openModal, closeModal }) => {
       </div>
     )}
   </div>
-  <Link to="/contacts">
+  <Link to="/contact">
     <HiOutlinePhone className="icon" />
     <span>Contacts</span>
   </Link>
   <div className="cart-icon-container" onClick={openModal}>
-  <PiShoppingCartSimple style={{ fontSize: '30px', width: '30px', height: '30px' }} />
-  {totalItemCount > 0 && (
-    <div className="cart-badge">{totalItemCount}</div>
-  )}
-</div>
-
-
+    <PiShoppingCartSimple style={{ fontSize: '30px', width: '30px', height: '30px' }} />
+    {totalItemCount > 0 && (
+      <div className="cart-badge">{totalItemCount}</div>
+    )}
+  </div>
   <Link to="/favorites">
     <IoIosHeartEmpty className="icon" />
     <span>Sevimli mahsulotlar</span>
@@ -141,6 +139,7 @@ const Navbar = ({ cartItems, isModalOpen, openModal, closeModal }) => {
     )}
   </Link>
 </div>
+
 
 
 

@@ -18,7 +18,7 @@ body {
 
 .row {
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: wrap; /* Flex elementlar o'zaro joylashishi uchun */
 }
 
 ul {
@@ -31,7 +31,8 @@ ul {
 }
 
 .footer-col {
-  width: 25%;
+  flex: 1; /* Har bir ustun uchun mos kenglik */
+  min-width: 250px; /* Eng kam kenglik */
   padding: 0 15px;
 }
 
@@ -111,10 +112,12 @@ ul {
     width: 100%; /* 1 ta ustun */
     margin-bottom: 30px;
   }
+
+  .footer {
+    height: auto; /* 20% o'rniga auto */
+  }
 }
 
-
- 
 footer {
   position: relative;
   z-index: 1; /* Asosiy kontent yuqorida bo'lishi uchun */
@@ -130,15 +133,16 @@ footer::before {
   background-image: url(../img/footerback.png);
   background-size: cover;
   background-repeat: no-repeat;
- opacity: 0.1; /* Rasmni xiralashtirish */
+  opacity: 0.1; /* Rasmni xiralashtirish */
   z-index: -1; /* Faqat background uchun */
 }
- 
 
-footer{
+footer {
   background-image: url(../img/footerback.png);
   background-size: cover;
   background-repeat: no-repeat;
-
 }
 
+footer {
+  background-color: #24262b !important;
+}

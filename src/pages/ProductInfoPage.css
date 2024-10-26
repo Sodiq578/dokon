@@ -1,27 +1,46 @@
+/* ProductInfoPage.css */
+
 .product-info-container {
-  padding: 20px;
-  max-width: 1200px;
+  width: 90%;
   margin: 0 auto;
+  max-width: 1200px;
+  padding: 20px;
+}
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
 }
 
 .product-box {
   display: flex;
-  flex-wrap: wrap;
+  width: 100%;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 20px;
+  background-color: #f9f9f9;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  gap: 20px;
 }
 
 .image-gallery {
   display: flex;
   flex-direction: column;
+  gap: 10px;
+  flex: 1;
 }
 
 .main-image {
-  margin-bottom: 20px;
+  width: 100%;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden;
 }
 
 .main-image img {
   width: 100%;
-  max-height: 500px;
-  object-fit: cover;
+  height: auto;
   border-radius: 8px;
 }
 
@@ -31,193 +50,170 @@
 }
 
 .thumbnail {
-  width: 100%;
-  max-width: 120px;
-  max-height: 80px;
-  object-fit: cover;
+  width: 60px;
+  height: 60px;
+  border: 1px solid #ddd;
   border-radius: 4px;
   cursor: pointer;
-  transition: transform 0.3s ease;
+  transition: transform 0.2s, border-color 0.2s;
 }
 
 .thumbnail:hover {
+  border-color: #007bff;
   transform: scale(1.1);
 }
 
+.product-box2 {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
 .product-name {
-  font-size: 1.5rem;
+  font-size: 26px;
   font-weight: bold;
-  margin-bottom: 10px;
+  color: #333;
+  margin: 0;
 }
 
 .product-description {
-  margin: 20px 0;
-  font-size: 1.1rem;
+  font-size: 16px;
+  color: #666;
+  line-height: 1.6;
+  margin: 0;
 }
 
 .product-price {
-  font-size: 1.5rem;
+  font-size: 24px;
+  color: #d9534f;
   font-weight: bold;
-  margin-bottom: 20px;
+  margin-top: 10px;
 }
 
 .product-options {
   display: flex;
+  align-items: center;
   gap: 10px;
-  margin-bottom: 20px;
-  flex-wrap: wrap;
-}
-
-.option-group {
-  flex: 1;
-  min-width: 150px;
-  margin-bottom: 10px;
 }
 
 .option-group label {
-  display: block;
+  font-size: 14px;
+  color: #555;
   margin-bottom: 5px;
-  font-weight: bold;
 }
 
-.option-group select, .option-group input {
-  width: 100%;
-  padding: 10px;
-  font-size: 1rem;
-  border: 1px solid #ced4da;
-  border-radius: 4px;
-  transition: border-color 0.3s ease;
+#quantity-select {
+  width: 70px; /* Kenglik */
+  padding: 10px 12px; /* Ichki qirralar */
+  border: none; /* Chekka o'rnini bo'sh qoldirish */
+  border-radius: 20px; /* Yumshoq burchaklar */
+  font-size: 16px; /* Matn o'lchami */
+  font-weight: bold; /* Qalin matn */
+  background-color: #f0f0f0; /* Yorqin fon rangi */
+  color: #333; /* Matn rangi */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Yumshoq soyali ko'rinish */
+  transition: all 0.3s ease; /* Animatsiya */
+ 
 }
 
-.option-group select:focus, .option-group input:focus {
-  border-color: #007bff;
-  outline: none;
+/* Foydalanuvchi ustiga olib borganda */
+#quantity-select:focus {
+  outline: none; /* Kengaytirilgan ko'rinishni yo'qotish */
+  background-color: #ffffff; /* Fokuslanganda fon rangi o'zgaradi */
+  border: 2px solid #007bff; /* Fokuslangan holatda chekka rangi */
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Fokuslangan holatda soyali ko'rinish */
 }
 
-.disabled-select {
-  opacity: 0.5;
-  pointer-events: none;
-  text-decoration: line-through;
+/* Ustiga olib borganingizda o'zgarish */
+#quantity-select:hover {
+  background-color: #e0e0e0; /* Hover holati uchun fon rangi */
 }
 
-.product-actions {
-  display: flex;
-  gap: 10px;
-}
 
 .btn {
   padding: 10px 20px;
-  font-size: 1rem;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.3s ease;
-}
-
-.btn-primary {
+  font-size: 16px;
+  color: #fff;
   background-color: #007bff;
-  color: white;
-}
-
-.btn-primary:hover {
-  background-color: #0056b3;
-  transform: scale(1.05);
-}
-
-.btn-success {
-  background-color: #28a745;
-  color: white;
-}
-
-.btn-success:hover {
-  background-color: #218838;
-  transform: scale(1.05);
-}
-
-@media (max-width: 768px) {
-  .product-box {
-    flex-direction: column;
-  }
-}
-
-.product-info-container {
-  padding: 20px;
-}
-
-.image-gallery {
-  display: flex;
-  flex-direction: row;
-  gap: 20px;
-}
-
-.main-image {
-  flex: 1;
-}
-
-.main-image img {
-  width: 100%;
-  height: auto;
-}
-
-.thumbnail-images {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  width: 100px; /* Sizning ehtiyojingizga qarab sozlang */
-}
-
-.thumbnail-images .thumbnail {
-  width: 100%;
-  height: auto;
+  border: none;
+  border-radius: 4px;
   cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
-@media (max-width: 768px) {
-  .image-gallery {
-    flex-direction: column;
-    align-items: center;
+.btn:hover {
+  background-color: #0056b3;
+}
+
+.loading {
+  text-align: center;
+  font-size: 18px;
+  color: #666;
+  margin: 20px 0;
+}
+
+/* Responsive Styles */
+@media (max-width: 992px) {
+  .container {
+      flex-direction: column;
+  }
+
+  .product-box {
+      flex-direction: column;
   }
 
   .thumbnail-images {
-    flex-direction: row;
-    gap: 10px;
-    width: auto;
+      gap: 5px;
+      justify-content: center;
+  }
+
+  .product-name {
+      font-size: 22px;
+  }
+
+  .product-description {
+      font-size: 15px;
+  }
+
+  .product-price {
+      font-size: 20px;
+  }
+
+  .btn {
+      padding: 8px 16px;
+      font-size: 15px;
   }
 }
 
+@media (max-width: 576px) {
+  .product-info-container {
+      padding: 10px;
+  }
 
+  .main-image img {
+      border-radius: 6px;
+  }
 
-/* Oldingi CSS qoidalari */
+  .thumbnail {
+      width: 50px;
+      height: 50px;
+  }
 
-.comments-section {
-  margin-top: 30px;
-}
+  .product-name {
+      font-size: 20px;
+  }
 
-.comments-list {
-  margin-bottom: 20px;
-}
+  .product-description {
+      font-size: 14px;
+  }
 
-.comment {
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  padding: 10px;
-  margin-bottom: 10px;
-  background-color: #f9f9f9;
-}
+  .product-price {
+      font-size: 18px;
+  }
 
-.comment h3 {
-  margin-top: 0;
-}
-
-.comment p {
-  margin: 5px 0;
-}
-
-.btn-info {
-  background-color: #17a2b8;
-  color: white;
-}
-
-.btn-info:hover {
-  background-color: #138496;
+  .btn {
+      padding: 6px 14px;
+      font-size: 14px;
+  }
 }
