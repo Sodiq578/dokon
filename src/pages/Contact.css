@@ -1,38 +1,20 @@
+ 
+
 .contact-page {
-  display: flex;
-  flex-direction: column;
-  align-items: center; /* Markazga joylash */
+  max-width: 600px;
+  margin: 40px auto;
   padding: 20px;
-  background: linear-gradient(135deg, #f3f4f6, #e2e8f0); /* To'lqinli fon */
-  height: 100vh; /* Butun ekran balandligi */
-  padding-top: 100px;
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  margin-top: 100px;
 }
 
 .contact-title {
-  font-size: 2.5rem;
+  text-align: center;
   margin-bottom: 20px;
-  color: #333; /* Sarlavha rangi */
-}
-
-.contact-container {
-  display: flex;
-  flex-direction: column;
-  background: white;
-  border-radius: 8px; /* Burchaklarni yumshatish */
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* So'ndirish effektini berish */
-  padding: 20px;
-  width: 100%; /* Katta joyni to'ldirish */
-  max-width: 600px; /* Maksimal kenglik */
-}
-
-.contact-info {
-  margin-bottom: 20px; /* Aloqa ma'lumotlari o'rtasidagi bo'shliq */
-}
-
-.info-title {
-  font-size: 1.5rem;
-  margin-bottom: 10px;
-  color: #555; /* Mahsulotlar bo'yicha ma'lumotlar rangi */
+  font-size: 24px;
+  color: #007bff;
 }
 
 .contact-form {
@@ -40,47 +22,64 @@
   flex-direction: column;
 }
 
-.form-title {
-  font-size: 1.5rem;
-  margin-bottom: 10px; /* Xabar qoldirish sarlavhasi bo'shligi */
-  color: #555;
-}
-
 .form-group {
-  margin-bottom: 15px; /* Formadagi elementlar orasidagi bo'shliq */
+  margin-bottom: 15px;
 }
 
 label {
   margin-bottom: 5px;
-  font-weight: bold; /* Belgilarning qalinligi */
+  font-weight: bold;
+  color: #555;
 }
 
 input,
 textarea {
-  padding: 10px; /* Ichki bo'shliq */
-  border: 1px solid #ccc; /* Chizilgan chiziq */
-  border-radius: 4px; /* Burchaklarni yumshatish */
-  font-size: 1rem; /* Font o'lchami */
+  padding: 10px;
+  border: 2px solid #ccc;
+  border-radius: 5px;
+  transition: border 0.3s, box-shadow 0.3s;
+  font-size: 16px;
 }
 
-textarea {
-  resize: none; /* O'lchov o'zgartirishni o'chirish */
+input:focus,
+textarea:focus {
+  border: 2px solid #007bff;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+.input-error {
+  border: 2px solid red;
+  box-shadow: 0 0 5px red;
+}
+
+.error-message {
+  color: red;
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+.success-message {
+  color: green;
+  margin-top: 10px;
+  font-weight: bold;
 }
 
 .submit-btn {
-  background-color: #007bff; /* Tugma rangi */
-  color: white; /* Tugma matni rangi */
-  padding: 10px 20px; /* Tugma ichki bo'shligi */
-  border: none; /* Chizilgan chiziq yo'q */
-  border-radius: 4px; /* Burchaklarni yumshatish */
-  cursor: pointer; /* Ko'rsatgichni o'zgartirish */
-  transition: background-color 0.3s; /* Rangi o'zgarishining animatsiyasi */
+  padding: 10px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s, transform 0.3s;
 }
 
 .submit-btn:hover {
-  background-color: #0056b3; /* Hover holatidagi tugma rangi */
+  background-color: #0056b3;
+  transform: translateY(-2px);
 }
 
-.submit-btn:active {
-  transform: scale(0.98); /* Tugmani bosilganda kichraytirish */
+.submit-btn:disabled {
+  background-color: #ccc;
 }

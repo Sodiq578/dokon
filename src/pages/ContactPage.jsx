@@ -3,98 +3,107 @@ import axios from "axios";
 import "./Contact.css"; // CSS faylini import qilish
 
 const ContactPage = () => {
-  const [name, setName] = useState(""); // Ismni saqlash uchun state
-  const [email, setEmail] = useState(""); // Emailni saqlash uchun state
-  const [message, setMessage] = useState(""); // Xabarni saqlash uchun state
-  const [loading, setLoading] = useState(false); // Yuklash holati
-  const [error, setError] = useState(""); // Xato holati
+  const [firstName, setFirstName] = useState(""); // Ism uchun state
+  const [lastName, setLastName] = useState(""); // Familiya uchun state
+  const [phone, setPhone] = useState(""); // Telefon raqami uchun state
+  const [complaint, setComplaint] = useState(""); // Shikoyat uchun state
+  const [loading, setLoading] = useState(false); // Yuklanish jarayonini ko'rsatish uchun state
+  const [error, setError] = useState(""); // Xatolik xabarini ko'rsatish uchun state
+  const [success, setSuccess] = useState(false); // Muvaffaqiyatli yuborilganligini ko'rsatish uchun state
 
-  const handleSubmit = async (e) => {
-    e.preventDefault(); // Formani yuborishda sahifaning yangilanishini oldini olish
-    const botToken = "7753999301:AAF44xI3AzisnwNu-sCWu5cVs8gnadqx9JY"; // Telegram bot tokenini kiriting
-    const chatId = "5838205785"; // Telegram chat ID'ni kiriting
+  const chatId = "5838205785"; // Telegram chat ID
+  const telegramBotId = "7753999301:AAF44xI3AzisnwNu-sCWu5cVs8gnadqx9JY"; // Telegram bot tokeni
+  const url = `https://api.telegram.org/bot${telegramBotId}/sendMessage`; // Telegram API uchun URL
 
-    const text = `
-      Ism: ${name}
-      Email: ${email}
-      Xabar: ${message}
+  const sendRequest = async (e) => {
+    e.preventDefault(); // Sahifani yangilanishini oldini olish
+
+    const message = `
+👤 Ism: ${firstName}
+👤 Familiya: ${lastName}
+📞 Telefon: ${phone}
+📝 Shikoyat: ${complaint}
+🆔 ID: ${chatId}
     `;
 
-    setLoading(true); // Yuklash holatini faollashtirish
+    const formData = {
+      chat_id: chatId,
+      text: message,
+    };
+
+    setLoading(true); // Yuklanishni boshlash
+    setError(""); // Xato xabarini tozalash
+    setSuccess(false); // Muvaffaqiyatli holatini tozalash
 
     try {
-      await axios.post(
-        `https://api.telegram.org/bot${botToken}/sendMessage`,
-        {
-          chat_id: chatId,
-          text: text,
-          parse_mode: "Markdown",
-        }
-      );
-
+      await axios.post(url, formData);
+      setSuccess(true); // Muvaffaqiyatli holatini o'rnatish
       // Formani tozalash
-      setName("");
-      setEmail("");
-      setMessage("");
-      setError(""); // Xatoni tozalash
-      alert("Xabar muvaffaqiyatli jo'natildi!");
+      setFirstName("");
+      setLastName("");
+      setPhone("");
+      setComplaint("");
     } catch (err) {
       console.error("Xabar jo'natishda xatolik:", err);
-      setError("Xabar jo'natishda xatolik yuz berdi.");
+      setError("Nimadir xato ketdi!"); // Xato holatida xabar ko'rsatish
     } finally {
-      setLoading(false); // Yuklash holatini to'xtatish
+      setLoading(false); // Yuklanishni tugatish
     }
   };
 
   return (
     <div className="contact-page">
-      <h1 className="contact-title">Biz bilan bog'laning</h1>
-      <div className="contact-container">
-        <div className="contact-info">
-          <h2 className="info-title">Aloqa ma'lumotlari</h2>
-          <p>Email: <a href="mailto:info@example.com">info@example.com</a></p>
-          <p>Telefon: <a href="tel:+123456789">+1 234 567 89</a></p>
-          <p>Manzil: Tashkent, Uzbekistan</p>
+      <h1 className="contact-title">Ro'yxatdan o'tish</h1>
+      <form className="contact-form" onSubmit={sendRequest}>
+        <div className="form-group">
+          <label htmlFor="firstName">Ismingiz:</label>
+          <input
+            type="text"
+            id="firstName"
+            className={`js-first-name ${error ? "input-error" : ""}`}
+            value={firstName}
+            onChange={(e) => setFirstName(e.target.value)}
+            required
+          />
         </div>
-
-        <form className="contact-form" onSubmit={handleSubmit}>
-          <h2 className="form-title">Xabar qoldiring</h2>
-          {error && <div className="error-message">{error}</div>} {/* Xato xabari */}
-          <div className="form-group">
-            <label htmlFor="name">Ismingiz:</label>
-            <input
-              type="text"
-              id="name"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-              required
-            />
-          </div>
-          <div className="form-group">
-            <label htmlFor="email">Email:</label>
-            <input
-              type="email"
-              id="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              required
-            />
-          </div>
-          <div className="form-group">
-            <label htmlFor="message">Xabar:</label>
-            <textarea
-              id="message"
-              rows="5"
-              value={message}
-              onChange={(e) => setMessage(e.target.value)}
-              required
-            ></textarea>
-          </div>
-          <button type="submit" className="submit-btn" disabled={loading}>
-            {loading ? "Yuborilmoqda..." : "Yuborish"}
-          </button>
-        </form>
-      </div>
+        <div className="form-group">
+          <label htmlFor="lastName">Familiyangiz:</label>
+          <input
+            type="text"
+            id="lastName"
+            className={`js-last-name ${error ? "input-error" : ""}`}
+            value={lastName}
+            onChange={(e) => setLastName(e.target.value)}
+            required
+          />
+        </div>
+        <div className="form-group">
+          <label htmlFor="phone">Telefon raqamingiz:</label>
+          <input
+            type="tel"
+            id="phone"
+            className={`js-phone ${error ? "input-error" : ""}`}
+            value={phone}
+            onChange={(e) => setPhone(e.target.value)}
+            required
+          />
+        </div>
+        <div className="form-group">
+          <label htmlFor="complaint">Shikoyatingiz:</label>
+          <textarea
+            id="complaint"
+            className={`js-complaint ${error ? "input-error" : ""}`}
+            value={complaint}
+            onChange={(e) => setComplaint(e.target.value)}
+            required
+          ></textarea>
+        </div>
+        {error && <div className="error-message">{error}</div>} {/* Xato xabari */}
+        {success && <div className="success-message">Sizning so'rovingiz qabul qilindi. Sizga aloqaga chiqamiz! 👋</div>} {/* Muvaffaqiyatli xabar */}
+        <button type="submit" className="submit-btn" disabled={loading}>
+          {loading ? "Yuborilmoqda..." : "Yuborish"}
+        </button>
+      </form>
     </div>
   );
 };
