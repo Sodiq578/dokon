@@ -85,14 +85,15 @@ const Navbar = ({ cartItems, isModalOpen, openModal, closeModal }) => {
   </div>
 </li>
 <li>
-  <Link to="/favorites">
-    <IoIosHeartEmpty className="favorites-icon  favorites-icon-heart" />
+  <Link to="/favorites" className="favorites-icon-container">
+    <IoIosHeartEmpty className="favorites-icon favorites-icon-heart" />
     <span>Sevimli mahsulotlar</span>
     {totalFavoritesCount > 0 && (
       <div className="favorites-badge">{totalFavoritesCount}</div>
     )}
   </Link>
 </li>
+
 
  
      
@@ -158,9 +159,10 @@ const Navbar = ({ cartItems, isModalOpen, openModal, closeModal }) => {
                       <h4>{item.title}</h4>
                       <p>${item.price}</p>
  
-                      <button onClick={() => handleToggleFavorite(item)}> 
-                        {favorites.includes(item.id) ? "Remove from Favorites" : "Add to Favorites"}
-                      </button>
+                      <button class="favorite-button" onClick={() => handleToggleFavorite(item)}>
+  {favorites.includes(item.id) ? "Remove from Favorites" : "Add to Favorites"}
+</button>
+
                       <div className="quantity">
                         <input 
                           type="number" 
@@ -174,6 +176,7 @@ const Navbar = ({ cartItems, isModalOpen, openModal, closeModal }) => {
                   </div>
                 ))}
                 <button onClick={handlePurchase} className="purchase-btn">Proceed to Checkout</button>
+
               </div>
             ) : (
               <p>Your cart is empty.</p>

@@ -452,3 +452,86 @@ body {
     font-size: 20px;
   }
 }
+
+
+
+
+
+
+.favorites-icon-heart {
+  position: relative; /* Z-index va pozitsiya uchun */
+}
+
+.favorites-badge {
+  position: absolute; /* Pozitsionlash uchun */
+  top: -5px; /* Badge ni ustki qismiga joylash */
+  right: -5px; /* Badge ni o'ng tomonga joylash */
+  background-color: red; /* Orqa fonni qizil qilish */
+  color: white; /* Matn rangini oq qilish */
+  border-radius: 50%; /* Yumaloq shakl berish */
+  width: 20px; /* Badge o'lchami */
+  height: 20px; /* Badge o'lchami */
+  display: flex; /* Centering */
+  align-items: center; /* Vertikal markazlash */
+  justify-content: center; /* Gorizontal markazlash */
+  z-index: 10; /* Z-index ni oshirish */
+}
+
+.favorite-button {
+  background-color: #ffcc00; /* Fono rangi */
+  color: #ffffff; /* Matn rangi */
+  border: none; /* Chegara yo'q */
+  border-radius: 5px; /* Qirralar yumshoq */
+  padding: 10px 20px; /* Ichki bo'shliq */
+  font-size: 16px; /* Matn o'lchami */
+  cursor: pointer; /* Kursor ko'rsatkichini qo'shadi */
+  transition: background-color 0.3s ease; /* O'zgarishlarni yumshoq ko'rsatish */
+}
+
+.favorite-button:hover {
+  background-color: #ff9900; /* Ovoz berilganda fon rangi */
+}
+
+.favorite-button:focus {
+  outline: none; /* Fokusni olib tashlash */
+}
+
+
+.purchase-btn {
+  background-color: #28a745; /* Yashil fon rangi */
+  color: #ffffff; /* Oq matn rangi */
+  border: none; /* Chegarani olib tashlash */
+  border-radius: 5px; /* Yumshoq qirralar */
+  padding: 12px 24px; /* Ichki bo'shliq */
+  font-size: 18px; /* Matn o'lchami */
+  cursor: pointer; /* Kursor ko'rsatkichini qo'shadi */
+  transition: background-color 0.3s ease, transform 0.3s ease; /* O'zgarishlarni yumshoq ko'rsatish */
+}
+
+.purchase-btn:hover {
+  background-color: #218838; /* Hover holatidagi fon rangi */
+  transform: scale(1.05); /* Hover holatida kattalashtirish */
+}
+
+.purchase-btn:focus {
+  outline: none; /* Fokus holatida belgi olib tashlash */
+}
+
+
+@media (max-width: 768px) {
+ 
+.favorites-badge {
+  position: absolute; /* Pozitsionlash uchun */
+  top: 10px; /* Badge ni ustki qismiga joylash */
+  right: 30px; /* Badge ni o'ng tomonga joylash */
+  background-color: red; /* Orqa fonni qizil qilish */
+  color: white; /* Matn rangini oq qilish */
+  border-radius: 50%; /* Yumaloq shakl berish */
+  width: 20px; /* Badge o'lchami */
+  height: 20px; /* Badge o'lchami */
+  display: flex; /* Centering */
+  align-items: center; /* Vertikal markazlash */
+  justify-content: center; /* Gorizontal markazlash */
+  z-index: 10; /* Z-index ni oshirish */
+}
+}

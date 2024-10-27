@@ -7,8 +7,10 @@ const Modal = ({ isOpen, onClose, content }) => {
   useEffect(() => {
     if (isOpen) {
       setIsVisible(true);
+      document.body.style.overflow = 'hidden'; // Skrolni o'chirish
     } else {
-      setTimeout(() => setIsVisible(false), 300); // Match with the fade-out animation duration
+      document.body.style.overflow = 'auto'; // Skrolni qaytarish
+      setTimeout(() => setIsVisible(false), 300); // Fade-out animatsiyasi uchun vaqt
     }
   }, [isOpen]);
 
