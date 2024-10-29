@@ -4,6 +4,7 @@ import axios from 'axios';
 import Loader from '../components/Loader';
 import Modal from './Modal'; 
 import './ProductInfoPage.css';
+ 
 
 const ProductInfoPage = () => {
   const { id } = useParams();
@@ -198,6 +199,7 @@ const ProductInfoPage = () => {
           <button className='btn-tast' onClick={handleConfirmPurchase}>Buyurtmani tasdiqlash</button>
         </div>
       } />
+ 
     </div>
   );
 };
