@@ -10,7 +10,7 @@ import ContactPage from './pages/ContactPage';
 import OrderPage from './pages/OrderPage';
 import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
-// Make sure to remove duplicate imports if any
+ 
 
 const App = () => {
   const [cartItems, setCartItems] = useState([]);
@@ -53,7 +53,7 @@ const App = () => {
   };
 
   if (loading) {
-    return <div>Loading...</div>; // Optional loading indicator
+    return <div>Loading...</div>;  
   }
 
   return (
@@ -73,6 +73,7 @@ const App = () => {
               addToFavorites={addToFavorites} 
               favorites={favorites}
             />
+
           } 
         />
         <Route path="/product/:id" element={<ProductInfoPage />} />

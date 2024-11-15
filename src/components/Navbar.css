@@ -166,14 +166,7 @@ body {
   z-index: 1001; /* Modalni ustida saqlash */
 }
 
-.modal-content {
-  background: white;
-  padding: 20px;
-  border-radius: 5px;
-  width: 300px;
-  position: relative;
-}
-
+ 
 .close-button {
   position: absolute;
   top: 10px;
